@@ -14,6 +14,9 @@
 		A34C3C5A23570D25001FD378 /* iPiggy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A34C3C5823570D25001FD378 /* iPiggy.xcdatamodeld */; };
 		A34C3C5C23570D26001FD378 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A34C3C5B23570D26001FD378 /* Assets.xcassets */; };
 		A34C3C5F23570D26001FD378 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A34C3C5D23570D26001FD378 /* LaunchScreen.storyboard */; };
+		A34C3C672357647F001FD378 /* Two.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A34C3C662357647F001FD378 /* Two.storyboard */; };
+		A34C3C6B235768B0001FD378 /* Three.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A34C3C6A235768B0001FD378 /* Three.storyboard */; };
+		A34C3C6D235768CD001FD378 /* Four.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A34C3C6C235768CD001FD378 /* Four.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		A34C3C5B23570D26001FD378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A34C3C5E23570D26001FD378 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A34C3C6023570D26001FD378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A34C3C662357647F001FD378 /* Two.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Two.storyboard; sourceTree = "<group>"; };
+		A34C3C6A235768B0001FD378 /* Three.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Three.storyboard; sourceTree = "<group>"; };
+		A34C3C6C235768CD001FD378 /* Four.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Four.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +64,35 @@
 		A34C3C4E23570D25001FD378 /* iPiggy */ = {
 			isa = PBXGroup;
 			children = (
-				A34C3C4F23570D25001FD378 /* AppDelegate.swift */,
-				A34C3C5123570D25001FD378 /* SceneDelegate.swift */,
-				A34C3C5323570D25001FD378 /* ViewController.swift */,
-				A34C3C5523570D25001FD378 /* Main.storyboard */,
+				A34C3C69235765A9001FD378 /* Source_Code */,
+				A34C3C682357657A001FD378 /* Storyboards */,
 				A34C3C5B23570D26001FD378 /* Assets.xcassets */,
 				A34C3C5D23570D26001FD378 /* LaunchScreen.storyboard */,
 				A34C3C6023570D26001FD378 /* Info.plist */,
 				A34C3C5823570D25001FD378 /* iPiggy.xcdatamodeld */,
 			);
 			path = iPiggy;
+			sourceTree = "<group>";
+		};
+		A34C3C682357657A001FD378 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A34C3C5523570D25001FD378 /* Main.storyboard */,
+				A34C3C662357647F001FD378 /* Two.storyboard */,
+				A34C3C6A235768B0001FD378 /* Three.storyboard */,
+				A34C3C6C235768CD001FD378 /* Four.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A34C3C69235765A9001FD378 /* Source_Code */ = {
+			isa = PBXGroup;
+			children = (
+				A34C3C4F23570D25001FD378 /* AppDelegate.swift */,
+				A34C3C5123570D25001FD378 /* SceneDelegate.swift */,
+				A34C3C5323570D25001FD378 /* ViewController.swift */,
+			);
+			path = Source_Code;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,9 +153,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A34C3C6B235768B0001FD378 /* Three.storyboard in Resources */,
 				A34C3C5F23570D26001FD378 /* LaunchScreen.storyboard in Resources */,
 				A34C3C5C23570D26001FD378 /* Assets.xcassets in Resources */,
 				A34C3C5723570D25001FD378 /* Main.storyboard in Resources */,
+				A34C3C6D235768CD001FD378 /* Four.storyboard in Resources */,
+				A34C3C672357647F001FD378 /* Two.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
