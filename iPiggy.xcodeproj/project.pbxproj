@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A34C3C5023570D25001FD378 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3C4F23570D25001FD378 /* AppDelegate.swift */; };
 		A34C3C5223570D25001FD378 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3C5123570D25001FD378 /* SceneDelegate.swift */; };
-		A34C3C5423570D25001FD378 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3C5323570D25001FD378 /* ViewController.swift */; };
 		A34C3C5723570D25001FD378 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A34C3C5523570D25001FD378 /* Main.storyboard */; };
 		A34C3C5A23570D25001FD378 /* iPiggy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A34C3C5823570D25001FD378 /* iPiggy.xcdatamodeld */; };
 		A34C3C5C23570D26001FD378 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A34C3C5B23570D26001FD378 /* Assets.xcassets */; };
@@ -24,7 +23,6 @@
 		A34C3C4C23570D25001FD378 /* iPiggy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPiggy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A34C3C4F23570D25001FD378 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A34C3C5123570D25001FD378 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A34C3C5323570D25001FD378 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A34C3C5623570D25001FD378 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A34C3C5923570D25001FD378 /* iPiggy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iPiggy.xcdatamodel; sourceTree = "<group>"; };
 		A34C3C5B23570D26001FD378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,7 +91,6 @@
 			children = (
 				A34C3C4F23570D25001FD378 /* AppDelegate.swift */,
 				A34C3C5123570D25001FD378 /* SceneDelegate.swift */,
-				A34C3C5323570D25001FD378 /* ViewController.swift */,
 			);
 			path = Source_Code;
 			sourceTree = "<group>";
@@ -174,7 +171,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A34C3C5A23570D25001FD378 /* iPiggy.xcdatamodeld in Sources */,
-				A34C3C5423570D25001FD378 /* ViewController.swift in Sources */,
 				A34C3C5023570D25001FD378 /* AppDelegate.swift in Sources */,
 				A34C3C5223570D25001FD378 /* SceneDelegate.swift in Sources */,
 			);
