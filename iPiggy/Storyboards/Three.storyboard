@@ -229,9 +229,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YUA-fu-fXS">
                                                 <rect key="frame" x="87" y="0.0" width="248" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="1aA-8V-NQb"/>
                                                     <constraint firstAttribute="height" constant="30" id="apF-PS-w3U"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="wFu-Q3-YYN"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
