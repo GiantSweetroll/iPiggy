@@ -127,6 +127,9 @@
                                                 <state key="normal" title="History">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="7LJ-m9-Avw" kind="show" id="b10-3w-b3P"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
