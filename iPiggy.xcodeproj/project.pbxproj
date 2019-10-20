@@ -16,6 +16,7 @@
 		A34C3C672357647F001FD378 /* Two.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A34C3C662357647F001FD378 /* Two.storyboard */; };
 		A34C3C6B235768B0001FD378 /* Three.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A34C3C6A235768B0001FD378 /* Three.storyboard */; };
 		A34C3C6D235768CD001FD378 /* Four.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A34C3C6C235768CD001FD378 /* Four.storyboard */; };
+		A34C3C6F2358B6BE001FD378 /* Testing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A34C3C6E2358B6BE001FD378 /* Testing.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		A34C3C662357647F001FD378 /* Two.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Two.storyboard; sourceTree = "<group>"; };
 		A34C3C6A235768B0001FD378 /* Three.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Three.storyboard; sourceTree = "<group>"; };
 		A34C3C6C235768CD001FD378 /* Four.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Four.storyboard; sourceTree = "<group>"; };
+		A34C3C6E2358B6BE001FD378 /* Testing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Testing.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				A34C3C662357647F001FD378 /* Two.storyboard */,
 				A34C3C6A235768B0001FD378 /* Three.storyboard */,
 				A34C3C6C235768CD001FD378 /* Four.storyboard */,
+				A34C3C6E2358B6BE001FD378 /* Testing.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 			files = (
 				A34C3C6B235768B0001FD378 /* Three.storyboard in Resources */,
 				A34C3C5F23570D26001FD378 /* LaunchScreen.storyboard in Resources */,
+				A34C3C6F2358B6BE001FD378 /* Testing.storyboard in Resources */,
 				A34C3C5C23570D26001FD378 /* Assets.xcassets in Resources */,
 				A34C3C5723570D25001FD378 /* Main.storyboard in Resources */,
 				A34C3C6D235768CD001FD378 /* Four.storyboard in Resources */,
