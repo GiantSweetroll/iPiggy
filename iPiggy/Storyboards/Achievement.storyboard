@@ -169,7 +169,11 @@
                         <viewLayoutGuide key="safeArea" id="SSx-vd-tub"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="ahA-sT-GhV">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="u6d-yj-gmw"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="u6d-yj-gmw">
+                            <connections>
+                                <segue destination="wNv-8R-9ao" kind="show" id="xhx-M6-FVk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zpB-DC-GNc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -273,13 +277,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add" id="cI4-mg-opf"/>
                     <connections>
-                        <outlet property="tfCost" destination="YUA-fu-fXS" id="4gK-uZ-eId"/>
                         <outlet property="tfWish" destination="oXR-eT-vzt" id="Rhm-Up-um3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxn-oc-gwA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1727.2" y="-416.0419790104948"/>
+            <point key="canvasLocation" x="1778" y="-416"/>
         </scene>
         <!--Achievement-->
         <scene sceneID="GBz-rD-VL7">
@@ -308,4 +311,7 @@
         <image name="circle" catalog="system" width="64" height="62"/>
         <image name="circle.fill" catalog="system" width="64" height="62"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="xhx-M6-FVk"/>
+    </inferredMetricsTieBreakers>
 </document>
