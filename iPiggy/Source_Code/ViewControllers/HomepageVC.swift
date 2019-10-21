@@ -8,13 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController
+class HomepageVC: UIViewController
 {
+    //MARK: Storyboard Elements
+    @IBOutlet weak var labelDate: UILabel!
+    @IBOutlet weak var labelBudget: UILabel!
+    @IBOutlet weak var labelMoneyLeft: UILabel!
+    
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
 
 
