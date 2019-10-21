@@ -13,7 +13,7 @@ public class Expenses: NSManagedObject, Identifiable
 {
     @NSManaged public var category:String?
     @NSManaged public var info:String?
-//    @NSManaged public var cost:Double?
+    @NSManaged public var cost:Double?
     @NSManaged public var date:Date?
 }
 
