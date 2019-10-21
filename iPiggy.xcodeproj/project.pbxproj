@@ -24,6 +24,7 @@
 		A34C3D16235DDB77001FD378 /* Management.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D15235DDB77001FD378 /* Management.swift */; };
 		A34C3D18235DDCEC001FD378 /* EditBudgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D17235DDCEC001FD378 /* EditBudgetVC.swift */; };
 		A34C3D1B235DE0FF001FD378 /* WishlistTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D1A235DE0FF001FD378 /* WishlistTableCell.swift */; };
+		A34C3D1D235DE7AB001FD378 /* AchievementFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D1C235DE7AB001FD378 /* AchievementFormVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		A34C3D15235DDB77001FD378 /* Management.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Management.swift; sourceTree = "<group>"; };
 		A34C3D17235DDCEC001FD378 /* EditBudgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBudgetVC.swift; sourceTree = "<group>"; };
 		A34C3D1A235DE0FF001FD378 /* WishlistTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistTableCell.swift; sourceTree = "<group>"; };
+		A34C3D1C235DE7AB001FD378 /* AchievementFormVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementFormVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			children = (
 				A34C3D05235D9261001FD378 /* HomepageVC.swift */,
 				A34C3D17235DDCEC001FD378 /* EditBudgetVC.swift */,
+				A34C3D1C235DE7AB001FD378 /* AchievementFormVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				A34C3D0F235DD835001FD378 /* Methods.swift in Sources */,
 				A34C3D1B235DE0FF001FD378 /* WishlistTableCell.swift in Sources */,
 				A34C3C5223570D25001FD378 /* SceneDelegate.swift in Sources */,
+				A34C3D1D235DE7AB001FD378 /* AchievementFormVC.swift in Sources */,
 				A34C3D11235DD965001FD378 /* Expenses.swift in Sources */,
 				A34C3D18235DDCEC001FD378 /* EditBudgetVC.swift in Sources */,
 			);
