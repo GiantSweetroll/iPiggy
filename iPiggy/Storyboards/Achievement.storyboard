@@ -20,7 +20,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellWishlist" id="zcr-Cl-3RS">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellWishlist" id="zcr-Cl-3RS" customClass="WishlistTableCell" customModule="iPiggy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zcr-Cl-3RS" id="OWp-3L-52J">
@@ -40,6 +40,9 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <state key="normal" image="circle.fill" catalog="system" backgroundImage="circle"/>
                                                     <state key="highlighted" image="circle" catalog="system" backgroundImage="circle"/>
+                                                    <connections>
+                                                        <action selector="buttonPressed:" destination="zcr-Cl-3RS" eventType="touchUpInside" id="h1E-pU-eiq"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLm-N0-Q9n">
                                                     <rect key="frame" x="335" y="10" width="25" height="24"/>
@@ -53,6 +56,10 @@
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="butAchieved" destination="2E1-u2-bNT" id="PCu-k4-OpV"/>
+                                            <outlet property="label" destination="VuD-Wz-bEp" id="iKa-Ov-fOP"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -170,7 +177,7 @@
         <!--Add-->
         <scene sceneID="VgC-TJ-alz">
             <objects>
-                <viewController id="wNv-8R-9ao" customClass="AddAchievementController" customModule="iPiggy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wNv-8R-9ao" customClass="AchievementFormVC" customModule="iPiggy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B3V-YS-p5S">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -267,6 +274,10 @@
                         <viewLayoutGuide key="safeArea" id="Zfx-Ag-1xt"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add" id="cI4-mg-opf"/>
+                    <connections>
+                        <outlet property="tfCost" destination="YUA-fu-fXS" id="4gK-uZ-eId"/>
+                        <outlet property="tfWish" destination="oXR-eT-vzt" id="Rhm-Up-um3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxn-oc-gwA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
