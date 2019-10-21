@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yMF-1H-MVG">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
@@ -263,7 +263,6 @@
                             <constraint firstItem="j8k-YN-pWC" firstAttribute="leading" secondItem="Zfx-Ag-1xt" secondAttribute="leading" constant="20" id="F3R-GJ-LF1"/>
                             <constraint firstItem="Zfx-Ag-1xt" firstAttribute="trailing" secondItem="j8k-YN-pWC" secondAttribute="trailing" constant="20" id="RhN-4c-WoS"/>
                             <constraint firstItem="j8k-YN-pWC" firstAttribute="top" secondItem="Zfx-Ag-1xt" secondAttribute="top" constant="20" id="b0V-zz-Eug"/>
-                            <constraint firstItem="Zfx-Ag-1xt" firstAttribute="bottom" secondItem="j8k-YN-pWC" secondAttribute="bottom" constant="20" id="qfn-od-efc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zfx-Ag-1xt"/>
                     </view>
@@ -273,30 +272,14 @@
             </objects>
             <point key="canvasLocation" x="1727.2" y="-416.0419790104948"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="pE7-c6-lBj">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rfO-rQ-mie" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1su-G8-qv6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="yMF-1H-MVG" kind="relationship" relationship="rootViewController" id="PMF-oH-r91"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iZd-8t-lcE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1053.5999999999999" y="-416.0419790104948"/>
-        </scene>
-        <!--Navigation Controller-->
+        <!--Achievement-->
         <scene sceneID="GBz-rD-VL7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yMF-1H-MVG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Achievement" image="Trophy" id="Tc0-pD-Bfj"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="KNF-i4-8i5"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LPo-8Z-TxV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -312,6 +295,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Trophy" width="25" height="25"/>
         <image name="circle" catalog="system" width="64" height="60"/>
         <image name="circle.fill" catalog="system" width="64" height="60"/>
     </resources>
