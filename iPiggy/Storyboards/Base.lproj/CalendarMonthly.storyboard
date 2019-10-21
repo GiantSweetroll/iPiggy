@@ -64,7 +64,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Monthly" image="pencil.circle" catalog="system" id="fL9-Jb-kFQ"/>
+                    <tabBarItem key="tabBarItem" title="Monthly" image="Calendar" id="fL9-Jb-kFQ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -73,6 +73,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pencil.circle" catalog="system" width="64" height="60"/>
+        <image name="Calendar" width="25" height="25"/>
     </resources>
 </document>
