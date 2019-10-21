@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Edit Budget-->
         <scene sceneID="h6i-Fu-o36">
             <objects>
-                <viewController id="KIc-BS-j9I" sceneMemberID="viewController">
+                <viewController title="Edit Budget" id="KIc-BS-j9I" customClass="EditBudgetVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zlr-aM-95h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -90,6 +90,9 @@
                         <viewLayoutGuide key="safeArea" id="aup-2A-Vjn"/>
                     </view>
                     <navigationItem key="navigationItem" id="B7n-50-qcI"/>
+                    <connections>
+                        <outlet property="tfEditBudget" destination="OX5-vk-qUG" id="6tA-66-Qct"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sTf-IT-AWF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -230,6 +233,7 @@
                     <connections>
                         <outlet property="labelBudget" destination="jPP-4c-MQf" id="nGX-xk-fs5"/>
                         <outlet property="labelDate" destination="oyd-9P-2TZ" id="vm0-C8-Lxa"/>
+                        <outlet property="labelGoalAmount" destination="hIB-Yw-T0x" id="StO-F3-UDI"/>
                         <outlet property="labelMoneyLeft" destination="82k-QS-1KK" id="Dki-BO-cKX"/>
                     </connections>
                 </viewController>
