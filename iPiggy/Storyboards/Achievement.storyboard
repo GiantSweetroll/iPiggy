@@ -10,7 +10,7 @@
         <!--Achievement-->
         <scene sceneID="7xz-h7-zxi">
             <objects>
-                <viewController title="Achievement" id="OYf-Ii-cWl" customClass="ViewController" customModule="iPiggy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Achievement" id="OYf-Ii-cWl" customClass="AchievementVC" customModule="iPiggy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N5v-No-Gma">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,7 +113,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="aFc-3w-78i">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="aFc-3w-78i" customClass="AchievementTableCell" customModule="iPiggy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aFc-3w-78i" id="DZ1-8x-n17">
@@ -129,6 +129,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="hUf-Wi-T6g" id="qz8-8L-dtg"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -138,7 +141,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="LX6-ZZ-gBm"/>
                     <connections>
+                        <outlet property="achievementTableVIew" destination="iEY-6Q-6mn" id="A29-NM-fHI"/>
+                        <outlet property="achievementTableView" destination="iEY-6Q-6mn" id="X6w-M1-rKB"/>
                         <outlet property="tableView" destination="0cX-uz-15s" id="AK6-cm-UvY"/>
+                        <outlet property="wishlistTabelView" destination="0cX-uz-15s" id="X08-T6-7Vx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b72-jX-hxB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
