@@ -18,6 +18,98 @@
             endingLineNumber = "15"
             landmarkName = "WishlistTableCell"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "03C83796-36F3-442A-99A9-F6BDE4A30E88 - 21a898f1a9e64c51"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iPiggy.WishlistTableCell.butAchieved.getter : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "iPiggy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gardyanakbar/Desktop/XCode/Projects/iPiggy/iPiggy/Source_Code/TableViewCells/WishlistTableCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "03C83796-36F3-442A-99A9-F6BDE4A30E88 - 6a9a5242bda8ac4d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iPiggy.WishlistTableCell.butAchieved.setter : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "iPiggy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gardyanakbar/Desktop/XCode/Projects/iPiggy/iPiggy/Source_Code/TableViewCells/WishlistTableCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "03C83796-36F3-442A-99A9-F6BDE4A30E88 - b31590a82279f45e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iPiggy.WishlistTableCell.butAchieved.modify : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "iPiggy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gardyanakbar/Desktop/XCode/Projects/iPiggy/iPiggy/Source_Code/TableViewCells/WishlistTableCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "67">
+               </Location>
+               <Location
+                  uuid = "03C83796-36F3-442A-99A9-F6BDE4A30E88 - 946b31115a8972a8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iPiggy.WishlistTableCell.butAchieved.modify : Swift.Optional&lt;__C.UIButton&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "iPiggy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gardyanakbar/Desktop/XCode/Projects/iPiggy/iPiggy/Source_Code/TableViewCells/WishlistTableCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "03C83796-36F3-442A-99A9-F6BDE4A30E88 - 3b66e6e85b981ffc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iPiggy.WishlistTableCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; iPiggy.WishlistTableCell"
+                  moduleName = "iPiggy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gardyanakbar/Desktop/XCode/Projects/iPiggy/iPiggy/Source_Code/TableViewCells/WishlistTableCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "276">
+               </Location>
+               <Location
+                  uuid = "03C83796-36F3-442A-99A9-F6BDE4A30E88 - 9f515029ce672fe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iPiggy.WishlistTableCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;iPiggy.WishlistTableCell&gt;"
+                  moduleName = "iPiggy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gardyanakbar/Desktop/XCode/Projects/iPiggy/iPiggy/Source_Code/TableViewCells/WishlistTableCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "202">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

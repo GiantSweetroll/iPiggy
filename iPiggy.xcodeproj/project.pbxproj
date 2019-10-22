@@ -19,12 +19,13 @@
 		A34C3D06235D9261001FD378 /* HomepageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D05235D9261001FD378 /* HomepageVC.swift */; };
 		A34C3D0C235DD774001FD378 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D0B235DD774001FD378 /* Constants.swift */; };
 		A34C3D0F235DD835001FD378 /* Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D0E235DD835001FD378 /* Methods.swift */; };
-		A34C3D11235DD965001FD378 /* Expenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D10235DD965001FD378 /* Expenses.swift */; };
-		A34C3D14235DD994001FD378 /* WishlistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D13235DD993001FD378 /* WishlistItem.swift */; };
-		A34C3D16235DDB77001FD378 /* Management.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D15235DDB77001FD378 /* Management.swift */; };
-		A34C3D18235DDCEC001FD378 /* EditBudgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D17235DDCEC001FD378 /* EditBudgetVC.swift */; };
+		A34C3D18235DDCEC001FD378 /* EditFundsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D17235DDCEC001FD378 /* EditFundsVC.swift */; };
 		A34C3D1B235DE0FF001FD378 /* WishlistTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D1A235DE0FF001FD378 /* WishlistTableCell.swift */; };
 		A34C3D1D235DE7AB001FD378 /* AchievementFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D1C235DE7AB001FD378 /* AchievementFormVC.swift */; };
+		A34C3D1F235E8119001FD378 /* AddExpensesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D1E235E8119001FD378 /* AddExpensesVC.swift */; };
+		A34C3D44235EA184001FD378 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D43235EA184001FD378 /* HistoryTableViewCell.swift */; };
+		A34C3D46235EA291001FD378 /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D45235EA291001FD378 /* HistoryVC.swift */; };
+		A34C3D49235EA34A001FD378 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D48235EA34A001FD378 /* History.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,12 +43,13 @@
 		A34C3D05235D9261001FD378 /* HomepageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomepageVC.swift; sourceTree = "<group>"; };
 		A34C3D0B235DD774001FD378 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A34C3D0E235DD835001FD378 /* Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Methods.swift; sourceTree = "<group>"; };
-		A34C3D10235DD965001FD378 /* Expenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expenses.swift; sourceTree = "<group>"; };
-		A34C3D13235DD993001FD378 /* WishlistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistItem.swift; sourceTree = "<group>"; };
-		A34C3D15235DDB77001FD378 /* Management.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Management.swift; sourceTree = "<group>"; };
-		A34C3D17235DDCEC001FD378 /* EditBudgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBudgetVC.swift; sourceTree = "<group>"; };
+		A34C3D17235DDCEC001FD378 /* EditFundsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFundsVC.swift; sourceTree = "<group>"; };
 		A34C3D1A235DE0FF001FD378 /* WishlistTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistTableCell.swift; sourceTree = "<group>"; };
 		A34C3D1C235DE7AB001FD378 /* AchievementFormVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementFormVC.swift; sourceTree = "<group>"; };
+		A34C3D1E235E8119001FD378 /* AddExpensesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpensesVC.swift; sourceTree = "<group>"; };
+		A34C3D43235EA184001FD378 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		A34C3D45235EA291001FD378 /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
+		A34C3D48235EA34A001FD378 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +108,8 @@
 			children = (
 				A34C3C4F23570D25001FD378 /* AppDelegate.swift */,
 				A34C3C5123570D25001FD378 /* SceneDelegate.swift */,
+				A34C3D47235EA33C001FD378 /* DataDrivers */,
 				A34C3D19235DDE69001FD378 /* TableViewCells */,
-				A34C3D12235DD971001FD378 /* Database_objects */,
 				A34C3D0D235DD822001FD378 /* Methods */,
 				A34C3D0A235DD728001FD378 /* Constants */,
 				A34C3D09235DCDF6001FD378 /* ViewControllers */,
@@ -119,8 +121,10 @@
 			isa = PBXGroup;
 			children = (
 				A34C3D05235D9261001FD378 /* HomepageVC.swift */,
-				A34C3D17235DDCEC001FD378 /* EditBudgetVC.swift */,
+				A34C3D17235DDCEC001FD378 /* EditFundsVC.swift */,
 				A34C3D1C235DE7AB001FD378 /* AchievementFormVC.swift */,
+				A34C3D1E235E8119001FD378 /* AddExpensesVC.swift */,
+				A34C3D45235EA291001FD378 /* HistoryVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -141,22 +145,21 @@
 			path = Methods;
 			sourceTree = "<group>";
 		};
-		A34C3D12235DD971001FD378 /* Database_objects */ = {
-			isa = PBXGroup;
-			children = (
-				A34C3D10235DD965001FD378 /* Expenses.swift */,
-				A34C3D13235DD993001FD378 /* WishlistItem.swift */,
-				A34C3D15235DDB77001FD378 /* Management.swift */,
-			);
-			path = Database_objects;
-			sourceTree = "<group>";
-		};
 		A34C3D19235DDE69001FD378 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
 				A34C3D1A235DE0FF001FD378 /* WishlistTableCell.swift */,
+				A34C3D43235EA184001FD378 /* HistoryTableViewCell.swift */,
 			);
 			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		A34C3D47235EA33C001FD378 /* DataDrivers */ = {
+			isa = PBXGroup;
+			children = (
+				A34C3D48235EA34A001FD378 /* History.swift */,
+			);
+			path = DataDrivers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,18 +236,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A34C3D16235DDB77001FD378 /* Management.swift in Sources */,
 				A34C3D0C235DD774001FD378 /* Constants.swift in Sources */,
+				A34C3D46235EA291001FD378 /* HistoryVC.swift in Sources */,
 				A34C3C5A23570D25001FD378 /* iPiggy.xcdatamodeld in Sources */,
 				A34C3C5023570D25001FD378 /* AppDelegate.swift in Sources */,
-				A34C3D14235DD994001FD378 /* WishlistItem.swift in Sources */,
+				A34C3D1F235E8119001FD378 /* AddExpensesVC.swift in Sources */,
 				A34C3D06235D9261001FD378 /* HomepageVC.swift in Sources */,
 				A34C3D0F235DD835001FD378 /* Methods.swift in Sources */,
 				A34C3D1B235DE0FF001FD378 /* WishlistTableCell.swift in Sources */,
 				A34C3C5223570D25001FD378 /* SceneDelegate.swift in Sources */,
+				A34C3D44235EA184001FD378 /* HistoryTableViewCell.swift in Sources */,
+				A34C3D49235EA34A001FD378 /* History.swift in Sources */,
 				A34C3D1D235DE7AB001FD378 /* AchievementFormVC.swift in Sources */,
-				A34C3D11235DD965001FD378 /* Expenses.swift in Sources */,
-				A34C3D18235DDCEC001FD378 /* EditBudgetVC.swift in Sources */,
+				A34C3D18235DDCEC001FD378 /* EditFundsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

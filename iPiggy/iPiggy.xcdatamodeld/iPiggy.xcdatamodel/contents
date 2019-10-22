@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15400" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Expenses" representedClassName=".Expenses" syncable="YES">
+    <entity name="Expenses" representedClassName=".Expenses" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="cost" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="info" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="Management" representedClassName=".Management" syncable="YES">
-        <attribute name="budget" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="dateFrom" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="dateTo" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="endGoal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="moneyLeft" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="progressGoal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    <entity name="Funds" representedClassName="." syncable="YES">
+        <attribute name="funds" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="fundsLeft" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="WishlistItem" representedClassName=".WishlistItem" syncable="YES">
+    <entity name="Goal" representedClassName="Goal" syncable="YES" codeGenerationType="class"/>
+    <entity name="WishlistItem" representedClassName=".WishlistItem" syncable="YES" codeGenerationType="class">
+        <attribute name="achieved" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="cost" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="Expenses" positionX="-54" positionY="-9" width="128" height="103"/>
-        <element name="WishlistItem" positionX="-36" positionY="36" width="128" height="88"/>
-        <element name="Management" positionX="-18" positionY="63" width="128" height="133"/>
+        <element name="WishlistItem" positionX="-36" positionY="36" width="128" height="103"/>
+        <element name="Funds" positionX="-18" positionY="63" width="128" height="73"/>
+        <element name="Goal" positionX="0" positionY="108" width="128" height="43"/>
     </elements>
 </model>
