@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zRv-Ei-K2g">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zRv-Ei-K2g">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Edit Budget-->
+        <!--Edit Funds-->
         <scene sceneID="h6i-Fu-o36">
             <objects>
-                <viewController title="Edit Budget" id="KIc-BS-j9I" customClass="EditBudgetVC" sceneMemberID="viewController">
+                <viewController title="Edit Funds" id="KIc-BS-j9I" customClass="EditFundsVC" customModule="iPiggy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zlr-aM-95h">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IK4-o0-LcK">
@@ -26,7 +23,7 @@
                                     <navigationItem title="Edit Funds" prompt="  " id="xak-zf-iH3">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="9fy-i1-ZO2">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Izs-3g-VLZ">
-                                                <rect key="frame" x="16" y="41" width="83" height="30"/>
+                                                <rect key="frame" x="16" y="47" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="&lt; Back"/>
                                             </button>
@@ -63,6 +60,7 @@
                     <navigationItem key="navigationItem" id="B7n-50-qcI"/>
                     <connections>
                         <outlet property="tfEditBudget" destination="OX5-vk-qUG" id="6tA-66-Qct"/>
+                        <outlet property="tfEditFunds" destination="OX5-vk-qUG" id="c3k-Xd-nUS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sTf-IT-AWF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -101,7 +99,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gTo-Fa-Qll" id="bEU-yp-gz6">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99T-a0-iNi">
@@ -139,7 +137,7 @@
                                         <rect key="frame" x="0.0" y="148" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="w69-EB-L9x" id="wFL-8O-Dh5">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWn-bm-15O">
@@ -177,7 +175,7 @@
                                         <rect key="frame" x="0.0" y="268" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pFb-Oh-08U" id="4Ff-EC-BHP">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KX7-Nx-wNq">
@@ -231,7 +229,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyd-9P-2TZ">
-                                <rect key="frame" x="16" y="92" width="343" height="29.5"/>
+                                <rect key="frame" x="16" y="92" width="343" height="28"/>
                                 <attributedString key="attributedText">
                                     <fragment content="19 October 2019">
                                         <attributes>
@@ -243,7 +241,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FGg-pg-52A" userLabel="vertical">
-                                <rect key="frame" x="15" y="154.5" width="350" height="30"/>
+                                <rect key="frame" x="15" y="153" width="350" height="30"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Blp-fI-YaX" userLabel="horizontal">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="30"/>
@@ -275,7 +273,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kRe-q8-EkG" userLabel="Vertical">
-                                <rect key="frame" x="12.5" y="242.5" width="350" height="33"/>
+                                <rect key="frame" x="12.5" y="241" width="350" height="33"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Q9V-su-equ" userLabel="Horizontal">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="33"/>
@@ -388,7 +386,7 @@
             <objects>
                 <viewController id="Tbi-7W-Q41" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WbB-9d-OZe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ea-I6-0hK">
@@ -398,7 +396,7 @@
                                     <navigationItem title="Edit Goals" prompt="  " id="6cV-Ct-HyY">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="lq7-MI-loV">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8uB-IW-x2o">
-                                                <rect key="frame" x="16" y="41" width="83" height="30"/>
+                                                <rect key="frame" x="16" y="47" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="&lt; Back"/>
                                             </button>
@@ -413,12 +411,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="IO7-2m-JJy">
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="IO7-2m-JJy">
                                 <rect key="frame" x="0.0" y="121" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <date key="date" timeIntervalSinceReferenceDate="593361969.17734003">
-                                    <!--2019-10-21 14:46:09 +0000-->
-                                </date>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4A-cS-VOi">
                                 <rect key="frame" x="16" y="260" width="34" height="21"/>
@@ -427,12 +422,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="yjc-xh-frY">
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="yjc-xh-frY">
                                 <rect key="frame" x="0.0" y="289" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <date key="date" timeIntervalSinceReferenceDate="593361969.17734003">
-                                    <!--2019-10-21 14:46:09 +0000-->
-                                </date>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXI-9n-tze">
                                 <rect key="frame" x="87" y="484" width="200" height="30"/>
@@ -458,11 +450,8 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="3V5-Fm-6MV">
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="3V5-Fm-6MV">
                             <rect key="frame" x="47" y="0.0" width="320" height="216"/>
-                            <date key="date" timeIntervalSinceReferenceDate="593360785.236938">
-                                <!--2019-10-21 14:26:25 +0000-->
-                            </date>
                         </datePicker>
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="O77-gW-xxx"/>
@@ -470,16 +459,16 @@
             </objects>
             <point key="canvasLocation" x="781.60000000000002" y="31.934032983508249"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Expenses-->
         <scene sceneID="NDB-Wy-PB6">
             <objects>
-                <viewController id="GgC-ql-h4U" sceneMemberID="viewController">
+                <viewController title="Add Expenses" id="GgC-ql-h4U" customClass="AddExpensesVC" customModule="iPiggy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uav-X0-Bya">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UL7-Mh-yEp" userLabel="vertical">
-                                <rect key="frame" x="16" y="103" width="350" height="218.5"/>
+                                <rect key="frame" x="16" y="103" width="350" height="221.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categorize" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDi-hs-E3y">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="20.5"/>
@@ -488,7 +477,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FPd-DF-vrD">
-                                        <rect key="frame" x="0.0" y="40.5" width="350" height="29"/>
+                                        <rect key="frame" x="0.0" y="40.5" width="350" height="32"/>
                                         <segments>
                                             <segment title="Food"/>
                                             <segment title="Transport"/>
@@ -497,7 +486,7 @@
                                         </segments>
                                     </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jzQ-mV-teo" userLabel="horizontal description">
-                                        <rect key="frame" x="0.0" y="88.5" width="350" height="30"/>
+                                        <rect key="frame" x="0.0" y="91.5" width="350" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umH-QB-a1E">
                                                 <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
@@ -520,7 +509,7 @@
                                         <viewLayoutGuide key="safeArea" id="FPi-TF-ysX"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6ez-ow-jdF" userLabel="horizontal amount">
-                                        <rect key="frame" x="0.0" y="138.5" width="350" height="30"/>
+                                        <rect key="frame" x="0.0" y="141.5" width="350" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTe-ER-pbC">
                                                 <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
@@ -541,7 +530,7 @@
                                         <viewLayoutGuide key="safeArea" id="pYN-cz-ojW"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Azj-Yw-Fy6" userLabel="horizontal date">
-                                        <rect key="frame" x="0.0" y="188.5" width="350" height="30"/>
+                                        <rect key="frame" x="0.0" y="191.5" width="350" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2F-fA-m8f">
                                                 <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
@@ -568,15 +557,18 @@
                                 </constraints>
                             </stackView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDS-wA-81P">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                 <items>
                                     <navigationItem title="Add" prompt="  " id="7i7-4c-owO">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="wdj-a3-Y7f">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MqM-6x-NYm">
-                                                <rect key="frame" x="16" y="41" width="83" height="30"/>
+                                                <rect key="frame" x="16" y="47" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="&lt; Back"/>
                                             </button>
+                                            <connections>
+                                                <action selector="back:" destination="GgC-ql-h4U" id="ga8-Qq-QOK"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -606,6 +598,12 @@
                         <viewLayoutGuide key="safeArea" id="SXL-ww-eYt"/>
                     </view>
                     <navigationItem key="navigationItem" id="rRM-Os-K6a"/>
+                    <connections>
+                        <outlet property="butBack" destination="MqM-6x-NYm" id="sUe-Kp-z7l"/>
+                        <outlet property="category" destination="FPd-DF-vrD" id="gue-Ls-bwn"/>
+                        <outlet property="tfAmount" destination="AXo-c1-AkN" id="vco-xp-VY2"/>
+                        <outlet property="tfDescription" destination="4AK-Xe-bg9" id="alN-IA-fqh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SjO-Lr-NTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" id="v95-xx-Zqh" userLabel="horizontal date">
