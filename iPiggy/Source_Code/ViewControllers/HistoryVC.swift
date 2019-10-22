@@ -13,9 +13,6 @@ class HistoryVC:UIViewController, UITableViewDataSource, UITableViewDelegate
     //MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
-    //MARK: - Variables
-    var histories:[History]!
-    
     //MARK: - Primary Methods
     override func viewDidLoad()
     {
@@ -24,22 +21,28 @@ class HistoryVC:UIViewController, UITableViewDataSource, UITableViewDelegate
         //Initialize
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.histories = []
+        Globals.histories = []
         
         //Add to array
+    }
+    
+    //MARK: - Actions
+    @IBAction func backButtonPressed(_ sender: Any)
+    {
+        self.dismiss(animated: true, completion: nil)
     }
     
     //MARK: - Protocols
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.histories.count
+        return Globals.histories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TVC_HISTORY, for: indexPath) as! HistoryTableViewCell
         
-        let menu = self.histories[indexPath.row]
+        let menu = Globals.histories[indexPath.row]
         
         cell.category.text = menu.category
         cell.amount.text = String(menu.amount!)

@@ -15,6 +15,7 @@ class AddExpensesVC: UIViewController
     @IBOutlet weak var tfAmount: UITextField!
     @IBOutlet weak var tfDescription: UITextField!
     @IBOutlet weak var category: UISegmentedControl!
+    @IBOutlet weak var date: UIDatePicker!
     @IBOutlet weak var butBack: UIButton!
     
     override func viewDidLoad()
@@ -53,6 +54,7 @@ class AddExpensesVC: UIViewController
             try managedContext.save()
  //           expenses.append(person)
             //MARK: - Add to history here
+            
         }
         catch let error as NSError
         {
@@ -65,12 +67,17 @@ class AddExpensesVC: UIViewController
     {
         let category:String = self.category.titleForSegment(at: self.category.selectedSegmentIndex)!
         let info:String = self.tfDescription.text!
-//        let amount:Double = Double(self.tfAmount.text!)!
-        //Date here
+        let amount:Double = Double(self.tfAmount.text!)!
+        let date:Date = self.date.date
         
         //Waiting for date
-//        self.save(category: category, description: info, amount: amount, date: date)
+        self.save(category: category, description: info, amount: amount, date: date)
     
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction func backButtonPressed(_ sender: Any)
+    {
         self.dismiss(animated: true, completion: nil)
     }
 }

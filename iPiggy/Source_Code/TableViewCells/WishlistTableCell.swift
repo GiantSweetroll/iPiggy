@@ -13,7 +13,8 @@ class WishlistTableCell: UITableViewCell
     //MARK: - Storyboard Elements
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var butAchieved: UIButton!
-
+    @IBOutlet weak var butDetails: UIButton!
+    
     //MARK: - Variables
     private var achieved:Bool?
     

@@ -20,6 +20,13 @@ class EditFundsVC: UIViewController
         dismiss(animated: true)
     }
     
+    //MARK: - Actions
+    @IBAction func backButtonPressed(_ sender: Any)
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     //MARK: - Database Operations
     func save(funds:Double)     //Save to database
     {
