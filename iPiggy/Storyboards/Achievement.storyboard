@@ -146,9 +146,7 @@
                         <barButtonItem key="backBarButtonItem" title="Achievement" id="aei-Uk-0tO"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="achievementTableVIew" destination="iEY-6Q-6mn" id="A29-NM-fHI"/>
                         <outlet property="achievementTableView" destination="iEY-6Q-6mn" id="X6w-M1-rKB"/>
-                        <outlet property="tableView" destination="0cX-uz-15s" id="AK6-cm-UvY"/>
                         <outlet property="wishlistTabelView" destination="0cX-uz-15s" id="X08-T6-7Vx"/>
                     </connections>
                 </viewController>
