@@ -20,6 +20,7 @@ class EditGoalsVC:UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        view.isUserInteractionEnabled = true
     }
     
     //MARK: - Actions
@@ -110,5 +111,9 @@ class EditGoalsVC:UIViewController
         {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        view.endEditing(true)
     }
 }
