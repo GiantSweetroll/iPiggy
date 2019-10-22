@@ -29,6 +29,9 @@
 		A34C3D4B235EAC48001FD378 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D4A235EAC48001FD378 /* Globals.swift */; };
 		A34C3D4D235EB4A3001FD378 /* EditGoalsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D4C235EB4A3001FD378 /* EditGoalsVC.swift */; };
 		A34C3D4F235EB97F001FD378 /* Wishlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D4E235EB97F001FD378 /* Wishlist.swift */; };
+		A34C3D51235EE025001FD378 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D50235EE025001FD378 /* Achievement.swift */; };
+		A34C3D53235EE075001FD378 /* AchievementTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D52235EE075001FD378 /* AchievementTableCell.swift */; };
+		A34C3D55235EE650001FD378 /* AchievementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D54235EE650001FD378 /* AchievementVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		A34C3D4A235EAC48001FD378 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		A34C3D4C235EB4A3001FD378 /* EditGoalsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalsVC.swift; sourceTree = "<group>"; };
 		A34C3D4E235EB97F001FD378 /* Wishlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wishlist.swift; sourceTree = "<group>"; };
+		A34C3D50235EE025001FD378 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
+		A34C3D52235EE075001FD378 /* AchievementTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementTableCell.swift; sourceTree = "<group>"; };
+		A34C3D54235EE650001FD378 /* AchievementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +138,7 @@
 				A34C3D1E235E8119001FD378 /* AddExpensesVC.swift */,
 				A34C3D45235EA291001FD378 /* HistoryVC.swift */,
 				A34C3D4C235EB4A3001FD378 /* EditGoalsVC.swift */,
+				A34C3D54235EE650001FD378 /* AchievementVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -158,6 +165,7 @@
 			children = (
 				A34C3D1A235DE0FF001FD378 /* WishlistTableCell.swift */,
 				A34C3D43235EA184001FD378 /* HistoryTableViewCell.swift */,
+				A34C3D52235EE075001FD378 /* AchievementTableCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -167,6 +175,7 @@
 			children = (
 				A34C3D48235EA34A001FD378 /* History.swift */,
 				A34C3D4E235EB97F001FD378 /* Wishlist.swift */,
+				A34C3D50235EE025001FD378 /* Achievement.swift */,
 			);
 			path = DataDrivers;
 			sourceTree = "<group>";
@@ -249,7 +258,10 @@
 				A34C3D0C235DD774001FD378 /* Constants.swift in Sources */,
 				A34C3D46235EA291001FD378 /* HistoryVC.swift in Sources */,
 				A34C3C5A23570D25001FD378 /* iPiggy.xcdatamodeld in Sources */,
+				A34C3D53235EE075001FD378 /* AchievementTableCell.swift in Sources */,
 				A34C3C5023570D25001FD378 /* AppDelegate.swift in Sources */,
+				A34C3D55235EE650001FD378 /* AchievementVC.swift in Sources */,
+				A34C3D51235EE025001FD378 /* Achievement.swift in Sources */,
 				A34C3D1F235E8119001FD378 /* AddExpensesVC.swift in Sources */,
 				A34C3D06235D9261001FD378 /* HomepageVC.swift in Sources */,
 				A34C3D0F235DD835001FD378 /* Methods.swift in Sources */,
@@ -404,7 +416,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = iPiggy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -412,6 +425,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gardyan.iPiggy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -421,7 +435,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = iPiggy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -429,6 +444,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gardyan.iPiggy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
