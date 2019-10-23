@@ -504,7 +504,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="Xa9-nB-yd4"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                         </subviews>
                                         <viewLayoutGuide key="safeArea" id="VaN-UY-AAu"/>
