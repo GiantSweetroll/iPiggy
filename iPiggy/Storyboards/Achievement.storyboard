@@ -38,7 +38,7 @@
                                                     <rect key="frame" x="20" y="5" width="36" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <state key="normal" image="circle.fill" backgroundImage="circle"/>
+                                                    <state key="normal" image="circle.fill" catalog="system" backgroundImage="circle"/>
                                                     <state key="highlighted" image="circle" backgroundImage="circle"/>
                                                     <connections>
                                                         <action selector="buttonPressed:" destination="zcr-Cl-3RS" eventType="touchUpInside" id="h1E-pU-eiq"/>
@@ -106,7 +106,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="aFc-3w-78i" customClass="AchievementTableCell" customModule="iPiggy" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="achievementCell" id="aFc-3w-78i" customClass="AchievementTableCell" customModule="iPiggy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aFc-3w-78i" id="DZ1-8x-n17">
@@ -242,7 +242,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qDr-fq-BGO">
                                                 <rect key="frame" x="89.5" y="0.0" width="245.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -288,6 +288,9 @@
                                 <state key="highlighted" title="Save">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="wNv-8R-9ao" eventType="touchUpInside" id="Fo9-Jb-Nje"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -335,8 +338,9 @@
     </scenes>
     <resources>
         <image name="Trophy" width="25" height="25"/>
+        <image name="circle" catalog="system" width="64" height="60"/>
         <image name="circle" width="64" height="60"/>
-        <image name="circle.fill" width="64" height="60"/>
+        <image name="circle.fill" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="oaz-qf-scB"/>

@@ -16,7 +16,6 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
     @IBOutlet weak var achievementTableView: UITableView!
     
     //MARK: - Variables
-    var wishlists:[Wishlist]!
     var achievements:[Achievement]!
     
     //MARK: - Main Methods
@@ -29,8 +28,17 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
         self.wishlistTabelView.delegate = self
         self.achievementTableView.dataSource = self
         self.achievementTableView.delegate = self
-        self.wishlists = []
         self.achievements = []
+    }
+    override func viewWillAppear(_ animated: Bool)
+    {
+        print(#function)
+        super.viewWillAppear(animated)
+        
+        Methods.loadWishlists()
+        print("count is \(Globals.wishlists.count)")
+ //       print("Size of wishlist: \(Globals.wishlists.count)")
+        self.wishlistTabelView.reloadData()
     }
     
     //MARK: - Protocols
@@ -38,7 +46,7 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
     {
         if (tableView == self.wishlistTabelView)
         {
-            return self.wishlists.count
+            return Globals.wishlists.count
         }
         else
         {
@@ -50,18 +58,18 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
     {
         if (tableView == self.wishlistTabelView)
         {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CD_ENTITY_WISHLIST, for: indexPath) as! WishlistTableCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TVC_WISHLIST, for: indexPath) as! WishlistTableCell
             
-            let wishlist = self.wishlists[indexPath.row]
+            let wishlist = Globals.wishlists[indexPath.row]
             
             cell.label.text = wishlist.name
-            cell.setAchieved(achieved: wishlist.achieved!)
+            cell.setAchieved(achieved: wishlist.achieved)
             
             return cell
         }
         else
         {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CD_ENTITY_WISHLIST, for: indexPath) as! AchievementTableCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TVC_ACHIEVEMENT, for: indexPath) as! AchievementTableCell
             
             let achievement = self.achievements[indexPath.row]
             
@@ -70,4 +78,5 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
             return cell
         }
     }
+
 }

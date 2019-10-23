@@ -13,6 +13,7 @@ import CoreData
 struct Globals
 {
     public static var histories:[Expenses]=[]
+    public static var wishlists:[WishlistItem]=[]
     public static var labFunds:UILabel?
     public static var labRecSpending:UILabel?
     public static var labGoals:UILabel?
@@ -20,6 +21,7 @@ struct Globals
     public static var goalsDataObject:NSManagedObject?
     public static var goals:Goal?
     public static var funds:Double = 0
+    public static var isNewAchievement:Bool = false
     public static var dateFormatFull: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .full

@@ -24,16 +24,35 @@ class AchievementFormVC: UIViewController
             
             return picker
     }()
+    var achieved:Bool?
     
+    //MARK: - Main Methods
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        dismiss(animated: true)
+//        dismiss(animated: true)
+        view.isUserInteractionEnabled = true
+        self.tfDate.inputView = self.datePicker
     }
     
     //MARK: - Methods
     @objc func datePickerChanged(_ sender:UIDatePicker)
     {
-        self.dateFrom.text = Globals.dateFormatFull.string(from: sender.date)
+        self.tfDate.text = Globals.dateFormatFull.string(from: sender.date)
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        view.endEditing(true)
+    }
+    
+    //MARK: - Actions
+    @IBAction func saveButtonPressed(_ sender: Any)
+    {
+        let name:String = self.tfWish.text ?? ""
+        let value:Double = Double(self.tfValue.text ?? "0")!
+        let date:Date = self.datePicker.date
+        
+        Methods.saveWishlist(name: name, cost: value, date: date, achieved: self.achieved ?? false)
+        navigationController?.popViewController(animated: true)
     }
 }

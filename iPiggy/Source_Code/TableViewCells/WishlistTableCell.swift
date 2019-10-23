@@ -16,13 +16,12 @@ class WishlistTableCell: UITableViewCell
     @IBOutlet weak var butDetails: UIButton!
     
     //MARK: - Variables
-    private var achieved:Bool?
     
     override func awakeFromNib()
     {
         super.awakeFromNib()
         // Initialization code
-        self.achieved = false
+//        self.achieved = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool)
@@ -35,13 +34,12 @@ class WishlistTableCell: UITableViewCell
     //MARK: - Button Methods
     @IBAction func buttonPressed(_ sender: Any)
     {
-        self.setAchieved(achieved: !(self.achieved!))
+//        self.setAchieved(achieved: !(self.achieved!))
     }
     
     //MARK: - Other Methods
     public func setAchieved(achieved:Bool)
     {
-        self.achieved = achieved
         if (achieved)
         {
             setImageToButton()
@@ -53,10 +51,12 @@ class WishlistTableCell: UITableViewCell
     }
     public func setImageToButton()
     {
-        self.butAchieved.imageView?.image = UIImage(contentsOfFile: "circle.fill")
+ //       self.butAchieved.imageView?.image = UIImage(contentsOfFile: "circle.fill")
+        self.butAchieved.setImage(UIImage(systemName: "circle.fill"), for: .normal)
     }
     public func removeImageFromButton()
     {
-        self.butAchieved.imageView?.image = nil
+ //       self.butAchieved.imageView?.image = nil
+        self.butAchieved.setImage(nil, for: .normal)
     }
 }

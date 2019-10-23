@@ -191,7 +191,6 @@ struct Methods
 //           expenses.append(person)
             //MARK: - Add to history here
             Globals.histories.append(expenses as! Expenses)
-            print("History size: \(Globals.histories.count)")
             
         }
         catch let error as NSError
@@ -229,4 +228,73 @@ struct Methods
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
+    
+    //MARK: - Wishlist Management
+    public static func saveWishlist(name:String, cost:Double, date:Date, achieved:Bool)
+    {
+        //MARK: - Saving to Core Data
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        //1
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+        let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITY_WISHLIST, in: managedContext)
+        
+        let wishlist = NSManagedObject(entity: entity!, insertInto: managedContext)
+        
+        //3
+        wishlist.setValue(name, forKey: Constants.CD_WISHLIST_NAME)
+        wishlist.setValue(cost, forKey: Constants.CD_WISHLIST_COST)
+        wishlist.setValue(date, forKey: Constants.CD_WISHLIST_DATE)
+        wishlist.setValue(achieved, forKey: Constants.CD_WISHLIST_ACHIEVED)
+        
+        //4
+        do
+        {
+            try managedContext.save()
+//           expenses.append(person)
+            //MARK: - Add to history here
+            Globals.wishlists.append(wishlist as! WishlistItem)
+            
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    public static func loadWishlists()
+     {
+         var wishlistData: [WishlistItem] = []
+
+         //1
+         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
+         {
+             return
+         }
+         
+         let managedContext = appDelegate.persistentContainer.viewContext
+         
+         //2
+         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.CD_ENTITY_WISHLIST)
+         
+         //3
+         do
+         {
+             wishlistData = try managedContext.fetch(fetchRequest) as! [WishlistItem]
+    //         print("Array expeneses data size: \(expensesData.count)")
+             if (wishlistData.count > 0)
+             {
+                Globals.wishlists = wishlistData
+             }
+         }
+         catch let error as NSError
+         {
+             print("Could not fetch. \(error), \(error.userInfo)")
+         }
+     }
 }
