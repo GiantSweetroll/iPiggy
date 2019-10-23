@@ -55,6 +55,9 @@
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="KIc-BS-j9I" eventType="touchUpInside" id="GQX-aw-dJv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -74,7 +77,7 @@
             <objects>
                 <viewController id="kQh-Dp-oUd" customClass="HistoryVC" customModule="iPiggy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PtK-nq-3FO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MpQ-H1-50q">
@@ -84,7 +87,7 @@
                                     <navigationItem title="History" prompt="  " id="kAm-PI-EA4">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="w5z-8A-yam">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="E7N-cG-p0a">
-                                                <rect key="frame" x="16" y="41" width="83" height="30"/>
+                                                <rect key="frame" x="16" y="47" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="&lt; Back"/>
                                                 <connections>
@@ -206,6 +209,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ypx-nC-Rad"/>
                     </view>
+                    <navigationItem key="navigationItem" id="8wC-e9-G7W"/>
                     <connections>
                         <outlet property="tableView" destination="acb-XI-cwk" id="Q2c-Hb-z9K"/>
                     </connections>
@@ -309,6 +313,9 @@
                                                 <state key="normal" title="+">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="GgC-ql-h4U" kind="show" id="LKW-Qf-mZP"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37i-xc-Hju">
                                                 <rect key="frame" x="290" y="0.0" width="60" height="33"/>
@@ -319,6 +326,9 @@
                                                 <state key="normal" title="History">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="kQh-Dp-oUd" kind="show" id="za2-Ne-Qdc"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -388,7 +398,9 @@
                     <connections>
                         <outlet property="labelBudget" destination="jPP-4c-MQf" id="nGX-xk-fs5"/>
                         <outlet property="labelDate" destination="oyd-9P-2TZ" id="vm0-C8-Lxa"/>
+                        <outlet property="labelExpenses" destination="GaX-Wo-Mwn" id="G83-oR-aFM"/>
                         <outlet property="labelGoalAmount" destination="hIB-Yw-T0x" id="StO-F3-UDI"/>
+                        <outlet property="labelRecSpending" destination="dCj-Cl-rgH" id="mTL-cD-j47"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RrN-hD-FR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -533,11 +545,11 @@
             <objects>
                 <viewController title="Add Expenses" id="GgC-ql-h4U" customClass="AddExpensesVC" customModule="iPiggy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uav-X0-Bya">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UL7-Mh-yEp" userLabel="vertical">
-                                <rect key="frame" x="12.5" y="88" width="350" height="171.5"/>
+                                <rect key="frame" x="12.5" y="100" width="350" height="171.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categorize" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDi-hs-E3y">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="20.5"/>
@@ -607,12 +619,12 @@
                                 </constraints>
                             </stackView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDS-wA-81P">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                 <items>
                                     <navigationItem title="Add" prompt="  " id="7i7-4c-owO">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="wdj-a3-Y7f">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MqM-6x-NYm">
-                                                <rect key="frame" x="16" y="41" width="83" height="30"/>
+                                                <rect key="frame" x="16" y="47" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="&lt; Back"/>
                                                 <connections>
@@ -642,6 +654,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldEditing:" destination="GgC-ql-h4U" eventType="editingDidEnd" id="Rcs-U4-Vce"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2F-fA-m8f">
                                 <rect key="frame" x="11" y="296" width="41" height="21"/>
@@ -668,6 +683,7 @@
                         <outlet property="butBack" destination="MqM-6x-NYm" id="sUe-Kp-z7l"/>
                         <outlet property="category" destination="FPd-DF-vrD" id="gue-Ls-bwn"/>
                         <outlet property="tfAmount" destination="AXo-c1-AkN" id="vco-xp-VY2"/>
+                        <outlet property="tfDate" destination="82u-Kk-AlS" id="Tvy-Qa-Din"/>
                         <outlet property="tfDescription" destination="4AK-Xe-bg9" id="alN-IA-fqh"/>
                     </connections>
                 </viewController>

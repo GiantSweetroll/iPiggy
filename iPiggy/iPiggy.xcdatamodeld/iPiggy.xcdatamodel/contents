@@ -7,8 +7,10 @@
         <attribute name="info" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Funds" representedClassName="." syncable="YES">
+        <attribute name="expense" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="funds" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="fundsLeft" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="recSpending" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Goal" representedClassName="Goal" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -23,7 +25,7 @@
     </entity>
     <elements>
         <element name="Expenses" positionX="-54" positionY="-9" width="128" height="103"/>
-        <element name="Funds" positionX="-18" positionY="63" width="128" height="73"/>
+        <element name="Funds" positionX="-18" positionY="63" width="128" height="103"/>
         <element name="Goal" positionX="0" positionY="108" width="128" height="88"/>
         <element name="WishlistItem" positionX="-36" positionY="36" width="128" height="103"/>
     </elements>
