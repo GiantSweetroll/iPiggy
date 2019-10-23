@@ -27,12 +27,6 @@ class AddExpensesVC: UIViewController
             
             return picker
     }()
-    lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        return formatter
-    }()
     var date:Date?
     
     //MARK: - Main Methods
@@ -51,7 +45,7 @@ class AddExpensesVC: UIViewController
     }
     @objc func datePickerChanged(_ sender:UIDatePicker)
     {
-        self.tfDate.text = self.dateFormatter.string(from: sender.date)
+        self.tfDate.text = Globals.dateFormatter.string(from: sender.date)
         self.date = self.datePicker.date
     }
     
