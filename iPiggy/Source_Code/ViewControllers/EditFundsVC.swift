@@ -29,6 +29,13 @@ class EditFundsVC: UIViewController
     {
         self.dismiss(animated: true, completion: nil)
     }
+    @IBAction func saveButtonPressed(_ sender: Any)
+    {
+        let str:String = self.tfEditFunds.text ?? "0"
+        self.save(funds: Double(str)!)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     //MARK: - Other Methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
