@@ -14,21 +14,45 @@ class AddExpensesVC: UIViewController
     //MARK: - Storyboard Elements
     @IBOutlet weak var tfAmount: UITextField!
     @IBOutlet weak var tfDescription: UITextField!
+    @IBOutlet weak var tfDate: UITextField!
     @IBOutlet weak var category: UISegmentedControl!
-    @IBOutlet weak var date: UIDatePicker!
     @IBOutlet weak var butBack: UIButton!
     
+    //MARK: - Variables
+    lazy var datePicker:UIDatePicker =
+        {
+            let picker = UIDatePicker()
+            picker.datePickerMode = .date
+            picker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
+            
+            return picker
+    }()
+    lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter
+    }()
+    var date:Date?
+    
+    //MARK: - Main Methods
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        dismiss(animated: true, completion: nil)
+//        dismiss(animated: true, completion: nil)
         view.isUserInteractionEnabled = true
+        self.tfDate.inputView = self.datePicker
     }
     
     //MARK: - Other Methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         view.endEditing(true)
+    }
+    @objc func datePickerChanged(_ sender:UIDatePicker)
+    {
+        self.tfDate.text = self.dateFormatter.string(from: sender.date)
+        self.date = self.datePicker.date
     }
     
     //MARK: - Database Operations
@@ -72,15 +96,17 @@ class AddExpensesVC: UIViewController
     //MARK: - Actions
     @IBAction func saveButtonPressed(_ sender: Any)
     {
-        let category:String = self.category.titleForSegment(at: self.category.selectedSegmentIndex)!
-        let info:String = self.tfDescription.text!
-        let amount:Double = Double(self.tfAmount.text!)!
-        let date:Date = self.date.date
-        
-        //Waiting for date
-        self.save(category: category, description: info, amount: amount, date: date)
-    
-        self.dismiss(animated: true, completion: nil)
+        if (self.tfDate.text != nil && self.tfAmount.text != nil)
+        {
+            let category:String = self.category.titleForSegment(at: self.category.selectedSegmentIndex)!
+            let info:String = self.tfDescription.text!
+            let amount:Double = Double(self.tfAmount.text!)!
+            let date:Date = self.date!
+                
+            self.save(category: category, description: info, amount: amount, date: date)
+            
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 
     @IBAction func backButtonPressed(_ sender: Any)
