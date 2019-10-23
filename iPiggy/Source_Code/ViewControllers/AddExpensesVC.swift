@@ -27,7 +27,6 @@ class AddExpensesVC: UIViewController
             
             return picker
     }()
-    var date:Date?
     
     //MARK: - Main Methods
     override func viewDidLoad()
@@ -46,7 +45,7 @@ class AddExpensesVC: UIViewController
     @objc func datePickerChanged(_ sender:UIDatePicker)
     {
         self.tfDate.text = Globals.dateFormatter.string(from: sender.date)
-        self.date = self.datePicker.date
+ //       self.date = self.datePicker.date
     }
     
     //MARK: - Database Operations
@@ -95,7 +94,7 @@ class AddExpensesVC: UIViewController
             let category:String = self.category.titleForSegment(at: self.category.selectedSegmentIndex)!
             let info:String = self.tfDescription.text!
             let amount:Double = Double(self.tfAmount.text!)!
-            let date:Date = self.date!
+            let date:Date = self.datePicker.date
                 
             self.save(category: category, description: info, amount: amount, date: date)
             

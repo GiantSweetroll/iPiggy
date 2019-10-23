@@ -27,8 +27,11 @@ class HomepageVC: UIViewController
         self.labelGoalAmount.text = Methods.appendCurrency(string: "0")
         Globals.labFunds = self.labelBudget
         Globals.labRecSpending = self.labelRecSpending
+        Globals.labGoals = self.labelGoalAmount
         Methods.loadFunds()
         Methods.updateHomepageFundsLabel(funds: Globals.funds)
+        Methods.loadGoals()
+        Methods.updateHomepageGoalsLabel(goals: Globals.goals?.amount ?? 0)
         self.labelDate.text = Globals.dateFormatter.string(from: Date())
     }
 }

@@ -12,22 +12,42 @@ import CoreData
 class EditGoalsVC:UIViewController
 {
     //IBOutlets
-    @IBOutlet weak var dateFrom: UIDatePicker!
-    @IBOutlet weak var dateTo: UIDatePicker!
+    @IBOutlet weak var dateFrom: UITextField!
+    @IBOutlet weak var dateTo: UITextField!
     @IBOutlet weak var amount: UITextField!
+    
+    //Variables
+    lazy var dateFromPicker:UIDatePicker =
+        {
+            let picker = UIDatePicker()
+            picker.datePickerMode = .date
+            picker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
+            
+            return picker
+    }()
+    lazy var dateToPicker:UIDatePicker =
+        {
+            let picker = UIDatePicker()
+            picker.datePickerMode = .date
+            picker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
+            
+            return picker
+    }()
     
     //MARK: - Main Methods
     override func viewDidLoad()
     {
         super.viewDidLoad()
         view.isUserInteractionEnabled = true
+        self.dateFrom.inputView = self.dateFromPicker
+        self.dateTo.inputView = self.dateToPicker
     }
     
     //MARK: - Actions
     @IBAction func saveButtonPressed(_ sender: Any)
     {
-        let dateFrom:Date = self.dateFrom.date
-        let dateTo:Date = self.dateTo.date
+        let dateFrom:Date = self.dateFromPicker.date
+        let dateTo:Date = self.dateToPicker.date
         var amount:Double = 0
         do
         {
@@ -40,7 +60,7 @@ class EditGoalsVC:UIViewController
             print()
         }
         
-        self.save(dateFrom: dateFrom, dateTo: dateTo, amount: amount)
+        Methods.saveGoals(dateFrom: dateFrom, dateTo: dateTo, amount: amount)
     }
     @IBAction func backButtonPressed(_ sender: Any)
     {
@@ -48,72 +68,25 @@ class EditGoalsVC:UIViewController
     }
     
     //MARK: - Other Methods
-    func save(dateFrom: Date, dateTo:Date, amount:Double)       //Save to database
-       {
-           //MARK: - Saving to Core Data
-           guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
-           else
-           {
-               return
-           }
-           
-           //1
-           let managedContext = appDelegate.persistentContainer.viewContext
-           
-           //2
-        let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITIY_GOALS, in: managedContext)
-           
-           let expenses = NSManagedObject(entity: entity!, insertInto: managedContext)
-           
-           //3
-        expenses.setValue(dateFrom, forKey: Constants.CD_GOALS_DATE_FROM)
-        expenses.setValue(dateTo, forKey: Constants.CD_GOALS_DATE_TO)
-        expenses.setValue(amount, forKey: Constants.CD_GOALS_AMOUNT)
-           
-           //4
-           do
-           {
-               try managedContext.save()
-    //           expenses.append(person)
-            //MARK: - Update chart and goals label in Homepage
-               
-           }
-           catch let error as NSError
-           {
-               print("Could not save. \(error), \(error.userInfo)")
-           }
-       }
     override func viewWillAppear(_ animated: Bool)   //Retrieve from database
     {
         super.viewWillAppear(animated)
         
-        //1
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
-        {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        //2
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.CD_ENTITIY_GOALS)
-        
-        //3
-        do
-        {
-            var array = try managedContext.fetch(fetchRequest)
-            if (array.count > 0)
-            {
-                self.amount.text = array[array.count-1].value(forKey: Constants.CD_GOALS_AMOUNT) as? String
-            }
-        }
-        catch let error as NSError
-        {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
+        self.amount?.text = String(format: "%0.0f", (Globals.goals?.amount)!)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         view.endEditing(true)
+    }
+    @objc func datePickerChanged(_ sender:UIDatePicker)
+    {
+        if (sender == self.dateFromPicker)
+        {
+            self.dateFrom.text = Globals.dateFormatter.string(from: sender.date)
+        }
+        else if (sender == self.dateToPicker)
+        {
+            self.dateTo.text = Globals.dateFormatter.string(from: sender.date)
+        }
     }
 }

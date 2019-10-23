@@ -522,6 +522,9 @@
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="Tbi-7W-Q41" eventType="touchUpInside" id="4JS-Sr-yu9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -535,6 +538,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="frL-JY-NtM"/>
                     </view>
+                    <connections>
+                        <outlet property="amount" destination="J2X-Iy-f8R" id="O6N-yW-JGT"/>
+                        <outlet property="dateFrom" destination="rL1-mf-HRa" id="3Hi-cx-5eS"/>
+                        <outlet property="dateTo" destination="c4t-kK-Sc6" id="65d-dh-vnB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zuB-Ew-23D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -654,9 +662,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textFieldEditing:" destination="GgC-ql-h4U" eventType="editingDidEnd" id="Rcs-U4-Vce"/>
-                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2F-fA-m8f">
                                 <rect key="frame" x="11" y="296" width="41" height="21"/>

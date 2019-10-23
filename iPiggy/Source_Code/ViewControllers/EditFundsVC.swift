@@ -47,6 +47,6 @@ class EditFundsVC: UIViewController
     {
         super.viewWillAppear(animated)
         
-        self.tfEditFunds.text = String(Globals.funds)
+        self.tfEditFunds.text = String(format: "%0.0f", Globals.funds)
     }
 }
