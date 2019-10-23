@@ -14,7 +14,11 @@ class HistoryTableViewCell:UITableViewCell
     @IBOutlet weak var category: UILabel!
     @IBOutlet weak var amount: UILabel!
     @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var info: UILabel!
+    @IBOutlet weak var info: UILabel! {
+        didSet {
+            info.sizeToFit()
+        }
+    }
     
     
     //MARK: - Primary Methods
