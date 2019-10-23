@@ -54,8 +54,8 @@ class HistoryVC:UIViewController, UITableViewDataSource, UITableViewDelegate
         
         cell.category.text = expenses.category
         cell.amount.text = String(expenses.cost)
-        cell.date.text = Globals.dateFormatter.string(from: expenses.date ?? Date())
-        cell.info.text = expenses.description
+        cell.date.text = Globals.dateFormatMedium.string(from: expenses.date ?? Date())
+        cell.info.text = expenses.info
         
         return cell
     }

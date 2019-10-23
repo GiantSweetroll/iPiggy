@@ -44,7 +44,7 @@ class AddExpensesVC: UIViewController
     }
     @objc func datePickerChanged(_ sender:UIDatePicker)
     {
-        self.tfDate.text = Globals.dateFormatter.string(from: sender.date)
+        self.tfDate.text = Globals.dateFormatFull.string(from: sender.date)
  //       self.date = self.datePicker.date
     }
     

@@ -74,8 +74,8 @@ class EditGoalsVC:UIViewController
         super.viewWillAppear(animated)
         
         self.amount?.text = String(format: "%0.0f", (Globals.goals?.amount)!)
-        self.dateFrom?.text = Globals.dateFormatter.string(from: Globals.goals?.dateFrom ?? Date())
-        self.dateTo?.text = Globals.dateFormatter.string(from: Globals.goals?.dateTo ?? Date())
+        self.dateFrom?.text = Globals.dateFormatFull.string(from: Globals.goals?.dateFrom ?? Date())
+        self.dateTo?.text = Globals.dateFormatFull.string(from: Globals.goals?.dateTo ?? Date())
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
@@ -85,11 +85,11 @@ class EditGoalsVC:UIViewController
     {
         if (sender == self.dateFromPicker)
         {
-            self.dateFrom.text = Globals.dateFormatter.string(from: sender.date)
+            self.dateFrom.text = Globals.dateFormatFull.string(from: sender.date)
         }
         else if (sender == self.dateToPicker)
         {
-            self.dateTo.text = Globals.dateFormatter.string(from: sender.date)
+            self.dateTo.text = Globals.dateFormatFull.string(from: sender.date)
         }
     }
 }

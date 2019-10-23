@@ -33,6 +33,6 @@ class HomepageVC: UIViewController
         Methods.updateHomepageFundsLabel(funds: Globals.funds)
         Methods.loadGoals()
         Methods.updateHomepageGoalsLabel(goals: Globals.goals?.amount ?? 0)
-        self.labelDate.text = Globals.dateFormatter.string(from: Date())
+        self.labelDate.text = Globals.dateFormatFull.string(from: Date())
     }
 }

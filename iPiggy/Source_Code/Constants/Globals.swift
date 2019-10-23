@@ -20,9 +20,15 @@ struct Globals
     public static var goalsDataObject:NSManagedObject?
     public static var goals:Goal?
     public static var funds:Double = 0
-    public static var dateFormatter: DateFormatter = {
+    public static var dateFormatFull: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .full
+        formatter.timeStyle = .none
+        return formatter
+    }()
+    public static var dateFormatMedium: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
         formatter.timeStyle = .none
         return formatter
     }()
