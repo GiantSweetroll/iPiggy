@@ -61,6 +61,7 @@ class EditGoalsVC:UIViewController
         }
         
         Methods.saveGoals(dateFrom: dateFrom, dateTo: dateTo, amount: amount)
+        dismiss(animated: true, completion: nil)
     }
     @IBAction func backButtonPressed(_ sender: Any)
     {
@@ -73,6 +74,8 @@ class EditGoalsVC:UIViewController
         super.viewWillAppear(animated)
         
         self.amount?.text = String(format: "%0.0f", (Globals.goals?.amount)!)
+        self.dateFrom?.text = Globals.dateFormatter.string(from: Globals.goals?.dateFrom ?? Date())
+        self.dateTo?.text = Globals.dateFormatter.string(from: Globals.goals?.dateTo ?? Date())
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
