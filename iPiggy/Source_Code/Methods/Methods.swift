@@ -159,4 +159,74 @@ struct Methods
     {
         Globals.labGoals?.text = Methods.appendCurrency(string: String(format: "%0.0f", goals))
     }
+    
+    //MARK: - Manage Expenses and Histories
+    public static func saveExpenses(category: String, description:String, amount: Double, date:Date)
+    {
+        //MARK: - Saving to Core Data
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        //1
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+        let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITY_EXPENSES, in: managedContext)
+        
+        let expenses = NSManagedObject(entity: entity!, insertInto: managedContext)
+        
+        //3
+        expenses.setValue(category, forKey: Constants.CD_EXPENSES_CATEGORY)
+        expenses.setValue(description, forKey: Constants.CD_EXPENSES_DESCRIPTION)
+        expenses.setValue(amount, forKey: Constants.CD_EXPENSES_AMOUNT)
+        expenses.setValue(date, forKey: Constants.CD_EXPENSES_DATE)
+        
+        //4
+        do
+        {
+            try managedContext.save()
+//           expenses.append(person)
+            //MARK: - Add to history here
+            Globals.histories.append(expenses as! Expenses)
+            print("History size: \(Globals.histories.count)")
+            
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    public static func loadExpenses()
+    {
+        var expensesData: [Expenses] = []
+
+        //1
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
+        {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.CD_ENTITY_EXPENSES)
+        
+        //3
+        do
+        {
+            expensesData = try managedContext.fetch(fetchRequest) as! [Expenses]
+   //         print("Array expeneses data size: \(expensesData.count)")
+            if (expensesData.count > 0)
+            {
+                Globals.histories = expensesData
+            }
+        }
+        catch let error as NSError
+        {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
 }

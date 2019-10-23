@@ -12,7 +12,7 @@ import CoreData
 
 struct Globals
 {
-    public static var histories:[History]=[]
+    public static var histories:[Expenses]=[]
     public static var labFunds:UILabel?
     public static var labRecSpending:UILabel?
     public static var labGoals:UILabel?

@@ -49,42 +49,6 @@ class AddExpensesVC: UIViewController
     }
     
     //MARK: - Database Operations
-    func save(category: String, description:String, amount: Double, date:Date)
-    {
-        //MARK: - Saving to Core Data
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        else
-        {
-            return
-        }
-        
-        //1
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        //2
-        let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITY_EXPENSES, in: managedContext)
-        
-        let expenses = NSManagedObject(entity: entity!, insertInto: managedContext)
-        
-        //3
-        expenses.setValue(category, forKey: Constants.CD_EXPENSES_CATEGORY)
-        expenses.setValue(description, forKey: Constants.CD_EXPENSES_DESCRIPTION)
-        expenses.setValue(amount, forKey: Constants.CD_EXPENSES_AMOUNT)
-        expenses.setValue(date, forKey: Constants.CD_EXPENSES_DATE)
-        
-        //4
-        do
-        {
-            try managedContext.save()
- //           expenses.append(person)
-            //MARK: - Add to history here
-            
-        }
-        catch let error as NSError
-        {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-    }
     
     //MARK: - Actions
     @IBAction func saveButtonPressed(_ sender: Any)
@@ -96,7 +60,7 @@ class AddExpensesVC: UIViewController
             let amount:Double = Double(self.tfAmount.text!)!
             let date:Date = self.datePicker.date
                 
-            self.save(category: category, description: info, amount: amount, date: date)
+            Methods.saveExpenses(category: category, description: info, amount: amount, date: date)
             
             self.dismiss(animated: true, completion: nil)
         }

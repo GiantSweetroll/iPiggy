@@ -151,7 +151,6 @@
                                             <outlet property="amount" destination="fc9-Ki-FVU" id="zwb-2h-BzL"/>
                                             <outlet property="category" destination="99T-a0-iNi" id="NyI-Vw-IAg"/>
                                             <outlet property="date" destination="lkh-Fn-D4r" id="Bkx-Ll-XD0"/>
-                                            <outlet property="description" destination="gHd-wh-tsv" id="fLg-fa-b5F"/>
                                             <outlet property="info" destination="gHd-wh-tsv" id="8FK-V3-5fH"/>
                                         </connections>
                                     </tableViewCell>
@@ -203,6 +202,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="kQh-Dp-oUd" id="OSW-zN-j5P"/>
+                                    <outlet property="delegate" destination="kQh-Dp-oUd" id="bFH-s4-kQT"/>
                                 </connections>
                             </tableView>
                         </subviews>

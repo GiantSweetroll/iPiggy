@@ -21,7 +21,6 @@ class HistoryVC:UIViewController, UITableViewDataSource, UITableViewDelegate
         //Initialize
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        Globals.histories = []
         
         //Add to array
     }
@@ -30,6 +29,15 @@ class HistoryVC:UIViewController, UITableViewDataSource, UITableViewDelegate
     @IBAction func backButtonPressed(_ sender: Any)
     {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: - Other Methods
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        Methods.loadExpenses()
+        self.tableView.reloadData()
     }
     
     //MARK: - Protocols
@@ -42,12 +50,12 @@ class HistoryVC:UIViewController, UITableViewDataSource, UITableViewDelegate
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TVC_HISTORY, for: indexPath) as! HistoryTableViewCell
         
-        let menu = Globals.histories[indexPath.row]
+        let expenses = Globals.histories[indexPath.row]
         
-        cell.category.text = menu.category
-        cell.amount.text = String(menu.amount!)
-        cell.date.text = menu.date?.description
-        cell.info.text = menu.description
+        cell.category.text = expenses.category
+        cell.amount.text = String(expenses.cost)
+        cell.date.text = Globals.dateFormatter.string(from: expenses.date ?? Date())
+        cell.info.text = expenses.description
         
         return cell
     }

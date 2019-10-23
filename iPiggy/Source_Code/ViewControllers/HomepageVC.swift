@@ -28,6 +28,7 @@ class HomepageVC: UIViewController
         Globals.labFunds = self.labelBudget
         Globals.labRecSpending = self.labelRecSpending
         Globals.labGoals = self.labelGoalAmount
+        Globals.histories = []
         Methods.loadFunds()
         Methods.updateHomepageFundsLabel(funds: Globals.funds)
         Methods.loadGoals()
