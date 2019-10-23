@@ -20,7 +20,7 @@ class EditFundsVC: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        dismiss(animated: true)
+//        dismiss(animated: true)
         view.isUserInteractionEnabled = true
     }
     
@@ -104,7 +104,8 @@ class EditFundsVC: UIViewController
                 self.trackedFunds = NSManagedObject(entity: entity!, insertInto: managedContext)
                 self.save(funds: 0)
             }
-            self.tfEditFunds.text = self.trackedFunds?.value(forKey: Constants.CD_FUNDS_TOTAL) as? String
+            var uang:Double = self.trackedFunds?.value(forKey: Constants.CD_FUNDS_TOTAL) as! Double
+            self.tfEditFunds.text = String(uang)
         }
         catch let error as NSError
         {
