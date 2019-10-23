@@ -14,6 +14,7 @@ struct Globals
 {
     public static var histories:[History]=[]
     public static var labFunds:UILabel?
+    public static var labRecSpending:UILabel?
     public static var fundsDataObject:NSManagedObject?
     public static var funds:Double = 0
     public static var dateFormatter: DateFormatter = {

@@ -26,6 +26,7 @@ class HomepageVC: UIViewController
         self.labelExpenses.text! = "0"
         self.labelGoalAmount.text = Methods.appendCurrency(string: "0")
         Globals.labFunds = self.labelBudget
+        Globals.labRecSpending = self.labelRecSpending
         Methods.loadFunds()
         Methods.updateHomepageFundsLabel(funds: Globals.funds)
         self.labelDate.text = Globals.dateFormatter.string(from: Date())
