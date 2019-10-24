@@ -436,13 +436,11 @@ struct Methods
     }
     public static func getYearComponent(date: Date) -> Int
     {
-        let dateComponent:DateComponents = Calendar.current.dateComponents([.year], from: date)
-        return dateComponent.year ?? 2019
+        return Calendar.current.component(.year, from: date)
     }
     public static func getWeekdayUnit(date: Date) -> Int
     {
-        let dateComponent:DateComponents = Calendar.current.dateComponents([.weekday], from: date)
-        return dateComponent.weekday ?? 0
+        return Calendar.current.component(.weekday, from: date)
     }
     public static func getAmountOfDaysArray(isLeapYear: Bool) -> [Int]
     {
@@ -490,12 +488,12 @@ struct Methods
     {
         return Calendar.current.dateComponents([.day], from: dateFrom, to: dateTo)
     }
-    public static func generateYearlyCalendarArray(year: Int, firstDayOfTheYear: Int) -> [[String]]
+    public static func generateYearlyCalendarArray(year: Int) -> [[String]]
     {
         var array:[[String]] = [[]]
         let daysArray:[Int] = Methods.getAmountOfDaysArray(isLeapYear: Methods.isLeapYear(year: year))
         
-        var remainder:Int = firstDayOfTheYear - 1
+        var remainder:Int = Methods.getWeekdayStartOfYear(year: year) - 1
         var gapEarlyOfMonth:Int = remainder
         var gapEndOfMonth:Int = 0
         
@@ -543,5 +541,12 @@ struct Methods
         }
         
         return array
+    }
+    public static func getWeekdayStartOfYear(year: Int) -> Int
+    {
+        //Get first date of X year
+        let firstDateOfXYear = Calendar.current.date(from: DateComponents(year: year, month:1, day: 1))
+        
+        return Methods.getWeekdayUnit(date: firstDateOfXYear!)
     }
 }
