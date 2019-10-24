@@ -115,6 +115,9 @@
                                             </subviews>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="100" height="100"/>
+                                        <connections>
+                                            <outlet property="monthLabel" destination="hH2-2n-lo7" id="7Mb-cx-60S"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
