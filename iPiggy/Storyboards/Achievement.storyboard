@@ -189,12 +189,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XpB-Mp-2lh">
-                                <rect key="frame" x="60" y="184" width="299" height="21"/>
+                                <rect key="frame" x="60" y="176" width="299" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iqW-sl-mi8">
+                                <rect key="frame" x="334" y="582" width="25" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="trash" catalog="system"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="SSx-vd-tub"/>
@@ -367,6 +372,7 @@
         <image name="checkmark.circle" catalog="system" width="64" height="60"/>
         <image name="circle" width="64" height="60"/>
         <image name="circle" catalog="system" width="64" height="60"/>
+        <image name="trash" catalog="system" width="60" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="oaz-qf-scB"/>
