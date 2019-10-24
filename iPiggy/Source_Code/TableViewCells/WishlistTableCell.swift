@@ -54,7 +54,7 @@ class WishlistTableCell: UITableViewCell
     public func setImageToButton()
     {
  //       self.butAchieved.imageView?.image = UIImage(contentsOfFile: "circle.fill")
-        self.butAchieved.setImage(UIImage(systemName: "circle.fill"), for: .normal)
+        self.butAchieved.setImage(UIImage(systemName: "checkmark"), for: .normal)
     }
     public func removeImageFromButton()
     {
@@ -63,7 +63,8 @@ class WishlistTableCell: UITableViewCell
     }
 }
 
-protocol WishlistTableCellDelegate {
+protocol WishlistTableCellDelegate
+{
     func onCellSelected(_ cell: WishlistTableCell)
 }
 

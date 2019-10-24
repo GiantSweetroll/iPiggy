@@ -32,11 +32,11 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     override func viewWillAppear(_ animated: Bool)
     {
-        print(#function)
+ //       print(#function)
         super.viewWillAppear(animated)
         
         Methods.loadWishlists()
-        print("count is \(Globals.wishlists.count)")
+ //       print("count is \(Globals.wishlists.count)")
  //       print("Size of wishlist: \(Globals.wishlists.count)")
         self.wishlistTabelView.reloadData()
     }
@@ -86,7 +86,7 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
             return
         }
             
-        print(indexPath.row)
+ //       print(indexPath.row)
             
         // todo update database and the master array
         let wishlist:WishlistItem = Globals.wishlists[indexPath.row]

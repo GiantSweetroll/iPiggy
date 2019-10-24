@@ -38,7 +38,7 @@
                                                     <rect key="frame" x="20" y="5" width="36" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <state key="normal" image="circle.fill" catalog="system" backgroundImage="circle"/>
+                                                    <state key="normal" image="checkmark" catalog="system" backgroundImage="circle"/>
                                                     <state key="highlighted" image="circle" backgroundImage="circle"/>
                                                     <connections>
                                                         <action selector="buttonPressed:" destination="zcr-Cl-3RS" eventType="touchUpInside" id="h1E-pU-eiq"/>
@@ -157,7 +157,7 @@
         <!--Detail-->
         <scene sceneID="Xg2-Zo-QTy">
             <objects>
-                <viewController id="Ihd-mI-Xfg" sceneMemberID="viewController">
+                <viewController id="Ihd-mI-Xfg" customClass="WishlistDetailsVC" customModule="iPiggy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r5Q-x1-tcd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -194,6 +194,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="amount" destination="kPc-YQ-Zze" id="QIz-1e-rhE"/>
+                        <outlet property="date" destination="Xw5-Ja-Gun" id="2cs-Bq-vLx"/>
+                        <outlet property="title" destination="8LA-rc-3tr" id="Jqh-Fp-89a"/>
+                        <outlet property="wishName" destination="8LA-rc-3tr" id="58f-dP-COO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zpB-DC-GNc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -338,9 +344,9 @@
     </scenes>
     <resources>
         <image name="Trophy" width="25" height="25"/>
+        <image name="checkmark" catalog="system" width="64" height="56"/>
         <image name="circle" catalog="system" width="64" height="60"/>
         <image name="circle" width="64" height="60"/>
-        <image name="circle.fill" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="oaz-qf-scB"/>

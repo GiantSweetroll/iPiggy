@@ -32,6 +32,7 @@
 		A34C3D51235EE025001FD378 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D50235EE025001FD378 /* Achievement.swift */; };
 		A34C3D53235EE075001FD378 /* AchievementTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D52235EE075001FD378 /* AchievementTableCell.swift */; };
 		A34C3D55235EE650001FD378 /* AchievementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D54235EE650001FD378 /* AchievementVC.swift */; };
+		A37E28F8236134D90048E9F8 /* WishlistDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E28F7236134D90048E9F8 /* WishlistDetailsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		A34C3D50235EE025001FD378 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
 		A34C3D52235EE075001FD378 /* AchievementTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementTableCell.swift; sourceTree = "<group>"; };
 		A34C3D54235EE650001FD378 /* AchievementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementVC.swift; sourceTree = "<group>"; };
+		A37E28F7236134D90048E9F8 /* WishlistDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistDetailsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				A34C3D45235EA291001FD378 /* HistoryVC.swift */,
 				A34C3D4C235EB4A3001FD378 /* EditGoalsVC.swift */,
 				A34C3D54235EE650001FD378 /* AchievementVC.swift */,
+				A37E28F7236134D90048E9F8 /* WishlistDetailsVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A37E28F8236134D90048E9F8 /* WishlistDetailsVC.swift in Sources */,
 				A34C3D4F235EB97F001FD378 /* Wishlist.swift in Sources */,
 				A34C3D0C235DD774001FD378 /* Constants.swift in Sources */,
 				A34C3D46235EA291001FD378 /* HistoryVC.swift in Sources */,
