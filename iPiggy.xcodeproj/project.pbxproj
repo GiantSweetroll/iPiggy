@@ -39,9 +39,12 @@
 		A37E29012361AE190048E9F8 /* YearlyCalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E29002361AE190048E9F8 /* YearlyCalendarVC.swift */; };
 		A37E29052361D0110048E9F8 /* MonthlyCalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E29042361D0110048E9F8 /* MonthlyCalendarVC.swift */; };
 		A37E29072361D06C0048E9F8 /* MonthlyCalendarCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E29062361D06C0048E9F8 /* MonthlyCalendarCVC.swift */; };
+		AF7186D53DABAAF6F6A3FA0A /* Pods_iPiggy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57A5E7D16D5AD6D2DD7C51B /* Pods_iPiggy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C316BCED5AC8640EB5B07B8 /* Pods-iPiggy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPiggy.release.xcconfig"; path = "Target Support Files/Pods-iPiggy/Pods-iPiggy.release.xcconfig"; sourceTree = "<group>"; };
+		69DC3B38B6628B5B643C2CFB /* Pods-iPiggy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPiggy.debug.xcconfig"; path = "Target Support Files/Pods-iPiggy/Pods-iPiggy.debug.xcconfig"; sourceTree = "<group>"; };
 		A34C3C4C23570D25001FD378 /* iPiggy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPiggy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A34C3C4F23570D25001FD378 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A34C3C5123570D25001FD378 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +79,7 @@
 		A37E29002361AE190048E9F8 /* YearlyCalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyCalendarVC.swift; sourceTree = "<group>"; };
 		A37E29042361D0110048E9F8 /* MonthlyCalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarVC.swift; sourceTree = "<group>"; };
 		A37E29062361D06C0048E9F8 /* MonthlyCalendarCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarCVC.swift; sourceTree = "<group>"; };
+		E57A5E7D16D5AD6D2DD7C51B /* Pods_iPiggy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iPiggy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,17 +87,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF7186D53DABAAF6F6A3FA0A /* Pods_iPiggy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15FD46AA9480606E3E503DFA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				69DC3B38B6628B5B643C2CFB /* Pods-iPiggy.debug.xcconfig */,
+				0C316BCED5AC8640EB5B07B8 /* Pods-iPiggy.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8B0EF2ECA651899C46FB0DAE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E57A5E7D16D5AD6D2DD7C51B /* Pods_iPiggy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A34C3C4323570D25001FD378 = {
 			isa = PBXGroup;
 			children = (
 				A34C3C4E23570D25001FD378 /* iPiggy */,
 				A34C3C4D23570D25001FD378 /* Products */,
+				15FD46AA9480606E3E503DFA /* Pods */,
+				8B0EF2ECA651899C46FB0DAE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -216,9 +241,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A34C3C6323570D26001FD378 /* Build configuration list for PBXNativeTarget "iPiggy" */;
 			buildPhases = (
+				56863CE94832E2A350765A5B /* [CP] Check Pods Manifest.lock */,
 				A34C3C4823570D25001FD378 /* Sources */,
 				A34C3C4923570D25001FD378 /* Frameworks */,
 				A34C3C4A23570D25001FD378 /* Resources */,
+				EDBE56D7AA3D4D5558CE5D4D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -277,6 +304,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		56863CE94832E2A350765A5B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iPiggy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDBE56D7AA3D4D5558CE5D4D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iPiggy/Pods-iPiggy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iPiggy/Pods-iPiggy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iPiggy/Pods-iPiggy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A34C3C4823570D25001FD378 /* Sources */ = {
@@ -450,6 +519,7 @@
 		};
 		A34C3C6423570D26001FD378 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69DC3B38B6628B5B643C2CFB /* Pods-iPiggy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
@@ -469,6 +539,7 @@
 		};
 		A34C3C6523570D26001FD378 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C316BCED5AC8640EB5B07B8 /* Pods-iPiggy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
