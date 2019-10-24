@@ -12,6 +12,7 @@ import CoreData
 
 struct Globals
 {
+    
     public static var histories:[Expenses]=[]
     public static var wishlists:[WishlistItem]=[]
     public static var monthCollectionViews:[UICollectionView] = []
