@@ -35,7 +35,7 @@ struct Methods
         do
         {
             let array = try managedContext.fetch(fetchRequest)
-            if (array.count >= 0)
+            if (array.count > 0)
             {
                 Globals.fundsDataObject = array.last
             }
@@ -117,6 +117,7 @@ struct Methods
             //MARK: - Update chart and goals label in Homepage
             Globals.goals?.amount = amount
             Methods.updateHomepageGoalsLabel(goals: amount)
+            Methods.updateHomepageGoalsDayLeftLabel()
         }
         catch let error as NSError
         {
@@ -134,7 +135,7 @@ struct Methods
             let managedContext = appDelegate.persistentContainer.viewContext
             
             //2
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.CD_ENTITIY_GOALS)
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.CD_ENTITIY_GOALS)
             
             //3
             do
@@ -161,6 +162,11 @@ struct Methods
     public static func updateHomepageGoalsLabel(goals:Double)
     {
         Globals.labGoals?.text = Methods.appendCurrency(string: String(format: "%0.0f", goals))
+    }
+    public static func updateHomepageGoalsDayLeftLabel()
+    {
+        let dateComponent:DateComponents = Methods.getDayDifference(from: Globals.goals!.dateFrom!, to: Globals.goals!.dateTo!)
+        Globals.labGoalDayLeft?.text = String(dateComponent.day!)
     }
     
     //MARK: - Manage Expenses and Histories
@@ -192,7 +198,7 @@ struct Methods
         {
             try managedContext.save()
 //           expenses.append(person)
-            Globals.histories.append(expenses as! Expenses)
+            Globals.histories.append(expenses as! Expenses)     //Add to array for table view data source
             if (date == Date())
             {
                 Methods.saveMoneySpent(value: Globals.fundsSpent + amount)
@@ -306,7 +312,7 @@ struct Methods
     }
     
     //MARK: - Wishlist Management
-    public static func saveWishlist(name:String, cost:Double, date:Date, achieved:Bool)
+    public static func saveWishlist(name:String, cost:Double, date:Date, achieved:Bool)     //New Entry
     {
         //MARK: - Saving to Core Data
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -396,7 +402,53 @@ struct Methods
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
+    public static func saveWishlist(name:String, cost:Double, date:Date, achieved:Bool, indexInDB:Int)     //Existing Entry
+    {
+        //MARK: - Saving to Core Data
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        //1
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.CD_ENTITY_WISHLIST)
+        
+        //4
+        do
+        {
+            let array = try managedContext.fetch(fetchRequest)
+            if (array.count > 0)
+            {
+                let wishlist:NSManagedObject = NSManagedObject(entity: array[indexInDB].entity, insertInto: managedContext)
+                wishlist.setValue(name, forKey: Constants.CD_WISHLIST_NAME)
+                wishlist.setValue(cost, forKey: Constants.CD_WISHLIST_COST)
+                wishlist.setValue(date, forKey: Constants.CD_WISHLIST_DATE)
+                wishlist.setValue(achieved, forKey: Constants.CD_WISHLIST_ACHIEVED)
+                try managedContext.save()
+            }
+            
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
     
     //MARK: Calendar Operations
-    
+    public static func getDayDifference(from dateFrom:Date, to dateTo:Date) -> DateComponents
+    {
+        return Calendar.current.dateComponents([.day], from: dateFrom, to: dateTo)
+    }
+    public static func generateYearlyCalendarArray() -> [[String]]
+    {
+        var array:[[String]] = [[]]
+        
+        
+        
+        return array
+    }
 }

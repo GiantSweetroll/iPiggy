@@ -19,6 +19,7 @@ class WishlistDetailsVC: UIViewController
     
     //MARK: - Variables
     var wishlistItem:WishlistItem!
+    var wishlistIndex:Int!
     
     //MARK: - Main Method
     override func viewDidLoad()
@@ -39,5 +40,23 @@ class WishlistDetailsVC: UIViewController
             self.achieved.text = "Not Achieved"
             self.achievedImage.image = UIImage(systemName: "circle")
         }
+    }
+    
+    //MARK: - Other Methods
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) //This function is called when we want to navigate to a new screen using segue
+    {
+        if (segue.identifier == Constants.SEGUE_WISHLIST_DETAILS_TO_FORM)
+        {
+            let wishlistFormVC = segue.destination as! AchievementFormVC
+            wishlistFormVC.newEntry = false
+            wishlistFormVC.wishlistIndex = self.wishlistIndex
+            wishlistFormVC.wishlistItem = self.wishlistItem
+        }
+    }
+    
+    //MARK: - Actions
+    @IBAction func editButtonPressed(_ sender: Any)
+    {
+        self.performSegue(withIdentifier: Constants.SEGUE_WISHLIST_DETAILS_TO_FORM, sender: nil)
     }
 }

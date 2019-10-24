@@ -25,6 +25,9 @@ class AchievementFormVC: UIViewController
             return picker
     }()
     var achieved:Bool?
+    var newEntry:Bool?
+    var wishlistItem:WishlistItem!
+    var wishlistIndex:Int!
     
     //MARK: - Main Methods
     override func viewDidLoad()
@@ -32,6 +35,21 @@ class AchievementFormVC: UIViewController
         super.viewDidLoad()
         view.isUserInteractionEnabled = true
         self.tfDate.inputView = self.datePicker
+  //      print("Is new entry? \(self.newEntry)")
+        if (self.newEntry == nil || self.newEntry!)
+        {
+            self.achieved = true
+            self.tfDate.text = Globals.dateFormatFull.string(from: Date())
+        }
+        else
+        {
+            //Not new entry
+            self.tfWish.text = self.wishlistItem.name
+            self.tfValue.text = String(format:"%0.0f", self.wishlistItem.cost)
+            self.tfDate.text = Globals.dateFormatFull.string(from: self.wishlistItem.date!)
+            self.achieved = self.wishlistItem.achieved
+            self.datePicker.date = self.wishlistItem.date!
+        }
     }
     
     //MARK: - Methods
@@ -51,7 +69,18 @@ class AchievementFormVC: UIViewController
         let value:Double = Double(self.tfValue.text ?? "0")!
         let date:Date = self.datePicker.date
         
-        Methods.saveWishlist(name: name, cost: value, date: date, achieved: self.achieved ?? false)
+        if (self.newEntry!)
+        {
+            Methods.saveWishlist(name: name, cost: value, date: date, achieved: self.achieved ?? false)
+        }
+        else
+        {
+            Methods.saveWishlist(name: name,
+                                 cost: value,
+                                 date: date,
+                                 achieved: self.achieved ?? false,
+                                 indexInDB: self.wishlistIndex)
+        }
         navigationController?.popViewController(animated: true)
     }
 }

@@ -17,6 +17,7 @@ struct Globals
     public static var labFunds:UILabel?
     public static var labRecSpending:UILabel?
     public static var labGoals:UILabel?
+    public static var labGoalDayLeft:UILabel?
     public static var labFundsSpent:UILabel?
     public static var fundsDataObject:NSManagedObject?
     public static var goalsDataObject:NSManagedObject?

@@ -122,10 +122,10 @@
 			children = (
 				A34C3C4F23570D25001FD378 /* AppDelegate.swift */,
 				A34C3C5123570D25001FD378 /* SceneDelegate.swift */,
-				A34C3D47235EA33C001FD378 /* DataDrivers */,
-				A34C3D19235DDE69001FD378 /* TableViewCells */,
-				A34C3D0D235DD822001FD378 /* Methods */,
 				A34C3D0A235DD728001FD378 /* Constants */,
+				A34C3D47235EA33C001FD378 /* DataDrivers */,
+				A34C3D0D235DD822001FD378 /* Methods */,
+				A34C3D19235DDE69001FD378 /* TableViewCells */,
 				A34C3D09235DCDF6001FD378 /* ViewControllers */,
 			);
 			path = Source_Code;
@@ -134,13 +134,13 @@
 		A34C3D09235DCDF6001FD378 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A34C3D05235D9261001FD378 /* HomepageVC.swift */,
-				A34C3D17235DDCEC001FD378 /* EditFundsVC.swift */,
 				A34C3D1C235DE7AB001FD378 /* AchievementFormVC.swift */,
-				A34C3D1E235E8119001FD378 /* AddExpensesVC.swift */,
-				A34C3D45235EA291001FD378 /* HistoryVC.swift */,
-				A34C3D4C235EB4A3001FD378 /* EditGoalsVC.swift */,
 				A34C3D54235EE650001FD378 /* AchievementVC.swift */,
+				A34C3D1E235E8119001FD378 /* AddExpensesVC.swift */,
+				A34C3D17235DDCEC001FD378 /* EditFundsVC.swift */,
+				A34C3D4C235EB4A3001FD378 /* EditGoalsVC.swift */,
+				A34C3D45235EA291001FD378 /* HistoryVC.swift */,
+				A34C3D05235D9261001FD378 /* HomepageVC.swift */,
 				A37E28F7236134D90048E9F8 /* WishlistDetailsVC.swift */,
 			);
 			path = ViewControllers;

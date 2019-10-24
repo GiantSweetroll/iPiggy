@@ -200,10 +200,15 @@
                         <viewLayoutGuide key="safeArea" id="SSx-vd-tub"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="ahA-sT-GhV">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="u6d-yj-gmw">
-                            <connections>
-                                <segue destination="wNv-8R-9ao" kind="show" identifier="detailToForm" id="xhx-M6-FVk"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="4pf-Je-ZQB">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZwN-QM-JGY">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="editButtonPressed:" destination="Ihd-mI-Xfg" eventType="touchUpInside" id="cIf-hh-zXk"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -212,6 +217,7 @@
                         <outlet property="amount" destination="kPc-YQ-Zze" id="QIz-1e-rhE"/>
                         <outlet property="date" destination="Xw5-Ja-Gun" id="2cs-Bq-vLx"/>
                         <outlet property="wishName" destination="8LA-rc-3tr" id="58f-dP-COO"/>
+                        <segue destination="wNv-8R-9ao" kind="show" identifier="detailToForm" id="eJE-9w-3ZH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zpB-DC-GNc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -363,6 +369,6 @@
         <image name="circle" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xhx-M6-FVk"/>
+        <segue reference="eJE-9w-3ZH"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -48,6 +48,7 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
             let detailsVC = segue.destination as! WishlistDetailsVC
             let wishlistItem = Globals.wishlists[self.selectedRow]
             detailsVC.wishlistItem = wishlistItem
+            detailsVC.wishlistIndex = self.selectedRow
         }
     }
     

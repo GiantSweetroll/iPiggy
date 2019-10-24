@@ -363,6 +363,7 @@
                         <outlet property="labelDate" destination="oyd-9P-2TZ" id="vm0-C8-Lxa"/>
                         <outlet property="labelExpenses" destination="GaX-Wo-Mwn" id="G83-oR-aFM"/>
                         <outlet property="labelGoalAmount" destination="hIB-Yw-T0x" id="StO-F3-UDI"/>
+                        <outlet property="labelGoalDayLeft" destination="SZz-Vo-Ake" id="R4T-ea-1pL"/>
                         <outlet property="labelRecSpending" destination="dCj-Cl-rgH" id="mTL-cD-j47"/>
                     </connections>
                 </viewController>
