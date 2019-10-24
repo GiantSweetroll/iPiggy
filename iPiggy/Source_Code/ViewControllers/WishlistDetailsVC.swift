@@ -19,7 +19,6 @@ class WishlistDetailsVC: UIViewController
     
     //MARK: - Variables
     var wishlistItem:WishlistItem!
-    var wishlistIndex:Int!
     
     //MARK: - Main Method
     override func viewDidLoad()
@@ -49,7 +48,6 @@ class WishlistDetailsVC: UIViewController
         {
             let wishlistFormVC = segue.destination as! AchievementFormVC
             wishlistFormVC.newEntry = false
-            wishlistFormVC.wishlistIndex = self.wishlistIndex
             wishlistFormVC.wishlistItem = self.wishlistItem
         }
     }

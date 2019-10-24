@@ -27,7 +27,6 @@ class AchievementFormVC: UIViewController
     var achieved:Bool?
     var newEntry:Bool?
     var wishlistItem:WishlistItem!
-    var wishlistIndex:Int!
     
     //MARK: - Main Methods
     override func viewDidLoad()
@@ -75,11 +74,7 @@ class AchievementFormVC: UIViewController
         }
         else
         {
-            Methods.saveWishlist(name: name,
-                                 cost: value,
-                                 date: date,
-                                 achieved: self.achieved ?? false,
-                                 indexInDB: self.wishlistIndex)
+            Methods.saveWishlist(wishlist: self.wishlistItem, name: name, cost: value, date: date, achieved: self.achieved ?? false)
         }
         navigationController?.popViewController(animated: true)
     }

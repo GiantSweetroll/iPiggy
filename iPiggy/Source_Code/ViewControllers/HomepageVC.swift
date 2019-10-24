@@ -45,5 +45,11 @@ class HomepageVC: UIViewController
             Methods.updateDateTracker()
             Methods.saveMoneySpent(value: 0)        //Resets daily money spent
         }
+        
+        let arr:[[String]] = Methods.generateYearlyCalendarArray(year: 2019, firstDayOfTheYear: 3)
+        for i in 0..<arr.count
+        {
+            print(arr[i])
+        }
     }
 }
