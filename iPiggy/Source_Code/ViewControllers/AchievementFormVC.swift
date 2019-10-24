@@ -70,6 +70,7 @@ class AchievementFormVC: UIViewController
         let date:Date = self.datePicker.date
         
         let isNewEntry = self.newEntry ?? true
+        print("value of new entry: \(isNewEntry)")
         
         if (isNewEntry)
         {
