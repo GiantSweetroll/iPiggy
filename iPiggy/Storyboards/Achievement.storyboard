@@ -52,7 +52,6 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="buttonDetailsPressed:" destination="zcr-Cl-3RS" eventType="touchUpInside" id="jGh-sg-u96"/>
-                                                        <segue destination="Ihd-mI-Xfg" kind="show" identifier="wishlistDetails" id="gUs-dv-WeF"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -149,6 +148,7 @@
                     <connections>
                         <outlet property="achievementTableView" destination="iEY-6Q-6mn" id="X6w-M1-rKB"/>
                         <outlet property="wishlistTabelView" destination="0cX-uz-15s" id="X08-T6-7Vx"/>
+                        <segue destination="Ihd-mI-Xfg" kind="show" identifier="wishlistDetails" id="T5P-aQ-zj9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b72-jX-hxB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
