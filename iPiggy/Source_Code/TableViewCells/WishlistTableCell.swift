@@ -14,6 +14,7 @@ class WishlistTableCell: UITableViewCell
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var butAchieved: UIButton!
     @IBOutlet weak var butDetails: UIButton!
+    var delegate: WishlistTableCellDelegate?
     
     //MARK: - Variables
     
@@ -35,6 +36,7 @@ class WishlistTableCell: UITableViewCell
     @IBAction func buttonPressed(_ sender: Any)
     {
 //        self.setAchieved(achieved: !(self.achieved!))
+        delegate?.onCellSelected(self)
     }
     
     //MARK: - Other Methods
@@ -60,3 +62,8 @@ class WishlistTableCell: UITableViewCell
         self.butAchieved.setImage(nil, for: .normal)
     }
 }
+
+protocol WishlistTableCellDelegate {
+    func onCellSelected(_ cell: WishlistTableCell)
+}
+

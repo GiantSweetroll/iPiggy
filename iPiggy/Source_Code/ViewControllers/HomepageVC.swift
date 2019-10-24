@@ -28,11 +28,19 @@ class HomepageVC: UIViewController
         Globals.labFunds = self.labelBudget
         Globals.labRecSpending = self.labelRecSpending
         Globals.labGoals = self.labelGoalAmount
+        Globals.labFundsSpent = self.labelExpenses
         Globals.histories = []
         Methods.loadFunds()
         Methods.updateHomepageFundsLabel(funds: Globals.funds)
+        Methods.updateHomepageFundsSpentLabel(fundsSpent: Globals.fundsSpent)
         Methods.loadGoals()
         Methods.updateHomepageGoalsLabel(goals: Globals.goals?.amount ?? 0)
         self.labelDate.text = Globals.dateFormatFull.string(from: Date())
+        
+        if (Globals.dateTracker != Date())
+        {
+            Methods.updateDateTracker()
+            Methods.saveMoneySpent(value: 0)        //Resets daily money spent
+        }
     }
 }

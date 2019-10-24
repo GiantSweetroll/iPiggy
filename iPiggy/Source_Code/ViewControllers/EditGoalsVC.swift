@@ -41,6 +41,8 @@ class EditGoalsVC:UIViewController
         view.isUserInteractionEnabled = true
         self.dateFrom.inputView = self.dateFromPicker
         self.dateTo.inputView = self.dateToPicker
+        self.dateFromPicker.minimumDate = Date()
+        self.dateToPicker.minimumDate = Date()
     }
     
     //MARK: - Actions
@@ -48,20 +50,13 @@ class EditGoalsVC:UIViewController
     {
         let dateFrom:Date = self.dateFromPicker.date
         let dateTo:Date = self.dateToPicker.date
-        var amount:Double = 0
-        do
+        if (dateFrom <= dateTo)
         {
-            amount = try Double(self.amount.text!)!
+            let amount = Double(self.amount.text ?? "0")!
+            
+            Methods.saveGoals(dateFrom: dateFrom, dateTo: dateTo, amount: amount)
+            dismiss(animated: true, completion: nil)
         }
-        catch let error as NSError
-        {
-            print()
-            print("Error: \(error), \(error.userInfo)")
-            print()
-        }
-        
-        Methods.saveGoals(dateFrom: dateFrom, dateTo: dateTo, amount: amount)
-        dismiss(animated: true, completion: nil)
     }
     @IBAction func backButtonPressed(_ sender: Any)
     {

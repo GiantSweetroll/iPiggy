@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
+class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate, WishlistTableCellDelegate
 {
     //MARK: - IBOutlets
     @IBOutlet weak var wishlistTabelView: UITableView!
@@ -64,6 +64,7 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
             
             cell.label.text = wishlist.name
             cell.setAchieved(achieved: wishlist.achieved)
+            cell.delegate = self
             
             return cell
         }
@@ -78,5 +79,21 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
             return cell
         }
     }
-
+    func onCellSelected(_ cell: WishlistTableCell)
+    {
+        guard let indexPath = wishlistTabelView.indexPath(for: cell) else
+        {
+            return
+        }
+            
+        print(indexPath.row)
+            
+        // todo update database and the master array
+        let wishlist:WishlistItem = Globals.wishlists[indexPath.row]
+        wishlist.achieved = !wishlist.achieved
+        Methods.updateWishlistAchieved(wishlist: wishlist, achieved: wishlist.achieved)
+            
+        // update tableview
+        wishlistTabelView.reloadRows(at: [indexPath], with: .automatic)
+    }
 }

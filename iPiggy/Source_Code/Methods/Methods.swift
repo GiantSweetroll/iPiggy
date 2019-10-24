@@ -34,19 +34,22 @@ struct Methods
         //3
         do
         {
-            var array = try managedContext.fetch(fetchRequest)
-            if (array.count > 0)
+            let array = try managedContext.fetch(fetchRequest)
+            if (array.count >= 0)
             {
                 Globals.fundsDataObject = array.last
             }
-            else
+            else        //No data in database yet
             {
                 let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITY_FUNDS, in: managedContext)
                        
                 Globals.fundsDataObject = NSManagedObject(entity: entity!, insertInto: managedContext)
                 Methods.saveFunds(funds: 0)
+                Methods.saveMoneySpent(value: 0)
             }
             Globals.funds = Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_TOTAL) as! Double
+            Globals.fundsSpent = Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_EXPENSE) as! Double
+            Globals.dateTracker = Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_DATE_TRACKER) as? Date
         }
         catch let error as NSError
         {
@@ -136,7 +139,7 @@ struct Methods
             //3
             do
             {
-                var array = try managedContext.fetch(fetchRequest)
+                let array = try managedContext.fetch(fetchRequest)
                 if (array.count > 0)
                 {
                     Globals.goalsDataObject = array.last
@@ -148,7 +151,7 @@ struct Methods
                     Globals.goalsDataObject = NSManagedObject(entity: entity!, insertInto: managedContext)
                     Methods.saveGoals(dateFrom: Date(), dateTo: Date(), amount: 0)
                 }
-                Globals.goals = Globals.goalsDataObject as! Goal
+                Globals.goals = Globals.goalsDataObject as? Goal
             }
             catch let error as NSError
             {
@@ -189,9 +192,15 @@ struct Methods
         {
             try managedContext.save()
 //           expenses.append(person)
-            //MARK: - Add to history here
             Globals.histories.append(expenses as! Expenses)
-            
+            if (date == Date())
+            {
+                Methods.saveMoneySpent(value: Globals.fundsSpent + amount)
+            }
+            else
+            {
+                Methods.saveFunds(funds: Globals.funds - amount)
+            }
         }
         catch let error as NSError
         {
@@ -226,6 +235,73 @@ struct Methods
         catch let error as NSError
         {
             print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    public static func saveMoneySpent(value:Double)     //Save money spent to database
+    {
+        //MARK: - Saving to Core Data
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        //1
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+//       let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITY_FUNDS, in: managedContext)
+        
+//       let funds = NSManagedObject(entity: entity!, insertInto: managedContext)
+        
+        //3
+        Globals.fundsDataObject?.setValue(value, forKey: Constants.CD_FUNDS_EXPENSE)
+        
+        //4
+        do
+        {
+            try managedContext.save()
+            Globals.fundsSpent = value
+            Methods.saveFunds(funds: Globals.funds - value)
+            Methods.updateHomepageFundsSpentLabel(fundsSpent: Globals.fundsSpent)
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    public static func updateHomepageFundsSpentLabel(fundsSpent:Double)
+    {
+        Globals.labFundsSpent?.text =  String(format: "%0.0f", fundsSpent)
+    }
+    public static func updateDateTracker()     //Save money spent to database
+    {
+        //MARK: - Saving to Core Data
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        //1
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+//       let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITY_FUNDS, in: managedContext)
+        
+//       let funds = NSManagedObject(entity: entity!, insertInto: managedContext)
+        
+        //3
+        Globals.fundsDataObject?.setValue(Date(), forKey: Constants.CD_FUNDS_DATE_TRACKER)
+        
+        //4
+        do
+        {
+            try managedContext.save()
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
         }
     }
     
@@ -297,4 +373,30 @@ struct Methods
              print("Could not fetch. \(error), \(error.userInfo)")
          }
      }
+    public static func updateWishlistAchieved(wishlist:WishlistItem, achieved:Bool)
+    {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+
+        
+        wishlist.setValue(achieved, forKey: Constants.CD_WISHLIST_ACHIEVED)
+        
+        //Save to database
+        do
+        {
+            try managedContext.save()
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    //MARK: Calendar Operations
+    
 }

@@ -12,7 +12,10 @@ struct Constants
 {
     public static let CURRENCY = "Rp"
     public static let CD_FUNDS_TOTAL = "funds"
-    public static let CD_FUNDS_LEFT = "fundsLeft"
+//    public static let CD_FUNDS_LEFT = "fundsLeft"
+    public static let CD_FUNDS_REC_SPENDING = "recSpending"
+    public static let CD_FUNDS_EXPENSE = "expense"
+    public static let CD_FUNDS_DATE_TRACKER = "dateTracker"
     public static let CD_ENTITY_FUNDS = "Funds"
     public static let CD_ENTITY_EXPENSES = "Expenses"
     public static let CD_EXPENSES_CATEGORY = "category"

@@ -30,7 +30,6 @@ class AchievementFormVC: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-//        dismiss(animated: true)
         view.isUserInteractionEnabled = true
         self.tfDate.inputView = self.datePicker
     }

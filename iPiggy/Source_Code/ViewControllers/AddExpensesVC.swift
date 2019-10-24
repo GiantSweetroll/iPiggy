@@ -34,7 +34,9 @@ class AddExpensesVC: UIViewController
         super.viewDidLoad()
 //        dismiss(animated: true, completion: nil)
         view.isUserInteractionEnabled = true
+        self.datePicker.maximumDate = Date()
         self.tfDate.inputView = self.datePicker
+        self.tfDate.text = Globals.dateFormatFull.string(from: Date())
     }
     
     //MARK: - Other Methods

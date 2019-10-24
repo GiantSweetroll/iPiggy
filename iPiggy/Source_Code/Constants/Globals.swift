@@ -17,10 +17,14 @@ struct Globals
     public static var labFunds:UILabel?
     public static var labRecSpending:UILabel?
     public static var labGoals:UILabel?
+    public static var labFundsSpent:UILabel?
     public static var fundsDataObject:NSManagedObject?
     public static var goalsDataObject:NSManagedObject?
     public static var goals:Goal?
     public static var funds:Double = 0
+    public static var fundsSpent:Double = 0
+    public static var recSpending:Double = 0
+    public static var dateTracker:Date?
     public static var isNewAchievement:Bool = false
     public static var dateFormatFull: DateFormatter = {
         let formatter = DateFormatter()
