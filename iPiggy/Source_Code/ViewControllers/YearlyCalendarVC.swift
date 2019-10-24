@@ -8,8 +8,20 @@
 
 import UIKit
 
-class YearlyCalendarVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
+class YearlyCalendarVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate
 {
+    //MARK: - IBOutlets
+    @IBOutlet weak var tableView: UITableView!
+    
+    //MARK: - Main Method
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+    }
+    
     //MARK: - Protocols
     //tell the collection view how many cells to make
     func collectionView(_ collectionView:UICollectionView, numberOfItemsInSection section:Int) -> Int
@@ -42,5 +54,18 @@ class YearlyCalendarVC: UIViewController, UICollectionViewDataSource, UICollecti
     {
         return 0
     }
-
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int //Tells the TableView how many rows of data in a section
+    {
+        //TODO create yearly achievement array
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell  //Prepares a cell and fills it with some data
+    {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: Constants.TVC_YEARLY_ACHIEVEMENT, for: indexPath) as! YearlyAchievementTableCell
+        
+        cell.achievement.text = "Replace me please"
+        
+        return cell
+    }
 }
