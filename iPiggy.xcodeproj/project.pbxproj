@@ -33,6 +33,10 @@
 		A34C3D53235EE075001FD378 /* AchievementTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D52235EE075001FD378 /* AchievementTableCell.swift */; };
 		A34C3D55235EE650001FD378 /* AchievementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D54235EE650001FD378 /* AchievementVC.swift */; };
 		A37E28F8236134D90048E9F8 /* WishlistDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E28F7236134D90048E9F8 /* WishlistDetailsVC.swift */; };
+		A37E28FB23619B660048E9F8 /* YearMonthCalendarCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E28FA23619B660048E9F8 /* YearMonthCalendarCVC.swift */; };
+		A37E28FF2361AD700048E9F8 /* YearDayCalendarCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E28FE2361AD700048E9F8 /* YearDayCalendarCVC.swift */; };
+		A37E29012361AE190048E9F8 /* YearlyCalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E29002361AE190048E9F8 /* YearlyCalendarVC.swift */; };
+		A37E29032361B3350048E9F8 /* YearlyCalendarMonthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E29022361B3350048E9F8 /* YearlyCalendarMonthVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +68,10 @@
 		A34C3D52235EE075001FD378 /* AchievementTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementTableCell.swift; sourceTree = "<group>"; };
 		A34C3D54235EE650001FD378 /* AchievementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementVC.swift; sourceTree = "<group>"; };
 		A37E28F7236134D90048E9F8 /* WishlistDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistDetailsVC.swift; sourceTree = "<group>"; };
+		A37E28FA23619B660048E9F8 /* YearMonthCalendarCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearMonthCalendarCVC.swift; sourceTree = "<group>"; };
+		A37E28FE2361AD700048E9F8 /* YearDayCalendarCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearDayCalendarCVC.swift; sourceTree = "<group>"; };
+		A37E29002361AE190048E9F8 /* YearlyCalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyCalendarVC.swift; sourceTree = "<group>"; };
+		A37E29022361B3350048E9F8 /* YearlyCalendarMonthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyCalendarMonthVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +130,7 @@
 			children = (
 				A34C3C4F23570D25001FD378 /* AppDelegate.swift */,
 				A34C3C5123570D25001FD378 /* SceneDelegate.swift */,
+				A37E28F923619B340048E9F8 /* CollectionViewCells */,
 				A34C3D0A235DD728001FD378 /* Constants */,
 				A34C3D47235EA33C001FD378 /* DataDrivers */,
 				A34C3D0D235DD822001FD378 /* Methods */,
@@ -142,6 +151,8 @@
 				A34C3D45235EA291001FD378 /* HistoryVC.swift */,
 				A34C3D05235D9261001FD378 /* HomepageVC.swift */,
 				A37E28F7236134D90048E9F8 /* WishlistDetailsVC.swift */,
+				A37E29002361AE190048E9F8 /* YearlyCalendarVC.swift */,
+				A37E29022361B3350048E9F8 /* YearlyCalendarMonthVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -181,6 +192,15 @@
 				A34C3D50235EE025001FD378 /* Achievement.swift */,
 			);
 			path = DataDrivers;
+			sourceTree = "<group>";
+		};
+		A37E28F923619B340048E9F8 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				A37E28FA23619B660048E9F8 /* YearMonthCalendarCVC.swift */,
+				A37E28FE2361AD700048E9F8 /* YearDayCalendarCVC.swift */,
+			);
+			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +281,7 @@
 				A34C3D4F235EB97F001FD378 /* Wishlist.swift in Sources */,
 				A34C3D0C235DD774001FD378 /* Constants.swift in Sources */,
 				A34C3D46235EA291001FD378 /* HistoryVC.swift in Sources */,
+				A37E28FF2361AD700048E9F8 /* YearDayCalendarCVC.swift in Sources */,
 				A34C3C5A23570D25001FD378 /* iPiggy.xcdatamodeld in Sources */,
 				A34C3D53235EE075001FD378 /* AchievementTableCell.swift in Sources */,
 				A34C3C5023570D25001FD378 /* AppDelegate.swift in Sources */,
@@ -273,9 +294,12 @@
 				A34C3D4D235EB4A3001FD378 /* EditGoalsVC.swift in Sources */,
 				A34C3C5223570D25001FD378 /* SceneDelegate.swift in Sources */,
 				A34C3D44235EA184001FD378 /* HistoryTableViewCell.swift in Sources */,
+				A37E28FB23619B660048E9F8 /* YearMonthCalendarCVC.swift in Sources */,
 				A34C3D49235EA34A001FD378 /* History.swift in Sources */,
 				A34C3D1D235DE7AB001FD378 /* AchievementFormVC.swift in Sources */,
 				A34C3D4B235EAC48001FD378 /* Globals.swift in Sources */,
+				A37E29032361B3350048E9F8 /* YearlyCalendarMonthVC.swift in Sources */,
+				A37E29012361AE190048E9F8 /* YearlyCalendarVC.swift in Sources */,
 				A34C3D18235DDCEC001FD378 /* EditFundsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
