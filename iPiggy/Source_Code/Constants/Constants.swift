@@ -37,6 +37,7 @@ struct Constants
     public static let SEGUE_WISHLIST_DETAILS = "wishlistDetails"
     public static let SEGUE_WISHLIST_ADD = "addWishlist"
     public static let SEGUE_WISHLIST_DETAILS_TO_FORM = "detailToForm"
+    public static let SEGUE_WISHLIST_FORM_TO_MAIN = "formToMain"
     public static let CVC_CALENDAR_YEARLY_DAILY_CELL = "dailyCell"
     public static let CVC_CALENDAR_YEARLY_MONTHLY_CELL = "monthCell"
     public static let CVC_CALENDAR_MONTHLY_CELL = "dayCell"

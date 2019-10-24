@@ -76,6 +76,7 @@ class AchievementFormVC: UIViewController
         {
             Methods.saveWishlist(wishlist: self.wishlistItem, name: name, cost: value, date: date, achieved: self.wishlistItem.achieved)
         }
-        navigationController?.popViewController(animated: true)
+        self.performSegue(withIdentifier: Constants.SEGUE_WISHLIST_FORM_TO_MAIN, sender: nil)
+//        navigationController?.popViewController(animated: true)
     }
 }
