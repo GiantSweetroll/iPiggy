@@ -69,7 +69,9 @@ class AchievementFormVC: UIViewController
         let value:Double = Double(self.tfValue.text ?? "0")!
         let date:Date = self.datePicker.date
         
-        if (self.newEntry ?? false)
+        let isNewEntry = self.newEntry ?? true
+        
+        if (isNewEntry)
         {
             Methods.saveWishlist(name: name, cost: value, date: date, achieved: self.achieved ?? false)
         }
