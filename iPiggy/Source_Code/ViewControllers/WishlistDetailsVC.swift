@@ -14,6 +14,8 @@ class WishlistDetailsVC: UIViewController
     @IBOutlet weak var wishName: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var amount: UILabel!
+    @IBOutlet weak var achieved: UILabel!
+    @IBOutlet weak var achievedImage: UIImageView!
     
     //MARK: - Variables
     var wishlistItem:WishlistItem!
@@ -25,6 +27,17 @@ class WishlistDetailsVC: UIViewController
         
         self.wishName.text = self.wishlistItem.name
         self.date.text = Globals.dateFormatFull.string(from: self.wishlistItem.date!)
-        self.amount.text = Methods.appendCurrency(string: String(self.wishlistItem.cost))
+        self.amount.text = Methods.appendCurrency(string: String(format: "%0.0f", self.wishlistItem.cost))
+        let achieved:Bool = self.wishlistItem.achieved
+        if (achieved)
+        {
+            self.achieved.text = "Achieved!"
+            self.achievedImage.image = UIImage(systemName: "checkmark.circle")
+        }
+        else
+        {
+            self.achieved.text = "Not Achieved"
+            self.achievedImage.image = UIImage(systemName: "circle")
+        }
     }
 }

@@ -51,7 +51,8 @@
                                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="Ihd-mI-Xfg" kind="show" id="gUs-dv-WeF"/>
+                                                        <action selector="buttonDetailsPressed:" destination="zcr-Cl-3RS" eventType="touchUpInside" id="jGh-sg-u96"/>
+                                                        <segue destination="Ihd-mI-Xfg" kind="show" identifier="wishlistDetails" id="gUs-dv-WeF"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -85,7 +86,7 @@
                                     <navigationItem id="1lQ-vW-jGc">
                                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Tty-Aq-8vb">
                                             <connections>
-                                                <segue destination="wNv-8R-9ao" kind="show" id="oaz-qf-scB"/>
+                                                <segue destination="wNv-8R-9ao" kind="show" identifier="addWishlist" id="oaz-qf-scB"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -206,9 +207,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="achieved" destination="XpB-Mp-2lh" id="ygg-ni-MI2"/>
+                        <outlet property="achievedImage" destination="cQX-di-blo" id="H9q-0l-vHb"/>
                         <outlet property="amount" destination="kPc-YQ-Zze" id="QIz-1e-rhE"/>
                         <outlet property="date" destination="Xw5-Ja-Gun" id="2cs-Bq-vLx"/>
-                        <outlet property="title" destination="8LA-rc-3tr" id="Jqh-Fp-89a"/>
                         <outlet property="wishName" destination="8LA-rc-3tr" id="58f-dP-COO"/>
                     </connections>
                 </viewController>
@@ -361,6 +363,6 @@
         <image name="circle" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xhx-M6-FVk"/>
+        <segue reference="oaz-qf-scB"/>
     </inferredMetricsTieBreakers>
 </document>

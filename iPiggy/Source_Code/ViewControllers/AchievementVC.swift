@@ -17,6 +17,7 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
     
     //MARK: - Variables
     var achievements:[Achievement]!
+    var selectedRow:Int!
     
     //MARK: - Main Methods
     override func viewDidLoad()
@@ -39,6 +40,15 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
  //       print("count is \(Globals.wishlists.count)")
  //       print("Size of wishlist: \(Globals.wishlists.count)")
         self.wishlistTabelView.reloadData()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) //This function is called when we want to navigate to a new screen using segue
+    {
+        if (segue.identifier == Constants.SEGUE_WISHLIST_DETAILS)
+        {
+            let detailsVC = segue.destination as! WishlistDetailsVC
+            let wishlistItem = Globals.wishlists[self.selectedRow]
+            detailsVC.wishlistItem = wishlistItem
+        }
     }
     
     //MARK: - Protocols
@@ -79,7 +89,7 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
             return cell
         }
     }
-    func onCellSelected(_ cell: WishlistTableCell)
+    func onAchievedButtonPressed(_ cell: WishlistTableCell)
     {
         guard let indexPath = wishlistTabelView.indexPath(for: cell) else
         {
@@ -88,12 +98,21 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
             
  //       print(indexPath.row)
             
-        // todo update database and the master array
+        // update database and the master array
         let wishlist:WishlistItem = Globals.wishlists[indexPath.row]
         wishlist.achieved = !wishlist.achieved
         Methods.updateWishlistAchieved(wishlist: wishlist, achieved: wishlist.achieved)
             
         // update tableview
         wishlistTabelView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    func onDetailsButtonPressed(_ cell: WishlistTableCell)
+    {
+        guard let indexPath = wishlistTabelView.indexPath(for: cell) else
+        {
+            return
+        }
+        self.selectedRow = indexPath.row
+        self.performSegue(withIdentifier: Constants.SEGUE_WISHLIST_DETAILS, sender: nil)
     }
 }

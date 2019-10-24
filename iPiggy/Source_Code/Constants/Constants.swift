@@ -34,4 +34,6 @@ struct Constants
     public static let TVC_HISTORY = "expenses"
     public static let TVC_WISHLIST = "cellWishlist"
     public static let TVC_ACHIEVEMENT = "achievementCell"
+    public static let SEGUE_WISHLIST_DETAILS = "wishlistDetails"
+    public static let SEGUE_WISHLIST_ADD = "addWishlist"
 }

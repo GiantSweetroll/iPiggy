@@ -36,7 +36,11 @@ class WishlistTableCell: UITableViewCell
     @IBAction func buttonPressed(_ sender: Any)
     {
 //        self.setAchieved(achieved: !(self.achieved!))
-        delegate?.onCellSelected(self)
+        delegate?.onAchievedButtonPressed(self)
+    }
+    @IBAction func buttonDetailsPressed(_ sender: Any)
+    {
+        self.delegate?.onDetailsButtonPressed(self)
     }
     
     //MARK: - Other Methods
@@ -65,6 +69,6 @@ class WishlistTableCell: UITableViewCell
 
 protocol WishlistTableCellDelegate
 {
-    func onCellSelected(_ cell: WishlistTableCell)
+    func onAchievedButtonPressed(_ cell: WishlistTableCell)
+    func onDetailsButtonPressed(_ cell: WishlistTableCell)
 }
-
