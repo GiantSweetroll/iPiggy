@@ -38,6 +38,7 @@ class AchievementFormVC: UIViewController
         if (self.newEntry == nil || self.newEntry!)
         {
             self.achieved = true
+            self.newEntry = false
             self.tfDate.text = Globals.dateFormatFull.string(from: Date())
         }
         else
