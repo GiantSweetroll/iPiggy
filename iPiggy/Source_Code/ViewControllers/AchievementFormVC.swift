@@ -37,8 +37,8 @@ class AchievementFormVC: UIViewController
   //      print("Is new entry? \(self.newEntry)")
         if (self.newEntry == nil || self.newEntry!)
         {
-            self.achieved = true
-            self.newEntry = false
+            self.achieved = false
+            self.newEntry = true
             self.tfDate.text = Globals.dateFormatFull.string(from: Date())
         }
         else
@@ -68,17 +68,13 @@ class AchievementFormVC: UIViewController
         let name:String = self.tfWish.text ?? ""
         let value:Double = Double(self.tfValue.text ?? "0")!
         let date:Date = self.datePicker.date
-        
-        let isNewEntry = self.newEntry ?? true
-        print("value of new entry: \(isNewEntry)")
-        
-        if (isNewEntry)
+        if (self.newEntry!)
         {
             Methods.saveWishlist(name: name, cost: value, date: date, achieved: self.achieved ?? false)
         }
         else
         {
-            Methods.saveWishlist(wishlist: self.wishlistItem, name: name, cost: value, date: date, achieved: isNewEntry)
+            Methods.saveWishlist(wishlist: self.wishlistItem, name: name, cost: value, date: date, achieved: self.newEntry!)
         }
         navigationController?.popViewController(animated: true)
     }
