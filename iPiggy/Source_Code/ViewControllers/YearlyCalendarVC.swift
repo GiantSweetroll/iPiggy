@@ -1,5 +1,5 @@
 //
-//  YearDayCalendarCVC.swift
+//  YearlyCalendarVC.swift
 //  iPiggy
 //
 //  Created by Gardyan Akbar on 24/10/19.
@@ -8,7 +8,6 @@
 
 import UIKit
 
-class YearDayCalendarCVC:UICollectionViewCell
+class YearlyCalendarVC: UIViewController
 {
-    //MARK: - IBOutlets
 }

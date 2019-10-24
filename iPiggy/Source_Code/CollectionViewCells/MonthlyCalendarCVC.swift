@@ -1,5 +1,5 @@
 //
-//  YearDayCalendarCVC.swift
+//  MonthlyCalendarCVC.swift
 //  iPiggy
 //
 //  Created by Gardyan Akbar on 24/10/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YearDayCalendarCVC:UICollectionViewCell
+class MonthlyCalendarCVC:UICollectionViewCell
 {
-    //MARK: - IBOutlets
+    @IBOutlet weak var label: UILabel! 
 }
