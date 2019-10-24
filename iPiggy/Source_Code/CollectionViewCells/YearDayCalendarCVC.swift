@@ -11,4 +11,5 @@ import UIKit
 class YearDayCalendarCVC:UICollectionViewCell
 {
     //MARK: - IBOutlets
+    @IBOutlet weak var dayLabel: UILabel!
 }
