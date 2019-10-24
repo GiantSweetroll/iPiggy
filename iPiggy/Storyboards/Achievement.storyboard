@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yMF-1H-MVG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yMF-1H-MVG">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -202,7 +202,7 @@
                     <navigationItem key="navigationItem" title="Detail" id="ahA-sT-GhV">
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="u6d-yj-gmw">
                             <connections>
-                                <segue destination="wNv-8R-9ao" kind="show" id="xhx-M6-FVk"/>
+                                <segue destination="wNv-8R-9ao" kind="show" identifier="detailToForm" id="xhx-M6-FVk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -358,9 +358,9 @@
     <resources>
         <image name="Trophy" width="25" height="25"/>
         <image name="checkmark" catalog="system" width="64" height="56"/>
-        <image name="checkmark.circle" catalog="system" width="64" height="62"/>
-        <image name="circle" catalog="system" width="64" height="62"/>
+        <image name="checkmark.circle" catalog="system" width="64" height="60"/>
         <image name="circle" width="64" height="60"/>
+        <image name="circle" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xhx-M6-FVk"/>
