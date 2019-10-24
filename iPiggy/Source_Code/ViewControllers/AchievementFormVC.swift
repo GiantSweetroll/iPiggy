@@ -74,7 +74,7 @@ class AchievementFormVC: UIViewController
         }
         else
         {
-            Methods.saveWishlist(wishlist: self.wishlistItem, name: name, cost: value, date: date, achieved: self.newEntry!)
+            Methods.saveWishlist(wishlist: self.wishlistItem, name: name, cost: value, date: date, achieved: self.wishlistItem.achieved)
         }
         navigationController?.popViewController(animated: true)
     }
