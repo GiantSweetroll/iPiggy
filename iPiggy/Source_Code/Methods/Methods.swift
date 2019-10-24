@@ -402,35 +402,26 @@ struct Methods
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
-    public static func saveWishlist(name:String, cost:Double, date:Date, achieved:Bool, indexInDB:Int)     //Existing Entry
+    public static func saveWishlist(wishlist: WishlistItem, name:String, cost:Double, date:Date, achieved:Bool)     //Existing Entry
     {
-        //MARK: - Saving to Core Data
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
         else
         {
             return
         }
         
-        //1
         let managedContext = appDelegate.persistentContainer.viewContext
+
         
-        //2
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.CD_ENTITY_WISHLIST)
+        wishlist.setValue(achieved, forKey: Constants.CD_WISHLIST_ACHIEVED)
+        wishlist.setValue(name, forKey: Constants.CD_WISHLIST_NAME)
+        wishlist.setValue(cost, forKey: Constants.CD_WISHLIST_COST)
+        wishlist.setValue(date, forKey: Constants.CD_WISHLIST_DATE)
         
-        //4
+        //Save to database
         do
         {
-            let array = try managedContext.fetch(fetchRequest)
-            if (array.count > 0)
-            {
-                let wishlist:NSManagedObject = NSManagedObject(entity: array[indexInDB].entity, insertInto: managedContext)
-                wishlist.setValue(name, forKey: Constants.CD_WISHLIST_NAME)
-                wishlist.setValue(cost, forKey: Constants.CD_WISHLIST_COST)
-                wishlist.setValue(date, forKey: Constants.CD_WISHLIST_DATE)
-                wishlist.setValue(achieved, forKey: Constants.CD_WISHLIST_ACHIEVED)
-                try managedContext.save()
-            }
-            
+            try managedContext.save()
         }
         catch let error as NSError
         {
@@ -439,15 +430,117 @@ struct Methods
     }
     
     //MARK: Calendar Operations
+    public static func isLeapYear(year:Int) -> Bool
+    {
+        return year%4==0
+    }
+    public static func getYearComponent(date: Date) -> Int
+    {
+        let dateComponent:DateComponents = Calendar.current.dateComponents([.year], from: date)
+        return dateComponent.year ?? 2019
+    }
+    public static func getWeekdayUnit(date: Date) -> Int
+    {
+        let dateComponent:DateComponents = Calendar.current.dateComponents([.weekday], from: date)
+        return dateComponent.weekday ?? 0
+    }
+    public static func getAmountOfDaysArray(isLeapYear: Bool) -> [Int]
+    {
+        var array:[Int] = []
+        
+        //First pass (jan to july)
+        for i in 1...7
+        {
+            if (i == 2)     //If ferbuary
+            {
+                if isLeapYear
+                {
+                    array.append(29)
+                }
+                else
+                {
+                    array.append(28)
+                }
+            }
+            else if (i%2==0)     //If 30 days
+            {
+                array.append(30)
+            }
+            else        //31 days
+            {
+                array.append(31)
+            }
+        }
+        //Second Pass (August to December)
+        for i in 1...5
+        {
+            if (i%2==0)     //If 30 days
+            {
+                array.append(30)
+            }
+            else            //31 Days
+            {
+                array.append(31)
+            }
+        }
+        
+        return array
+    }
     public static func getDayDifference(from dateFrom:Date, to dateTo:Date) -> DateComponents
     {
         return Calendar.current.dateComponents([.day], from: dateFrom, to: dateTo)
     }
-    public static func generateYearlyCalendarArray() -> [[String]]
+    public static func generateYearlyCalendarArray(year: Int, firstDayOfTheYear: Int) -> [[String]]
     {
         var array:[[String]] = [[]]
+        let daysArray:[Int] = Methods.getAmountOfDaysArray(isLeapYear: Methods.isLeapYear(year: year))
         
+        var remainder:Int = firstDayOfTheYear - 1
+        var gapEarlyOfMonth:Int = remainder
+        var gapEndOfMonth:Int = 0
         
+        for i in 0...11     //12 Months
+        {
+            var subArr:[String] = []
+            var counter:Int = 0
+            
+            //Fill in gaps early of the month
+            for _ in 0..<gapEarlyOfMonth
+            {
+                subArr.append("")
+                counter+=1
+            }
+            
+            //Fill in days
+            for a in 1...daysArray[i]
+            {
+                subArr.append(String(a))
+                counter+=1
+            }
+            
+            //Calculating gap at the end of the week
+            remainder = counter%7
+ //           print(remainder)
+            if (remainder==0)
+            {
+                gapEndOfMonth = 0
+            }
+            else
+            {
+                gapEndOfMonth = 7-remainder
+            }
+            //Fill in gap at the end of the month
+            for _ in 0..<gapEndOfMonth
+            {
+                subArr.append("")
+            }
+            
+            //Add subArray to main array
+            array.append(subArr)
+            
+            //Calculate gap early of the next month
+            gapEarlyOfMonth = remainder
+        }
         
         return array
     }
