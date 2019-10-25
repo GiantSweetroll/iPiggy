@@ -59,6 +59,10 @@ class HomepageVC: UIViewController
         self.goalsIncomplete.value = 100
         self.goalsProgress = [self.goalsComplete, self.goalsIncomplete]
     }
+    override func viewWillAppear(_ animated: Bool)
+    {
+        self.updateChartData()
+    }
     
     //MARK: - Methods
     func updateChartData()
