@@ -28,6 +28,8 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
         self.daysLabelCollectionView.dataSource = self
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        
+        self.daysLabelCollectionView.backgroundColor = UIColor.gray
     }
     
     //MARK: - Protocols
@@ -67,7 +69,7 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
             cell.label.text = Constants.DAYS[indexPath.row]
             
             cell.label.textAlignment = NSTextAlignment.center
-            cell.label.backgroundColor = UIColor.gray
+       //     cell.label.backgroundColor = UIColor.gray
             
             return cell
         }

@@ -14,8 +14,6 @@ class EditFundsVC: UIViewController
     //MARK: Storyboard Elements
     @IBOutlet weak var tfEditFunds: UITextField!
     
-    //MARK: - Variables
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
