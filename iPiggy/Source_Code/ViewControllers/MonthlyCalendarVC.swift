@@ -12,6 +12,8 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
 {
     //MARK: - IBOutlets
     @IBOutlet weak var monthNavBar: UINavigationItem!
+    @IBOutlet weak var daysLabelCollectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK: - Variables
     var monthIndex:Int!
@@ -22,33 +24,53 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
         super.viewDidLoad()
         self.monthIndex = 9
         self.monthNavBar.title = Constants.MONTHS[self.monthIndex]
+        self.daysLabelCollectionView.delegate = self
+        self.daysLabelCollectionView.dataSource = self
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
     }
     
     //MARK: - Protocols
     //tell the collection view how many cells to make
     func collectionView(_ collectionView:UICollectionView, numberOfItemsInSection section:Int) -> Int
     {
-        return Globals.fullListOfCalendarDays[self.monthIndex].count
+        if (collectionView == self.collectionView)
+        {
+            return Globals.fullListOfCalendarDays[self.monthIndex].count
+        }
+        else
+        {
+            return Constants.DAYS.count
+        }
     }
     
     //Make a cell for each cell index path
     func collectionView(_ collectionView:UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         //get a reference to our storyboard cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CVC_CALENDAR_MONTHLY_CELL, for: indexPath as IndexPath) as! MonthlyCalendarCVC
-        
-        //Use the outlet in our custom class to get a reference to the UILabel in the cell
-        cell.label.text = Globals.fullListOfCalendarDays[self.monthIndex][indexPath.row]
-        
-        //Customize cell
-        if (indexPath.row < Constants.DAYS.count)
+        if (collectionView == self.collectionView)
         {
-            cell.label.backgroundColor = UIColor.gray
-            cell.label.textAlignment = NSTextAlignment.center
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CVC_CALENDAR_MONTHLY_CELL, for: indexPath as IndexPath) as! MonthlyCalendarCVC
+            
+            //Use the outlet in our custom class to get a reference to the UILabel in the cell
+            cell.label.text = Globals.fullListOfCalendarDays[self.monthIndex][indexPath.row]
+            
+            //Customize cell
+   //         cell.backgroundColor = UIColor.cyan
+            
+            return cell
         }
-        cell.backgroundColor = UIColor.cyan
-        
-        return cell
+        else        //days label collectionview
+        {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CVC_CALENDAR_MONTHLY_DAY_LABEL_CELL, for: indexPath as IndexPath) as! MonthlyCalendarDaysCVC
+            
+            cell.label.text = Constants.DAYS[indexPath.row]
+            
+            cell.label.textAlignment = NSTextAlignment.center
+            cell.label.backgroundColor = UIColor.gray
+            
+            return cell
+        }
     }
     
     //MARK: - UICollectionViewDelegate protocol

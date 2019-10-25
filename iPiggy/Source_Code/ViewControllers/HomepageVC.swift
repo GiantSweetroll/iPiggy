@@ -39,7 +39,7 @@ class HomepageVC: UIViewController
         Methods.loadGoals()
         Methods.updateHomepageGoalsLabel(goals: Globals.goals?.amount ?? 0)
         Methods.updateHomepageGoalsDayLeftLabel()
-        Methods.addDayLabelsToCalendarArray()
+  //      Methods.addDayLabelsToCalendarArray()
         self.labelDate.text = Globals.dateFormatFull.string(from: Date())
         
         if (Globals.dateTracker != Date())
