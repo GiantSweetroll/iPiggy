@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 class HomepageVC: UIViewController
 {
@@ -20,6 +21,9 @@ class HomepageVC: UIViewController
     @IBOutlet weak var pieChart: PieChartView!
     
     //MARK: - Variables
+    var goalsComplete:PieChartDataEntry = PieChartDataEntry(value: 0)
+    var goalsIncomplete:PieChartDataEntry = PieChartDataEntry(value: 100)
+    var goalsProgress = [PieChartDataEntry]()
     
     override func viewDidLoad()
     {
@@ -50,5 +54,22 @@ class HomepageVC: UIViewController
             Methods.updateDateTracker()
             Methods.saveMoneySpent(value: 0)        //Resets daily money spent
         }
+        
+        //Update pie chart
+        self.goalsComplete.value = 0
+        self.goalsIncomplete.value = 100
+        self.goalsProgress = [self.goalsComplete, self.goalsIncomplete]
+    }
+    
+    //MARK: - Methods
+    func updateChartData()
+    {
+        let chartDataSet = PieChartDataSet(entries: self.goalsProgress, label: nil)
+        let chartData = PieChartData(dataSet: chartDataSet)
+        
+        let colors = [UIColor.red, UIColor.blue]
+        chartDataSet.colors = colors as! [NSUIColor]
+        
+        self.pieChart.data = chartData
     }
 }
