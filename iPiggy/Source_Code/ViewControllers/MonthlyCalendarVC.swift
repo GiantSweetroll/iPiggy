@@ -22,7 +22,7 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.monthIndex = 9
+        self.monthIndex = Methods.getYearComponent(date: Globals.dateTracker!)
         self.monthNavBar.title = Constants.MONTHS[self.monthIndex]
         self.daysLabelCollectionView.delegate = self
         self.daysLabelCollectionView.dataSource = self
