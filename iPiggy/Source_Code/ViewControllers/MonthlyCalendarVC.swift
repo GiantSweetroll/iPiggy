@@ -10,6 +10,9 @@ import UIKit
 
 class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 {
+    //MARK: - IBOutlets
+    @IBOutlet weak var monthNavBar: UINavigationItem!
+    
     //MARK: - Variables
     var monthIndex:Int!
     
@@ -18,6 +21,7 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
     {
         super.viewDidLoad()
         self.monthIndex = 9
+        self.monthNavBar.title = Constants.MONTHS[self.monthIndex]
     }
     
     //MARK: - Protocols
@@ -35,6 +39,13 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
         
         //Use the outlet in our custom class to get a reference to the UILabel in the cell
         cell.label.text = Globals.fullListOfCalendarDays[self.monthIndex][indexPath.row]
+        
+        //Customize cell
+        if (indexPath.row < Constants.DAYS.count)
+        {
+            cell.label.backgroundColor = UIColor.gray
+            cell.label.textAlignment = NSTextAlignment.center
+        }
         
         return cell
     }

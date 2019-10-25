@@ -10,5 +10,5 @@ import UIKit
 
 class MonthlyCalendarCVC:UICollectionViewCell
 {
-    @IBOutlet weak var label: UILabel! 
+    @IBOutlet weak var label: UILabel!
 }

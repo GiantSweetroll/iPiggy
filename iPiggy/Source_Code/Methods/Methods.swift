@@ -549,4 +549,11 @@ struct Methods
         
         return Methods.getWeekdayUnit(date: firstDateOfXYear!)
     }
+    public static func addDayLabelsToCalendarArray()
+    {
+        for i in 0..<Globals.fullListOfCalendarDays.count
+        {
+            Globals.fullListOfCalendarDays[i].insert(contentsOf: Constants.DAYS, at: 0)
+        }
+    }
 }
