@@ -26,18 +26,19 @@ class YearlyCalendarVC: UIViewController, UICollectionViewDataSource, UICollecti
     //tell the collection view how many cells to make
     func collectionView(_ collectionView:UICollectionView, numberOfItemsInSection section:Int) -> Int
     {
-        return Globals.fullListOfCalendarDays.count
+//       return Globals.fullListOfCalendarDays.count
+        return Constants.MONTHS_SHORT.count
     }
     
     //Make a cell for each cell index path
     func collectionView(_ collectionView:UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         //get a reference to our storyboard cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CVC_CALENDAR_MONTHLY_CELL, for: indexPath as IndexPath) as! YearMonthCalendarCVC
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CVC_CALENDAR_YEARLY_MONTHLY_CELL, for: indexPath as IndexPath) as! YearMonthCalendarCVC
         
         //Use the outlet in our custom class to get a reference to the UILabel in the cell
-        cell.monthLabel.text = Constants.MONTHS[indexPath.row]
-        cell.monthIndex = indexPath.row
+        cell.monthLabel.text = Constants.MONTHS_SHORT[indexPath.row]
+        cell.monthIndex = indexPath.row + 1 //Because reasons
         
         return cell
     }

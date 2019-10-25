@@ -127,37 +127,37 @@ struct Methods
     public static func loadGoals()
     {
 //1
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
+        {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.CD_ENTITIY_GOALS)
+        
+        //3
+        do
+        {
+            let array = try managedContext.fetch(fetchRequest)
+            if (array.count > 0)
             {
-                return
+                Globals.goalsDataObject = array.last
             }
-            
-            let managedContext = appDelegate.persistentContainer.viewContext
-            
-            //2
-            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.CD_ENTITIY_GOALS)
-            
-            //3
-            do
+            else
             {
-                let array = try managedContext.fetch(fetchRequest)
-                if (array.count > 0)
-                {
-                    Globals.goalsDataObject = array.last
-                }
-                else
-                {
-                    let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITIY_GOALS, in: managedContext)
-                            
-                    Globals.goalsDataObject = NSManagedObject(entity: entity!, insertInto: managedContext)
-                    Methods.saveGoals(dateFrom: Date(), dateTo: Date(), amount: 0)
-                }
-                Globals.goals = Globals.goalsDataObject as? Goal
+                let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITIY_GOALS, in: managedContext)
+                        
+                Globals.goalsDataObject = NSManagedObject(entity: entity!, insertInto: managedContext)
+                Methods.saveGoals(dateFrom: Date(), dateTo: Date(), amount: 0)
             }
-            catch let error as NSError
-            {
-                print("Could not fetch. \(error), \(error.userInfo)")
-            }
+            Globals.goals = Globals.goalsDataObject as? Goal
+        }
+        catch let error as NSError
+        {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
     public static func updateHomepageGoalsLabel(goals:Double)
     {
@@ -199,12 +199,17 @@ struct Methods
             try managedContext.save()
 //           expenses.append(person)
             Globals.histories.append(expenses as! Expenses)     //Add to array for table view data source
-            if (date == Date())
+            print("dateTracker: \(Globals.dateFormatFull.string(from: Globals.dateTracker!))")
+            print("Date: \(Globals.dateFormatFull.string(from: date))")
+            print("Are they same? \(date == Globals.dateTracker)")
+            if (date == Globals.dateTracker)
             {
+                print("Hello")
                 Methods.saveMoneySpent(value: Globals.fundsSpent + amount)
             }
             else
             {
+                print("Form the other side")
                 Methods.saveFunds(funds: Globals.funds - amount)
             }
         }
@@ -421,6 +426,27 @@ struct Methods
         //Save to database
         do
         {
+            try managedContext.save()
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    public static func deleteWishlist(wishlist: WishlistItem)     //Delete wishlist
+    {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //Save to database
+        do
+        {
+            try managedContext.delete(wishlist)
             try managedContext.save()
         }
         catch let error as NSError
