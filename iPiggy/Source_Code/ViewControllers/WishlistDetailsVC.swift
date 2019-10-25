@@ -57,4 +57,9 @@ class WishlistDetailsVC: UIViewController
     {        
         self.performSegue(withIdentifier: Constants.SEGUE_WISHLIST_DETAILS_TO_FORM, sender: nil)
     }
+    @IBAction func deleteButtonPressed(_ sender: Any)
+    {
+        Methods.deleteWishlist(wishlist: self.wishlistItem)
+        navigationController?.popViewController(animated: true)
+    }
 }

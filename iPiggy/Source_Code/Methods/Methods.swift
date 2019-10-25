@@ -428,6 +428,27 @@ struct Methods
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
+    public static func deleteWishlist(wishlist: WishlistItem)     //Delete wishlist
+    {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //Save to database
+        do
+        {
+            try managedContext.delete(wishlist)
+            try managedContext.save()
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
     
     //MARK: Calendar Operations
     public static func isLeapYear(year:Int) -> Bool
