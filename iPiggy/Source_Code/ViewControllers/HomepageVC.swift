@@ -17,6 +17,9 @@ class HomepageVC: UIViewController
     @IBOutlet weak var labelGoalAmount: UILabel!
     @IBOutlet weak var labelRecSpending: UILabel!
     @IBOutlet weak var labelGoalDayLeft: UILabel!
+    @IBOutlet weak var pieChart: PieChartView!
+    
+    //MARK: - Variables
     
     override func viewDidLoad()
     {
