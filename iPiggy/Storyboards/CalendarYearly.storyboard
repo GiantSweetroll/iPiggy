@@ -114,10 +114,6 @@
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
-                                                    <connections>
-                                                        <outlet property="dataSource" destination="p9p-6N-g9X" id="Mzh-Mv-FBx"/>
-                                                        <outlet property="delegate" destination="p9p-6N-g9X" id="REh-yU-C4e"/>
-                                                    </connections>
                                                 </collectionView>
                                             </subviews>
                                         </collectionViewCellContentView>

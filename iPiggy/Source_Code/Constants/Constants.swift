@@ -44,5 +44,6 @@ struct Constants
     public static let CVC_CALENDAR_MONTHLY_CELL = "dayCell"
     public static let CVC_CALENDAR_MONTHLY_DAY_LABEL_CELL = "dayLabelCell"
     public static let MONTHS: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    public static let MONTHS_SHORT:[String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     public static let DAYS: [String] = ["S", "M", "T", "W", "T", "F", "S"]
 }
