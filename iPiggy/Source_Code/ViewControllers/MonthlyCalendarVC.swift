@@ -46,6 +46,7 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
             cell.label.backgroundColor = UIColor.gray
             cell.label.textAlignment = NSTextAlignment.center
         }
+        cell.backgroundColor = UIColor.cyan
         
         return cell
     }
