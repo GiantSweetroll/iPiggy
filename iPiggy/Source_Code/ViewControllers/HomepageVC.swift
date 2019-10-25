@@ -30,6 +30,11 @@ class HomepageVC: UIViewController
         super.viewDidLoad()
         
         //Initialization
+        if (Globals.dateTracker != Date())
+        {
+            Methods.updateDateTracker()
+            Methods.saveMoneySpent(value: 0)        //Resets daily money spent
+        }
         self.labelBudget.text = Methods.appendCurrency(string: "0")
         self.labelExpenses.text! = "0"
         self.labelGoalAmount.text = Methods.appendCurrency(string: "0")
@@ -48,12 +53,6 @@ class HomepageVC: UIViewController
         Methods.updateHomepageGoalsDayLeftLabel()
   //      Methods.addDayLabelsToCalendarArray()
         self.labelDate.text = Globals.dateFormatFull.string(from: Date())
-        
-        if (Globals.dateTracker != Date())
-        {
-            Methods.updateDateTracker()
-            Methods.saveMoneySpent(value: 0)        //Resets daily money spent
-        }
         
         //Update pie chart
         self.goalsComplete.value = 0
