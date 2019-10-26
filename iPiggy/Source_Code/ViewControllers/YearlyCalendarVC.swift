@@ -12,6 +12,7 @@ class YearlyCalendarVC: UIViewController, UICollectionViewDataSource, UICollecti
 {
     //MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var monthCollectionView: UICollectionView!
     
     //Variables
     private var selectedIndex:Int?
@@ -23,6 +24,13 @@ class YearlyCalendarVC: UIViewController, UICollectionViewDataSource, UICollecti
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width/3, height: UIScreen.main.bounds.width/3)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        self.monthCollectionView.collectionViewLayout = layout
     }
     
     //MARK: - Methods
