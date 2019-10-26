@@ -16,6 +16,7 @@ struct Globals
     
     public static var histories:[Expenses]=[]
     public static var wishlists:[WishlistItem]=[]
+    public static var wishlistDictionary:Dictionary<Int, Dictionary<Int, Dictionary<Int, [WishlistItem]>>> = Dictionary<Int, Dictionary<Int, Dictionary<Int, [WishlistItem]>>>()
     public static var monthCollectionViews:[UICollectionView] = []
     public static var fullListOfCalendarDays:[[String]] = [[]]
     public static var labFunds:UILabel?
