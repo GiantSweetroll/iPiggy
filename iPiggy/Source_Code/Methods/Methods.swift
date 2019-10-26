@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import UIKit
+import Charts
 
 struct Methods
 {
@@ -602,5 +603,45 @@ struct Methods
         {
             Globals.fullListOfCalendarDays[i].insert(contentsOf: Constants.DAYS, at: 0)
         }
+    }
+    public static func setDateTimeToOrigin(date: Date) -> Date
+    {
+        return Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: date)!
+    }
+    
+    //MARK: - Manage Recommended Spending
+    public static func getRecommendedSpending(allocatedFunds funds: Double, goal:Double, timeDurationInDays duration:Int) -> Double
+    {
+        if (duration <= 0)
+        {
+            return 0
+        }
+        else
+        {
+            let maxAllocatedFunds:Double = funds/Double(duration)
+            let eachDaySave:Double = goal/Double(duration)
+            
+            return maxAllocatedFunds - eachDaySave
+        }
+    }
+    public static func getRecommendedSpending() -> Double
+    {
+        return Methods.getRecommendedSpending(allocatedFunds: Globals.funds, goal: Globals.goals?.amount ?? 0, timeDurationInDays: Methods.getDayDifference(from: Globals.goals?.dateFrom ?? Date(), to: Globals.goals?.dateTo ?? Date()).day ?? 0)
+    }
+    public static func getRecommendedSpendingNoDecimal() -> Int
+    {
+        return Int(Methods.getRecommendedSpending())
+    }
+    
+    //MARK: - Manage Charts
+    public static func updateChartData()
+    {
+        let chartDataSet = PieChartDataSet(entries: Globals.goalsProgress, label: nil)
+        let chartData = PieChartData(dataSet: chartDataSet)
+        
+        let colors = [UIColor.red, UIColor.gray]
+        chartDataSet.colors = colors as! [NSUIColor]
+        
+        Globals.pieChart!.data = chartData
     }
 }

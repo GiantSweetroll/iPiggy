@@ -20,11 +20,6 @@ class HomepageVC: UIViewController
     @IBOutlet weak var labelGoalDayLeft: UILabel!
     @IBOutlet weak var pieChart: PieChartView!
     
-    //MARK: - Variables
-    var goalsComplete:PieChartDataEntry = PieChartDataEntry(value: 0)
-    var goalsIncomplete:PieChartDataEntry = PieChartDataEntry(value: 100)
-    var goalsProgress = [PieChartDataEntry]()
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -54,25 +49,20 @@ class HomepageVC: UIViewController
   //      Methods.addDayLabelsToCalendarArray()
         self.labelDate.text = Globals.dateFormatFull.string(from: Date())
         
-        //Update pie chart
-        self.goalsComplete.value = 0
-        self.goalsIncomplete.value = 100
-        self.goalsProgress = [self.goalsComplete, self.goalsIncomplete]
+        //Configure pie chart
+        Globals.pieChart = self.pieChart
+        Globals.goalsComplete.value = 0
+        Globals.goalsIncomplete.value = Globals.goals?.amount ?? 0
+        Globals.goalsProgress = [Globals.goalsComplete, Globals.goalsIncomplete]
+        Globals.pieChart!.drawEntryLabelsEnabled = false
+        
+        //Calculate recommended Spending
+ //       print(Methods.getRecommendedSpendingNoDecimal())
     }
     override func viewWillAppear(_ animated: Bool)
     {
-        self.updateChartData()
-    }
-    
-    //MARK: - Methods
-    func updateChartData()
-    {
-        let chartDataSet = PieChartDataSet(entries: self.goalsProgress, label: nil)
-        let chartData = PieChartData(dataSet: chartDataSet)
-        
-        let colors = [UIColor.red, UIColor.blue]
-        chartDataSet.colors = colors as! [NSUIColor]
-        
-        self.pieChart.data = chartData
+        super.viewWillAppear(animated)
+        Methods.updateChartData()
+   //     print("Hello worldd")
     }
 }

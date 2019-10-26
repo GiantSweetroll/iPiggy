@@ -48,8 +48,8 @@ class EditGoalsVC:UIViewController
     //MARK: - Actions
     @IBAction func saveButtonPressed(_ sender: Any)
     {
-        let dateFrom:Date = self.dateFromPicker.date
-        let dateTo:Date = self.dateToPicker.date
+        let dateFrom:Date = Methods.setDateTimeToOrigin(date: self.dateFromPicker.date)
+        let dateTo:Date = Methods.setDateTimeToOrigin(date: self.dateToPicker.date)
         if (dateFrom <= dateTo)
         {
             let amount = Double(self.amount.text ?? "0")!
