@@ -80,7 +80,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="JM4-uD-cg0">
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" id="JM4-uD-cg0" customClass="MonthAchievementTableViewCell" customModule="iPiggy" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="28" width="200" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JM4-uD-cg0" id="N9I-2b-9gs">
@@ -96,6 +96,9 @@
                                                                     </label>
                                                                 </subviews>
                                                             </tableViewCellContentView>
+                                                            <connections>
+                                                                <outlet property="label" destination="uLw-63-AsI" id="K91-YV-wm6"/>
+                                                            </connections>
                                                         </tableViewCell>
                                                     </prototypes>
                                                 </tableView>
@@ -104,6 +107,7 @@
                                         <size key="customSize" width="149" height="202"/>
                                         <connections>
                                             <outlet property="label" destination="Z72-oC-Ihw" id="5OR-Jr-NYA"/>
+                                            <outlet property="tableView" destination="hg0-Gw-TbL" id="Qgp-Hf-1nu"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

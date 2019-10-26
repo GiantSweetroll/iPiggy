@@ -34,6 +34,7 @@
 		A34C3D55235EE650001FD378 /* AchievementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D54235EE650001FD378 /* AchievementVC.swift */; };
 		A35AEDDD236261290065963C /* YearlyAchievementTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35AEDDC236261290065963C /* YearlyAchievementTableCell.swift */; };
 		A35AEDE323629D6A0065963C /* MonthlyCalendarDaysCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35AEDE223629D6A0065963C /* MonthlyCalendarDaysCVC.swift */; };
+		A35AEDE523647B9F0065963C /* MonthAchievementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35AEDE423647B9F0065963C /* MonthAchievementTableViewCell.swift */; };
 		A37E28F8236134D90048E9F8 /* WishlistDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E28F7236134D90048E9F8 /* WishlistDetailsVC.swift */; };
 		A37E28FB23619B660048E9F8 /* YearMonthCalendarCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E28FA23619B660048E9F8 /* YearMonthCalendarCVC.swift */; };
 		A37E28FF2361AD700048E9F8 /* YearDayCalendarCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E28FE2361AD700048E9F8 /* YearDayCalendarCVC.swift */; };
@@ -75,6 +76,7 @@
 		A34C3D54235EE650001FD378 /* AchievementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementVC.swift; sourceTree = "<group>"; };
 		A35AEDDC236261290065963C /* YearlyAchievementTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyAchievementTableCell.swift; sourceTree = "<group>"; };
 		A35AEDE223629D6A0065963C /* MonthlyCalendarDaysCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarDaysCVC.swift; sourceTree = "<group>"; };
+		A35AEDE423647B9F0065963C /* MonthAchievementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthAchievementTableViewCell.swift; sourceTree = "<group>"; };
 		A37E28F7236134D90048E9F8 /* WishlistDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistDetailsVC.swift; sourceTree = "<group>"; };
 		A37E28FA23619B660048E9F8 /* YearMonthCalendarCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearMonthCalendarCVC.swift; sourceTree = "<group>"; };
 		A37E28FE2361AD700048E9F8 /* YearDayCalendarCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearDayCalendarCVC.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				A34C3D43235EA184001FD378 /* HistoryTableViewCell.swift */,
 				A34C3D52235EE075001FD378 /* AchievementTableCell.swift */,
 				A35AEDDC236261290065963C /* YearlyAchievementTableCell.swift */,
+				A35AEDE423647B9F0065963C /* MonthAchievementTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				A37E29052361D0110048E9F8 /* MonthlyCalendarVC.swift in Sources */,
 				A37E28F8236134D90048E9F8 /* WishlistDetailsVC.swift in Sources */,
 				A34C3D4F235EB97F001FD378 /* Wishlist.swift in Sources */,
+				A35AEDE523647B9F0065963C /* MonthAchievementTableViewCell.swift in Sources */,
 				A34C3D0C235DD774001FD378 /* Constants.swift in Sources */,
 				A34C3D46235EA291001FD378 /* HistoryVC.swift in Sources */,
 				A37E28FF2361AD700048E9F8 /* YearDayCalendarCVC.swift in Sources */,

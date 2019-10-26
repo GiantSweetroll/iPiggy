@@ -17,6 +17,8 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
     
     //MARK: - Variables
     var monthIndex:Int!
+    var year:Int!
+    var month:Int!
     
     //MARK: - Main Method
     override func viewDidLoad()
@@ -24,6 +26,8 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
         super.viewDidLoad()
         self.monthIndex = Methods.getMonthComponent(date: Globals.dateTracker!) - 1 //Month starts at 1
         self.monthNavBar.title = Constants.MONTHS[self.monthIndex]
+        year = Methods.getYearComponent(date: Globals.dateTracker!)
+        month = Methods.getMonthComponent(date: Globals.dateTracker!)
         self.daysLabelCollectionView.delegate = self
         self.daysLabelCollectionView.dataSource = self
         self.collectionView.delegate = self
@@ -71,6 +75,19 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
             
             //Use the outlet in our custom class to get a reference to the UILabel in the cell
             cell.label.text = Globals.fullListOfCalendarDays[self.monthIndex][indexPath.row]
+            cell.month = self.month
+            cell.year = self.year
+            let day:String = cell.label.text!
+            if (day != "")
+            {
+                cell.day = Int(day)
+            }
+            else
+            {
+                cell.day = 0
+            }
+            cell.tableView.delegate = cell.self
+            cell.tableView.dataSource = cell.self
             
             //Customize cell
             cell.layer.borderWidth = 1

@@ -46,6 +46,8 @@ class HomepageVC: UIViewController
         Methods.updateHomepageGoalsDayLeftLabel()
   //      Methods.addDayLabelsToCalendarArray()
         self.labelDate.text = Globals.dateFormatFull.string(from: Date())
+        Methods.loadWishlists()
+        Globals.wishlistDictionary = Methods.getWishlistDictionary()
         if (!Methods.isSameDate(date1: Globals.dateTracker!, date2: Date()))
         {
             Methods.updateDateTracker()
@@ -62,6 +64,7 @@ class HomepageVC: UIViewController
         
         //Calculate recommended Spending
         Methods.saveRecommendedSpending(recommendedSpending: Double(Methods.getRecommendedSpendingNoDecimal()))
+        
         
         //This is done by cen
         
