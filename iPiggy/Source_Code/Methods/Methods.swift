@@ -285,7 +285,7 @@ struct Methods
     {
         Globals.labExpensesToday?.text =  String(format: "%0.0f", fundsSpent)
     }
-    public static func updateDateTracker()     //Save money spent to database
+    public static func updateDateTracker()
     {
         //MARK: - Saving to Core Data
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -303,7 +303,44 @@ struct Methods
 //       let funds = NSManagedObject(entity: entity!, insertInto: managedContext)
         
         //3
-        Globals.fundsDataObject?.setValue(Date(), forKey: Constants.CD_FUNDS_DATE_TRACKER)
+        Globals.fundsDataObject?.setValue(Methods.setDateTimeToOrigin(date: Date()), forKey: Constants.CD_FUNDS_DATE_TRACKER)
+        
+        //4
+        do
+        {
+            try managedContext.save()
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    public static func checkDateTracker()
+    {
+        guard let dateTracker = Globals.dateTracker else
+        {
+            Globals.dateTracker = Methods.setDateTimeToOrigin(date: Date())
+            return
+        }
+    }
+    public static func saveSurplus(surplus amount:Double)     //Save surplus to database
+    {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        //1
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+//       let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITY_FUNDS, in: managedContext)
+        
+//       let funds = NSManagedObject(entity: entity!, insertInto: managedContext)
+        
+        //3
+        Globals.fundsDataObject?.setValue(amount, forKey: Constants.CD_EXPENSES_SURPLUS)
         
         //4
         do

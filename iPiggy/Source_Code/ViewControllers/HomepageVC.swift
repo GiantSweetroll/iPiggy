@@ -25,6 +25,7 @@ class HomepageVC: UIViewController
         super.viewDidLoad()
         
         //Initialization
+        Methods.checkDateTracker()
         self.labelBudget.text = Methods.appendCurrency(string: "0")
         self.labelExpenses.text! = "0"
         self.labelGoalAmount.text = Methods.appendCurrency(string: "0")
@@ -47,6 +48,7 @@ class HomepageVC: UIViewController
         {
             Methods.updateDateTracker()
             Methods.saveMoneySpent(value: 0)        //Resets daily money spent
+            //TODO calculate surplus from previous day
         }
         
         //Configure pie chart
