@@ -199,17 +199,16 @@ struct Methods
             try managedContext.save()
 //           expenses.append(person)
             Globals.histories.append(expenses as! Expenses)     //Add to array for table view data source
-            print("dateTracker: \(Globals.dateFormatFull.string(from: Globals.dateTracker!))")
-            print("Date: \(Globals.dateFormatFull.string(from: date))")
-            print("Are they same? \(date == Globals.dateTracker)")
-            if (date == Globals.dateTracker)
+  //          print("dateTracker: \(Globals.dateFormatFull.string(from: Globals.dateTracker!))")
+  //          print("Date: \(Globals.dateFormatFull.string(from: date))")
+  //          print("Are they same? \(date == Globals.dateTracker)")
+  //          if (date == Globals.dateTracker)
+            if (Methods.isSameDate(date1: date, date2: Globals.dateTracker ?? Date()))
             {
-                print("Hello")
                 Methods.saveMoneySpent(value: Globals.fundsSpent + amount)
             }
             else
             {
-                print("Form the other side")
                 Methods.saveFunds(funds: Globals.funds - amount)
             }
         }
@@ -468,9 +467,25 @@ struct Methods
     {
         return Calendar.current.component(.month, from: date)
     }
+    public static func getDayComponent(date:Date) -> Int
+    {
+        return Calendar.current.component(.day, from: date)
+    }
     public static func getWeekdayUnit(date: Date) -> Int
     {
         return Calendar.current.component(.weekday, from: date)
+    }
+    public static func isSameDate(date1: Date, date2: Date) -> Bool
+    {
+        let date1Day:Int = Methods.getDayComponent(date: date1)
+        let date1Month:Int = Methods.getMonthComponent(date: date1)
+        let date1Year:Int = Methods.getYearComponent(date: date1)
+        
+        let date2Day:Int = Methods.getDayComponent(date: date2)
+        let date2Month:Int = Methods.getMonthComponent(date: date2)
+        let date2Year:Int = Methods.getYearComponent(date: date2)
+        
+        return date1Day == date2Day && date1Month == date2Month && date1Year == date2Year
     }
     public static func getAmountOfDaysArray(isLeapYear: Bool) -> [Int]
     {
