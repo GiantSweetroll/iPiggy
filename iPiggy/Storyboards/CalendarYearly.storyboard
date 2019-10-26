@@ -123,6 +123,7 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="343" height="460"/>
                                         <connections>
+                                            <outlet property="collectionView" destination="rNj-gU-Q01" id="zAv-uf-9Fe"/>
                                             <outlet property="monthLabel" destination="hH2-2n-lo7" id="7Mb-cx-60S"/>
                                         </connections>
                                     </collectionViewCell>

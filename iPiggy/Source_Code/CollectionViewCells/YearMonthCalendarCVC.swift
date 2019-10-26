@@ -12,6 +12,7 @@ class YearMonthCalendarCVC:UICollectionViewCell, UICollectionViewDataSource, UIC
 {
     //MARK: - IBOutlets
     @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK: - Variables
     var monthIndex:Int!
@@ -34,11 +35,21 @@ class YearMonthCalendarCVC:UICollectionViewCell, UICollectionViewDataSource, UIC
         
         cell.layer.borderWidth = 1
         
+        if (indexPath.item == 0)
+        {
+            let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            layout.itemSize = CGSize(width: UIScreen.main.bounds.width/15, height: UIScreen.main.bounds.width/15)
+            layout.minimumInteritemSpacing = 0
+            layout.minimumLineSpacing = 0
+            collectionView.collectionViewLayout = layout
+        }
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat        //Spacing between rows
     {
-        return 10
+        return 0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat   //Spacing between columns
     {
