@@ -15,6 +15,7 @@ class EditGoalsVC:UIViewController
     @IBOutlet weak var dateFrom: UITextField!
     @IBOutlet weak var dateTo: UITextField!
     @IBOutlet weak var amount: UITextField!
+    @IBOutlet weak var fundsAlloc: UITextField!
     
     //Variables
     lazy var dateFromPicker:UIDatePicker =
@@ -53,8 +54,9 @@ class EditGoalsVC:UIViewController
         if (dateFrom <= dateTo)
         {
             let amount = Double(self.amount.text ?? "0")!
+            let fundsAlloc = Double(self.fundsAlloc.text ?? "0")
             
-            Methods.saveGoals(dateFrom: dateFrom, dateTo: dateTo, amount: amount)
+            Methods.saveGoals(dateFrom: dateFrom, dateTo: dateTo, moneyToSave: amount, moneyAllocated: fundsAlloc!)
             dismiss(animated: true, completion: nil)
         }
     }

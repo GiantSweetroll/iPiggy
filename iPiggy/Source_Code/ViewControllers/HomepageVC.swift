@@ -37,6 +37,8 @@ class HomepageVC: UIViewController
         Globals.histories = []
         Globals.fullListOfCalendarDays = Methods.generateYearlyCalendarArray(year: Methods.getYearComponent(date: Date()))
         Methods.loadFunds()
+        Methods.checkSurplus()
+        Methods.checkRecommendedSpending()
         Methods.updateHomepageFundsLabel(funds: Globals.funds)
         Methods.updateHomepageFundsSpentLabel(fundsSpent: Globals.fundsSpent)
         Methods.loadGoals()
@@ -47,8 +49,8 @@ class HomepageVC: UIViewController
         if (!Methods.isSameDate(date1: Globals.dateTracker!, date2: Date()))
         {
             Methods.updateDateTracker()
+            Methods.saveSurplus(surplus: Methods.calculateSurplus(recommendedSpending: Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_REC_SPENDING) as! Double, moneySpent: Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_EXPENSE) as! Double))
             Methods.saveMoneySpent(value: 0)        //Resets daily money spent
-            //TODO calculate surplus from previous day
         }
         
         //Configure pie chart
@@ -64,8 +66,6 @@ class HomepageVC: UIViewController
         //This is done by cen
         
          navigationController?.navigationBar.barTintColor = UIColor(red: 255, green: 135, blue: 103, alpha: 1)
-       
-        
     }
     override func viewWillAppear(_ animated: Bool)
     {

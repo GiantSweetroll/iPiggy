@@ -539,6 +539,7 @@
                         <outlet property="amount" destination="J2X-Iy-f8R" id="O6N-yW-JGT"/>
                         <outlet property="dateFrom" destination="rL1-mf-HRa" id="3Hi-cx-5eS"/>
                         <outlet property="dateTo" destination="c4t-kK-Sc6" id="65d-dh-vnB"/>
+                        <outlet property="fundsAlloc" destination="BUg-CU-TPk" id="wcE-tc-Acl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zuB-Ew-23D" userLabel="First Responder" sceneMemberID="firstResponder"/>
