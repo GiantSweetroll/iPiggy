@@ -27,7 +27,9 @@ class YearlyCalendarVC: UIViewController, UICollectionViewDataSource, UICollecti
         
         let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.width/2)
+  //      layout.itemSize = CGSize(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.width/2)
+  //      print(UIScreen.main.bounds.width/2)
+        layout.itemSize = CGSize(width: 170, height: 165)       //Trail and error
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         self.monthCollectionView.collectionViewLayout = layout
@@ -61,8 +63,8 @@ class YearlyCalendarVC: UIViewController, UICollectionViewDataSource, UICollecti
         cell.monthLabel.text = Constants.MONTHS_SHORT[indexPath.item]
         cell.monthIndex = indexPath.row
         
-        cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor.red.cgColor
+ //       cell.layer.borderWidth = 1
+ //       cell.layer.borderColor = UIColor.red.cgColor
         
         return cell
     }
@@ -75,7 +77,7 @@ class YearlyCalendarVC: UIViewController, UICollectionViewDataSource, UICollecti
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat        //Spacing between rows
     {
-        return 10
+        return 0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat   //Spacing between columns
     {
