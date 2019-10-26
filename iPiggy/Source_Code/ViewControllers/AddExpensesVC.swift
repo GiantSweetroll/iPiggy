@@ -65,8 +65,8 @@ class AddExpensesVC: UIViewController
             Methods.saveExpenses(category: category, description: info, amount: amount, date: date)
             Methods.updateHomepageFundsSpentLabel(fundsSpent: Globals.fundsSpent)
             
-            print("Date tracker: \(Globals.dateFormatFull.string(from: Globals.dateTracker!))")
-            print("Date of expense: \(Globals.dateFormatFull.string(from: date))")
+     //       print("Date tracker: \(Globals.dateFormatFull.string(from: Globals.dateTracker!))")
+      //      print("Date of expense: \(Globals.dateFormatFull.string(from: date))")
             
             self.dismiss(animated: true, completion: nil)
         }
