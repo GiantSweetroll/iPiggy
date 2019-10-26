@@ -29,11 +29,6 @@ class HomepageVC: UIViewController
         navigationController?.navigationBar.barTintColor = UIColor(red: 255, green: 135, blue: 103, alpha: 1)
         
         //Initialization
-        if (Globals.dateTracker != Date())
-        {
-            Methods.updateDateTracker()
-            Methods.saveMoneySpent(value: 0)        //Resets daily money spent
-        }
         self.labelBudget.text = Methods.appendCurrency(string: "0")
         self.labelExpenses.text! = "0"
         self.labelGoalAmount.text = Methods.appendCurrency(string: "0")
@@ -52,6 +47,11 @@ class HomepageVC: UIViewController
         Methods.updateHomepageGoalsDayLeftLabel()
   //      Methods.addDayLabelsToCalendarArray()
         self.labelDate.text = Globals.dateFormatFull.string(from: Date())
+        if (!Methods.isSameDate(date1: Globals.dateTracker!, date2: Date()))
+        {
+            Methods.updateDateTracker()
+            Methods.saveMoneySpent(value: 0)        //Resets daily money spent
+        }
         
         //Configure pie chart
         Globals.pieChart = self.pieChart
