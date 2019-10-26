@@ -13,6 +13,9 @@ class YearlyCalendarVC: UIViewController, UICollectionViewDataSource, UICollecti
     //MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
+    //Variables
+    private var selectedIndex:Int?
+    
     //MARK: - Main Method
     override func viewDidLoad()
     {
@@ -20,6 +23,16 @@ class YearlyCalendarVC: UIViewController, UICollectionViewDataSource, UICollecti
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+    }
+    
+    //MARK: - Methods
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if (segue.identifier == Constants.SEGUE_CALENDAR_YEAR_TO_MONTH)
+        {
+            let monthCalendarVC = segue.destination as! MonthlyCalendarVC
+            monthCalendarVC.monthIndex = self.selectedIndex ?? 1
+        }
     }
     
     //MARK: - Protocols
@@ -37,15 +50,17 @@ class YearlyCalendarVC: UIViewController, UICollectionViewDataSource, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CVC_CALENDAR_YEARLY_MONTHLY_CELL, for: indexPath as IndexPath) as! YearMonthCalendarCVC
         
         //Use the outlet in our custom class to get a reference to the UILabel in the cell
-        cell.monthLabel.text = Constants.MONTHS_SHORT[indexPath.row]
-        cell.monthIndex = indexPath.row + 1 //Because reasons
+        cell.monthLabel.text = Constants.MONTHS_SHORT[indexPath.item]
+        cell.monthIndex = indexPath.row
         
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        //handle tap events
-        print("You selected cell #\(indexPath.item)!")
+        //Handles cell tap events
+        self.selectedIndex = indexPath.item
+        print(self.selectedIndex!)
+ //       performSegue(withIdentifier: Constants.SEGUE_CALENDAR_YEAR_TO_MONTH, sender: nil)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat        //Spacing between rows
     {

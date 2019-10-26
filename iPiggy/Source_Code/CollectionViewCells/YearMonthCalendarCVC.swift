@@ -34,13 +34,6 @@ class YearMonthCalendarCVC:UICollectionViewCell, UICollectionViewDataSource, UIC
         
         return cell
     }
-    
-    //MARK: - UICollectionViewDelegate protocol
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
-    {
-        //handle tap events
-        print("You selected cell #\(indexPath.item)!")
-    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat        //Spacing between rows
     {
         return 10

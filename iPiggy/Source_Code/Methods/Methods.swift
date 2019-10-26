@@ -464,6 +464,10 @@ struct Methods
     {
         return Calendar.current.component(.year, from: date)
     }
+    public static func getMonthComponent(date: Date) -> Int
+    {
+        return Calendar.current.component(.month, from: date)
+    }
     public static func getWeekdayUnit(date: Date) -> Int
     {
         return Calendar.current.component(.weekday, from: date)
@@ -565,6 +569,8 @@ struct Methods
             //Calculate gap early of the next month
             gapEarlyOfMonth = remainder
         }
+        
+        array.remove(at: 0) //Remove first empty array
         
         return array
     }
