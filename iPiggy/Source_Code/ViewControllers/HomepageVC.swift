@@ -60,6 +60,12 @@ class HomepageVC: UIViewController
         
         //Calculate recommended Spending
         Methods.saveRecommendedSpending(recommendedSpending: Double(Methods.getRecommendedSpendingNoDecimal()))
+        
+        //This is done by cen
+        
+         navigationController?.navigationBar.barTintColor = UIColor(red: 255, green: 135, blue: 103, alpha: 1)
+       
+        
     }
     override func viewWillAppear(_ animated: Bool)
     {
