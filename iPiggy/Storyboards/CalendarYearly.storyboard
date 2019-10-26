@@ -61,46 +61,46 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ldN-od-xIG">
-                                    <size key="itemSize" width="343" height="459"/>
+                                    <size key="itemSize" width="343" height="460"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="monthCell" id="hQ7-vT-AYi" customClass="YearMonthCalendarCVC" customModule="iPiggy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="459"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="460"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Qlv-Oq-i4M">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="459"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="460"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hH2-2n-lo7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="27"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="117" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rNj-gU-Q01">
-                                                    <rect key="frame" x="0.0" y="25" width="253" height="252"/>
+                                                    <rect key="frame" x="0.0" y="25" width="335" height="435"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="05b-M6-qWE">
-                                                        <size key="itemSize" width="54" height="57"/>
+                                                        <size key="itemSize" width="42" height="64"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dailyCell" id="hBu-VN-CC7" customClass="YearDayCalendarCVC" customModule="iPiggy" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="54" height="57"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="42" height="64"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="39j-Op-mTy">
-                                                                <rect key="frame" x="0.0" y="0.0" width="54" height="57"/>
+                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" insetsLayoutMarginsFromSafeArea="NO" id="39j-Op-mTy">
+                                                                <rect key="frame" x="0.0" y="0.0" width="42" height="64"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yk1-xM-uKA">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="32" height="28"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                                         <nil key="textColor"/>
@@ -108,7 +108,7 @@
                                                                     </label>
                                                                 </subviews>
                                                             </collectionViewCellContentView>
-                                                            <size key="customSize" width="54" height="57"/>
+                                                            <size key="customSize" width="42" height="64"/>
                                                             <connections>
                                                                 <outlet property="dayLabel" destination="yk1-xM-uKA" id="Dp1-S6-E9O"/>
                                                             </connections>
@@ -121,7 +121,7 @@
                                                 </collectionView>
                                             </subviews>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="343" height="459"/>
+                                        <size key="customSize" width="343" height="460"/>
                                         <connections>
                                             <outlet property="monthLabel" destination="hH2-2n-lo7" id="7Mb-cx-60S"/>
                                         </connections>
