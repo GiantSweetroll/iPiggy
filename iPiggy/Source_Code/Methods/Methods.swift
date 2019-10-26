@@ -215,7 +215,7 @@ struct Methods
     }
     public static func updateHomepageGoalsDayLeftLabel()
     {
-        let dateComponent:DateComponents = Methods.getDayDifference(from: Globals.goals!.dateFrom!, to: Globals.goals!.dateTo!)
+        let dateComponent:DateComponents = Methods.getDayDifference(from: Globals.dateTracker!, to: Globals.goals!.dateTo!)
         Globals.labGoalDayLeft?.text = String(dateComponent.day!)
     }
     
@@ -412,35 +412,35 @@ struct Methods
         }
     }
     public static func loadWishlists()
-     {
-         var wishlistData: [WishlistItem] = []
+    {
+        var wishlistData: [WishlistItem] = []
 
-         //1
-         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
-         {
-             return
-         }
-         
-         let managedContext = appDelegate.persistentContainer.viewContext
-         
-         //2
-         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.CD_ENTITY_WISHLIST)
-         
-         //3
-         do
-         {
-             wishlistData = try managedContext.fetch(fetchRequest) as! [WishlistItem]
-    //         print("Array expeneses data size: \(expensesData.count)")
-             if (wishlistData.count > 0)
-             {
-                Globals.wishlists = wishlistData
-             }
-         }
-         catch let error as NSError
-         {
-             print("Could not fetch. \(error), \(error.userInfo)")
-         }
-     }
+        //1
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
+        {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.CD_ENTITY_WISHLIST)
+        
+        //3
+        do
+        {
+            wishlistData = try managedContext.fetch(fetchRequest) as! [WishlistItem]
+//         print("Array expeneses data size: \(expensesData.count)")
+            if (wishlistData.count > 0)
+            {
+            Globals.wishlists = wishlistData
+            }
+        }
+        catch let error as NSError
+        {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
     public static func updateWishlistAchieved(wishlist:WishlistItem, achieved:Bool)
     {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -510,6 +510,32 @@ struct Methods
         {
             print("Could not save. \(error), \(error.userInfo)")
         }
+    }
+    public static func getWishlistDictionary() -> Dictionary<Int, Dictionary<Int, Dictionary<Int, [WishlistItem]>>>
+    {
+        let wishlists = Globals.wishlists
+        var wishlistDictionary = Dictionary<Int, Dictionary<Int, Dictionary<Int, [WishlistItem]>>>()
+        for i in 0..<wishlists.count
+        {
+            let wishlist = wishlists[i]
+            let date:Date = wishlist.date!
+
+            if (wishlistDictionary[Methods.getYearComponent(date: date)] == nil)
+            {
+                wishlistDictionary[Methods.getYearComponent(date: date)] = Dictionary<Int, Dictionary<Int, [WishlistItem]>>()
+            }
+            if (wishlistDictionary[Methods.getYearComponent(date: date)]![Methods.getMonthComponent(date: date)] == nil)
+            {
+                wishlistDictionary[Methods.getYearComponent(date: date)]![Methods.getMonthComponent(date: date)] = Dictionary<Int, [WishlistItem]>()
+            }
+            if (wishlistDictionary[Methods.getYearComponent(date: date)]![Methods.getMonthComponent(date: date)]![Methods.getDayComponent(date: date)] == nil)
+            {
+                wishlistDictionary[Methods.getYearComponent(date: date)]![Methods.getMonthComponent(date: date)]![Methods.getDayComponent(date: date)] = [WishlistItem]()
+            }
+            
+            wishlistDictionary[Methods.getYearComponent(date: date)]![Methods.getMonthComponent(date: date)]![Methods.getDayComponent(date: date)]!.append(wishlist)
+        }
+        return wishlistDictionary
     }
     
     //MARK: Calendar Operations
