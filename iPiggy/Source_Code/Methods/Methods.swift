@@ -283,7 +283,7 @@ struct Methods
     }
     public static func updateHomepageFundsSpentLabel(fundsSpent:Double)
     {
-        Globals.labFundsSpent?.text =  String(format: "%0.0f", fundsSpent)
+        Globals.labExpensesToday?.text =  String(format: "%0.0f", fundsSpent)
     }
     public static func updateDateTracker()     //Save money spent to database
     {
@@ -631,6 +631,41 @@ struct Methods
     public static func getRecommendedSpendingNoDecimal() -> Int
     {
         return Int(Methods.getRecommendedSpending())
+    }
+    public static func saveRecommendedSpending(recommendedSpending amount:Double)     //Save recommended spending to database
+    {
+        //MARK: - Saving to Core Data
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        //1
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+//       let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITY_FUNDS, in: managedContext)
+        
+//       let funds = NSManagedObject(entity: entity!, insertInto: managedContext)
+        
+        //3
+        Globals.fundsDataObject?.setValue(amount, forKey: Constants.CD_FUNDS_REC_SPENDING)
+        
+        //4
+        do
+        {
+            try managedContext.save()
+            Methods.updateHomepageRecommendedSpendingLabel(amount: amount)
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    public static func updateHomepageRecommendedSpendingLabel(amount: Double)
+    {
+        Globals.labRecSpending?.text = String(format: "%0.0f", amount)
     }
     
     //MARK: - Manage Charts

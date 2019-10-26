@@ -69,8 +69,8 @@ class EditGoalsVC:UIViewController
         super.viewWillAppear(animated)
         
         self.amount?.text = String(format: "%0.0f", (Globals.goals?.amount)!)
-        self.dateFrom?.text = Globals.dateFormatFull.string(from: Globals.goals?.dateFrom ?? Date())
-        self.dateTo?.text = Globals.dateFormatFull.string(from: Globals.goals?.dateTo ?? Date())
+        self.dateFrom?.text = Globals.dateFormatFull.string(from: Globals.goals!.dateFrom)
+        self.dateTo?.text = Globals.dateFormatFull.string(from: Globals.goals!.dateTo!)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {

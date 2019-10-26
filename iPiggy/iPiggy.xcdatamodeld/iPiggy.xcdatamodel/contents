@@ -11,11 +11,13 @@
         <attribute name="expense" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="funds" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="recSpending" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="surplus" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Goal" representedClassName="Goal" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="dateFrom" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateFrom" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="dateTo" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="progress" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="WishlistItem" representedClassName="WishlistItem" syncable="YES" codeGenerationType="class">
         <attribute name="achieved" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -25,8 +27,8 @@
     </entity>
     <elements>
         <element name="Expenses" positionX="-54" positionY="-9" width="128" height="103"/>
-        <element name="Funds" positionX="-18" positionY="63" width="128" height="103"/>
-        <element name="Goal" positionX="0" positionY="108" width="128" height="88"/>
+        <element name="Funds" positionX="-18" positionY="63" width="128" height="118"/>
+        <element name="Goal" positionX="0" positionY="108" width="128" height="103"/>
         <element name="WishlistItem" positionX="-36" positionY="36" width="128" height="103"/>
     </elements>
 </model>

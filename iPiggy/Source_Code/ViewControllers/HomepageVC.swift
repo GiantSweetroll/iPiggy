@@ -37,7 +37,7 @@ class HomepageVC: UIViewController
         Globals.labRecSpending = self.labelRecSpending
         Globals.labGoals = self.labelGoalAmount
         Globals.labGoalDayLeft = self.labelGoalDayLeft
-        Globals.labFundsSpent = self.labelExpenses
+        Globals.labExpensesToday = self.labelExpenses
         Globals.histories = []
         Globals.fullListOfCalendarDays = Methods.generateYearlyCalendarArray(year: Methods.getYearComponent(date: Date()))
         Methods.loadFunds()
@@ -57,7 +57,7 @@ class HomepageVC: UIViewController
         Globals.pieChart!.drawEntryLabelsEnabled = false
         
         //Calculate recommended Spending
- //       print(Methods.getRecommendedSpendingNoDecimal())
+        Methods.saveRecommendedSpending(recommendedSpending: Double(Methods.getRecommendedSpendingNoDecimal()))
     }
     override func viewWillAppear(_ animated: Bool)
     {
