@@ -30,7 +30,9 @@ class YearMonthCalendarCVC:UICollectionViewCell, UICollectionViewDataSource, UIC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CVC_CALENDAR_YEARLY_DAILY_CELL, for: indexPath as IndexPath) as! YearDayCalendarCVC
         
         //Use the outlet in our custom class to get a reference to the UILabel in the cell
-        cell.dayLabel.text = Globals.fullListOfCalendarDays[self.monthIndex][indexPath.row]
+        cell.dayLabel.text = Globals.fullListOfCalendarDays[self.monthIndex][indexPath.item]
+        
+        cell.layer.borderWidth = 1
         
         return cell
     }

@@ -53,6 +53,9 @@ class YearlyCalendarVC: UIViewController, UICollectionViewDataSource, UICollecti
         cell.monthLabel.text = Constants.MONTHS_SHORT[indexPath.item]
         cell.monthIndex = indexPath.row
         
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.red.cgColor
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
