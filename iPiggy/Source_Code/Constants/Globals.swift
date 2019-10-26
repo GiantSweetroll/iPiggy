@@ -34,6 +34,7 @@ struct Globals
     public static var funds:Double = 0
     public static var fundsSpent:Double = 0
     public static var recSpending:Double = 0
+    public static var currentYearlyCalendarYearDisplayed:Int?
     public static var dateTracker:Date?
     public static var isNewAchievement:Bool = false
     public static var dateFormatFull: DateFormatter = {

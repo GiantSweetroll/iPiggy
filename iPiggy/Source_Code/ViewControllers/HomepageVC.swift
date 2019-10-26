@@ -35,7 +35,8 @@ class HomepageVC: UIViewController
         Globals.labGoalDayLeft = self.labelGoalDayLeft
         Globals.labExpensesToday = self.labelExpenses
         Globals.histories = []
-        Globals.fullListOfCalendarDays = Methods.generateYearlyCalendarArray(year: Methods.getYearComponent(date: Date()))
+        Globals.fullListOfCalendarDays = Methods.generateYearlyCalendarArray(year: Methods.getYearComponent(date: Globals.dateTracker!))
+        Globals.currentYearlyCalendarYearDisplayed = Methods.getYearComponent(date: Globals.dateTracker!)
         Methods.loadFunds()
         Methods.checkSurplus()
         Methods.checkRecommendedSpending()
