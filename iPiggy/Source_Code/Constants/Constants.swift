@@ -16,7 +16,7 @@ struct Constants
     public static let CD_FUNDS_REC_SPENDING = "recSpending"
     public static let CD_FUNDS_EXPENSE = "expense"
     public static let CD_FUNDS_DATE_TRACKER = "dateTracker"
-    public static let CD_FUNDS_Surplus = "surplus"
+    public static let CD_FUNDS_SURPLUS = "surplus"
     public static let CD_ENTITY_FUNDS = "Funds"
     public static let CD_ENTITY_EXPENSES = "Expenses"
     public static let CD_EXPENSES_CATEGORY = "category"

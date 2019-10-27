@@ -52,7 +52,8 @@ class HomepageVC: UIViewController
         if (!Methods.isSameDate(date1: Globals.dateTracker!, date2: Date()))
         {
             Methods.updateDateTracker()
-            Methods.saveSurplus(surplus: Methods.calculateSurplus(recommendedSpending: Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_REC_SPENDING) as! Double, moneySpent: Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_EXPENSE) as! Double))
+            Methods.updateGoalProgress()
+            Methods.saveSurplus(surplus: Methods.getSurplus() + Methods.calculateSurplus(recommendedSpending: Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_REC_SPENDING) as! Double, moneySpent: Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_EXPENSE) as! Double))
             Methods.saveMoneySpent(value: 0)        //Resets daily money spent
         }
         

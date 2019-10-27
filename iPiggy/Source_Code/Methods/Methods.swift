@@ -110,7 +110,7 @@ struct Methods
 //       let funds = NSManagedObject(entity: entity!, insertInto: managedContext)
         
         //3
-        Globals.fundsDataObject?.setValue(amount, forKey: Constants.CD_FUNDS_Surplus)
+        Globals.fundsDataObject?.setValue(amount, forKey: Constants.CD_FUNDS_SURPLUS)
         
         //4
         do
@@ -124,7 +124,7 @@ struct Methods
     }
     public static func checkSurplus()
     {
-        guard let _ = Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_Surplus) else
+        guard let _ = Globals.goals?.value(forKey: Constants.CD_FUNDS_SURPLUS) else
         {
             Methods.saveSurplus(surplus: 0)
             return
@@ -132,7 +132,7 @@ struct Methods
     }
     public static func getSurplus() -> Double
     {
-        return Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_Surplus) as? Double ?? 0
+        return Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_SURPLUS) as? Double ?? 0
     }
     public static func calculateSurplus(recommendedSpending recSpend: Double, moneySpent: Double) -> Double
     {
@@ -217,6 +217,51 @@ struct Methods
     {
         let dateComponent:DateComponents = Methods.getDayDifference(from: Globals.dateTracker!, to: Globals.goals!.dateTo!)
         Globals.labGoalDayLeft?.text = String(dateComponent.day!)
+    }
+    public static func saveGoalProgress(amount: Double)
+    {
+        //MARK: - Saving to Core Data
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        //1
+        let managedContext = appDelegate.persistentContainer.viewContext
+        //3
+        Globals.goalsDataObject?.setValue(amount, forKey: Constants.CD_GOALS_PROGRESS)
+        
+        //4
+        do
+        {
+            try managedContext.save()
+            //Update chart in Homepage
+            Globals.goals?.progress = amount
+   //         Methods.updateChartData()
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    public static func updateGoalProgress()
+    {
+        let yesterdaySurplus:Double = Methods.calculateSurplus(recommendedSpending: Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_REC_SPENDING) as! Double, moneySpent: Globals.fundsSpent)
+        let dailyGoalSavings:Double = (Globals.goals?.amount)!/Double(Methods.getDayDifference(from: Globals.goals?.dateFrom ?? Date(), to: Globals.goals?.dateTo ?? Date()).day ?? 0)
+        let goalIncreaseYesterday:Double = dailyGoalSavings + yesterdaySurplus
+        var goalProgressTotal:Double = Globals.goals!.progress
+        goalProgressTotal += goalIncreaseYesterday
+        if goalProgressTotal < 0
+        {
+            Methods.saveGoalProgress(amount: 0)
+            Methods.saveSurplus(surplus: goalProgressTotal)
+        }
+        else
+        {
+            Methods.saveGoalProgress(amount: goalProgressTotal)
+            Methods.saveSurplus(surplus: 0)
+        }
     }
     
     //MARK: - Manage Expenses and Histories
@@ -703,10 +748,18 @@ struct Methods
         {
             let maxAllocatedFunds:Double = funds/Double(duration)
             let eachDaySave:Double = goal/Double(duration)
+            let surplusDivision:Double = surplus/Double(duration)       //Nyicil
             
      //       print("\(maxAllocatedFunds) - \(eachDaySave) + \(surplus) = \(maxAllocatedFunds - eachDaySave + surplus)")
             
-            return maxAllocatedFunds - eachDaySave + surplus
+            if (surplus < 0)
+            {
+                return maxAllocatedFunds - eachDaySave + surplusDivision    //Nyicil
+            }
+            else
+            {
+                return maxAllocatedFunds - eachDaySave          //No need nyicil
+            }
         }
     }
     public static func getRecommendedSpending() -> Double
@@ -714,7 +767,7 @@ struct Methods
         return Methods.getRecommendedSpending(allocatedFunds: Globals.goals?.allocatedFunds ?? 0,
                                               goal: Globals.goals?.amount ?? 0,
                                               timeDurationInDays: Methods.getDayDifference(from: Globals.goals?.dateFrom ?? Date(), to: Globals.goals?.dateTo ?? Date()).day ?? 0,
-                                              surplus: Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_Surplus) as! Double)
+                                              surplus: Methods.getSurplus())
     }
     public static func getRecommendedSpendingNoDecimal() -> Int
     {
@@ -753,7 +806,14 @@ struct Methods
     }
     public static func updateHomepageRecommendedSpendingLabel(amount: Double)
     {
-        Globals.labRecSpending?.text = String(format: "%0.0f", amount)
+        if amount<0
+        {
+            Globals.labRecSpending?.text = String(format: "%0.0f", 0)
+        }
+        else
+        {
+            Globals.labRecSpending?.text = String(format: "%0.0f", amount)
+        }
     }
     public static func checkRecommendedSpending()
     {
