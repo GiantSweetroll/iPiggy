@@ -52,10 +52,10 @@ class EditGoalsVC:UIViewController
         let dateFrom:Date = Methods.setDateTimeToOrigin(date: self.dateFromPicker.date)
         let dateTo:Date = Methods.setDateTimeToOrigin(date: self.dateToPicker.date)
         let amount = Double(self.amount.text ?? "0")!
-        let fundsAlloc = Double(self.fundsAlloc.text ?? "0")
+        let fundsAlloc = Double(self.fundsAlloc.text ?? "0")!
         if (dateFrom <= dateTo && fundsAlloc <= Globals.funds && amount <= fundsAlloc)
         {
-            Methods.saveGoals(dateFrom: dateFrom, dateTo: dateTo, moneyToSave: amount, moneyAllocated: fundsAlloc!)
+            Methods.saveGoals(dateFrom: dateFrom, dateTo: dateTo, moneyToSave: amount, moneyAllocated: fundsAlloc)
             Methods.saveRecommendedSpending(recommendedSpending: Double(Methods.getRecommendedSpendingNoDecimal()))
             dismiss(animated: true, completion: nil)
         }
