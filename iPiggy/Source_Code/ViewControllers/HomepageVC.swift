@@ -20,6 +20,9 @@ class HomepageVC: UIViewController
     @IBOutlet weak var labelGoalDayLeft: UILabel!
     @IBOutlet weak var pieChart: PieChartView!
     
+    //Variables
+    var notifications:Notifications = Notifications()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -67,6 +70,7 @@ class HomepageVC: UIViewController
         //Calculate recommended Spending
         Methods.saveRecommendedSpending(recommendedSpending: Double(Methods.getRecommendedSpendingNoDecimal()))
         
+        notifications.scheduleNotification(notificationType: "iPiggy messages")
         
         //This is done by cen
         
