@@ -16,7 +16,7 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
     @IBOutlet weak var achievementTableView: UITableView!
     
     //MARK: - Variables
-    var achievements:[Achievement]!
+//    var achievements:[Achievement]!
     var selectedRow:Int!
     
     //MARK: - Main Methods
@@ -29,7 +29,7 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
         self.wishlistTabelView.delegate = self
         self.achievementTableView.dataSource = self
         self.achievementTableView.delegate = self
-        self.achievements = []
+ //       self.achievements = []
         
         self.achievementTableView.backgroundColor = UIColor.gray
     }
@@ -63,7 +63,8 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
         }
         else
         {
-            return self.achievements.count
+   //         return self.achievements.count
+            return Globals.achievements.count
         }
     }
     
@@ -81,13 +82,14 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
             
             return cell
         }
-        else
+        else        //Achievement table
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TVC_ACHIEVEMENT, for: indexPath) as! AchievementTableCell
             
-            let achievement = self.achievements[indexPath.row]
+     //       let achievement = self.achievements[indexPath.row]
+            let achievement = Globals.achievements[indexPath.row]
             
-            cell.label.text = achievement.achievement
+            cell.label.text = achievement.text
             
             return cell
         }

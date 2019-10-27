@@ -93,9 +93,54 @@ struct Methods
     {
         Globals.labFunds?.text = Methods.appendCurrency(string: String(format: "%0.0f", funds))
     }
+    public static func saveSurplus(surplus amount:Double)     //Save surplus to database
+    {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        //1
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+//       let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITY_FUNDS, in: managedContext)
+        
+//       let funds = NSManagedObject(entity: entity!, insertInto: managedContext)
+        
+        //3
+        Globals.fundsDataObject?.setValue(amount, forKey: Constants.CD_FUNDS_Surplus)
+        
+        //4
+        do
+        {
+            try managedContext.save()
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    public static func checkSurplus()
+    {
+        guard let _ = Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_Surplus) else
+        {
+            Methods.saveSurplus(surplus: 0)
+            return
+        }
+    }
+    public static func getSurplus() -> Double
+    {
+        return Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_Surplus) as? Double ?? 0
+    }
+    public static func calculateSurplus(recommendedSpending recSpend: Double, moneySpent: Double) -> Double
+    {
+        return recSpend - moneySpent
+    }
     
     //MARK: - Goals Handling
-    public static func saveGoals(dateFrom: Date, dateTo:Date, amount:Double)       //Save to database
+    public static func saveGoals(dateFrom: Date, dateTo:Date, moneyToSave amount:Double, moneyAllocated fundsAlloc: Double)       //Save to database
     {
         //MARK: - Saving to Core Data
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -110,6 +155,7 @@ struct Methods
         Globals.goalsDataObject?.setValue(dateFrom, forKey: Constants.CD_GOALS_DATE_FROM)
         Globals.goalsDataObject?.setValue(dateTo, forKey: Constants.CD_GOALS_DATE_TO)
         Globals.goalsDataObject?.setValue(amount, forKey: Constants.CD_GOALS_AMOUNT)
+        Globals.goalsDataObject?.setValue(fundsAlloc, forKey: Constants.CD_GOALS_ALLOCATED_FUNDS)
         
         //4
         do
@@ -117,6 +163,9 @@ struct Methods
             try managedContext.save()
             //MARK: - Update chart and goals label in Homepage
             Globals.goals?.amount = amount
+            Globals.goals?.dateTo = dateTo
+            Globals.goals?.dateFrom = dateFrom
+            Globals.goals?.allocatedFunds = fundsAlloc
             Methods.updateHomepageGoalsLabel(goals: amount)
             Methods.updateHomepageGoalsDayLeftLabel()
         }
@@ -151,7 +200,7 @@ struct Methods
                 let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITIY_GOALS, in: managedContext)
                         
                 Globals.goalsDataObject = NSManagedObject(entity: entity!, insertInto: managedContext)
-                Methods.saveGoals(dateFrom: Date(), dateTo: Date(), amount: 0)
+                Methods.saveGoals(dateFrom: Methods.setDateTimeToOrigin(date: Date()), dateTo: Methods.setDateTimeToOrigin(date: Date()), moneyToSave: 0, moneyAllocated: 0)
             }
             Globals.goals = Globals.goalsDataObject as? Goal
         }
@@ -166,7 +215,7 @@ struct Methods
     }
     public static func updateHomepageGoalsDayLeftLabel()
     {
-        let dateComponent:DateComponents = Methods.getDayDifference(from: Globals.goals!.dateFrom!, to: Globals.goals!.dateTo!)
+        let dateComponent:DateComponents = Methods.getDayDifference(from: Globals.dateTracker!, to: Globals.goals!.dateTo!)
         Globals.labGoalDayLeft?.text = String(dateComponent.day!)
     }
     
@@ -285,7 +334,7 @@ struct Methods
     {
         Globals.labExpensesToday?.text =  String(format: "%0.0f", fundsSpent)
     }
-    public static func updateDateTracker()     //Save money spent to database
+    public static func updateDateTracker()
     {
         //MARK: - Saving to Core Data
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -303,7 +352,7 @@ struct Methods
 //       let funds = NSManagedObject(entity: entity!, insertInto: managedContext)
         
         //3
-        Globals.fundsDataObject?.setValue(Date(), forKey: Constants.CD_FUNDS_DATE_TRACKER)
+        Globals.fundsDataObject?.setValue(Methods.setDateTimeToOrigin(date: Date()), forKey: Constants.CD_FUNDS_DATE_TRACKER)
         
         //4
         do
@@ -313,6 +362,14 @@ struct Methods
         catch let error as NSError
         {
             print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    public static func checkDateTracker()
+    {
+        guard let _ = Globals.dateTracker else
+        {
+            Globals.dateTracker = Methods.setDateTimeToOrigin(date: Date())
+            return
         }
     }
     
@@ -355,35 +412,35 @@ struct Methods
         }
     }
     public static func loadWishlists()
-     {
-         var wishlistData: [WishlistItem] = []
+    {
+        var wishlistData: [WishlistItem] = []
 
-         //1
-         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
-         {
-             return
-         }
-         
-         let managedContext = appDelegate.persistentContainer.viewContext
-         
-         //2
-         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.CD_ENTITY_WISHLIST)
-         
-         //3
-         do
-         {
-             wishlistData = try managedContext.fetch(fetchRequest) as! [WishlistItem]
-    //         print("Array expeneses data size: \(expensesData.count)")
-             if (wishlistData.count > 0)
-             {
-                Globals.wishlists = wishlistData
-             }
-         }
-         catch let error as NSError
-         {
-             print("Could not fetch. \(error), \(error.userInfo)")
-         }
-     }
+        //1
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
+        {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.CD_ENTITY_WISHLIST)
+        
+        //3
+        do
+        {
+            wishlistData = try managedContext.fetch(fetchRequest) as! [WishlistItem]
+//         print("Array expeneses data size: \(expensesData.count)")
+            if (wishlistData.count > 0)
+            {
+            Globals.wishlists = wishlistData
+            }
+        }
+        catch let error as NSError
+        {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
     public static func updateWishlistAchieved(wishlist:WishlistItem, achieved:Bool)
     {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -453,6 +510,32 @@ struct Methods
         {
             print("Could not save. \(error), \(error.userInfo)")
         }
+    }
+    public static func getWishlistDictionary() -> Dictionary<Int, Dictionary<Int, Dictionary<Int, [WishlistItem]>>>
+    {
+        let wishlists = Globals.wishlists
+        var wishlistDictionary = Dictionary<Int, Dictionary<Int, Dictionary<Int, [WishlistItem]>>>()
+        for i in 0..<wishlists.count
+        {
+            let wishlist = wishlists[i]
+            let date:Date = wishlist.date!
+
+            if (wishlistDictionary[Methods.getYearComponent(date: date)] == nil)
+            {
+                wishlistDictionary[Methods.getYearComponent(date: date)] = Dictionary<Int, Dictionary<Int, [WishlistItem]>>()
+            }
+            if (wishlistDictionary[Methods.getYearComponent(date: date)]![Methods.getMonthComponent(date: date)] == nil)
+            {
+                wishlistDictionary[Methods.getYearComponent(date: date)]![Methods.getMonthComponent(date: date)] = Dictionary<Int, [WishlistItem]>()
+            }
+            if (wishlistDictionary[Methods.getYearComponent(date: date)]![Methods.getMonthComponent(date: date)]![Methods.getDayComponent(date: date)] == nil)
+            {
+                wishlistDictionary[Methods.getYearComponent(date: date)]![Methods.getMonthComponent(date: date)]![Methods.getDayComponent(date: date)] = [WishlistItem]()
+            }
+            
+            wishlistDictionary[Methods.getYearComponent(date: date)]![Methods.getMonthComponent(date: date)]![Methods.getDayComponent(date: date)]!.append(wishlist)
+        }
+        return wishlistDictionary
     }
     
     //MARK: Calendar Operations
@@ -610,7 +693,7 @@ struct Methods
     }
     
     //MARK: - Manage Recommended Spending
-    public static func getRecommendedSpending(allocatedFunds funds: Double, goal:Double, timeDurationInDays duration:Int) -> Double
+    public static func getRecommendedSpending(allocatedFunds funds: Double, goal:Double, timeDurationInDays duration:Int, surplus: Double) -> Double
     {
         if (duration <= 0)
         {
@@ -621,12 +704,17 @@ struct Methods
             let maxAllocatedFunds:Double = funds/Double(duration)
             let eachDaySave:Double = goal/Double(duration)
             
-            return maxAllocatedFunds - eachDaySave
+     //       print("\(maxAllocatedFunds) - \(eachDaySave) + \(surplus) = \(maxAllocatedFunds - eachDaySave + surplus)")
+            
+            return maxAllocatedFunds - eachDaySave + surplus
         }
     }
     public static func getRecommendedSpending() -> Double
     {
-        return Methods.getRecommendedSpending(allocatedFunds: Globals.funds, goal: Globals.goals?.amount ?? 0, timeDurationInDays: Methods.getDayDifference(from: Globals.goals?.dateFrom ?? Date(), to: Globals.goals?.dateTo ?? Date()).day ?? 0)
+        return Methods.getRecommendedSpending(allocatedFunds: Globals.goals?.allocatedFunds ?? 0,
+                                              goal: Globals.goals?.amount ?? 0,
+                                              timeDurationInDays: Methods.getDayDifference(from: Globals.goals?.dateFrom ?? Date(), to: Globals.goals?.dateTo ?? Date()).day ?? 0,
+                                              surplus: Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_Surplus) as! Double)
     }
     public static func getRecommendedSpendingNoDecimal() -> Int
     {
@@ -666,6 +754,14 @@ struct Methods
     public static func updateHomepageRecommendedSpendingLabel(amount: Double)
     {
         Globals.labRecSpending?.text = String(format: "%0.0f", amount)
+    }
+    public static func checkRecommendedSpending()
+    {
+        guard let _ = Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_REC_SPENDING) else
+        {
+            Methods.saveRecommendedSpending(recommendedSpending: 0)
+            return
+        }
     }
     
     //MARK: - Manage Charts

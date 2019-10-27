@@ -62,6 +62,8 @@ class YearlyCalendarVC: UIViewController, UICollectionViewDataSource, UICollecti
         //Use the outlet in our custom class to get a reference to the UILabel in the cell
         cell.monthLabel.text = Constants.MONTHS_SHORT[indexPath.item]
         cell.monthIndex = indexPath.row
+        cell.year = Globals.currentYearlyCalendarYearDisplayed
+        cell.month = cell.monthIndex+1
         
  //       cell.layer.borderWidth = 1
  //       cell.layer.borderColor = UIColor.red.cgColor

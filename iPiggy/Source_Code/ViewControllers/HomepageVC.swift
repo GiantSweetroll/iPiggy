@@ -24,11 +24,8 @@ class HomepageVC: UIViewController
     {
         super.viewDidLoad()
         
-        //This is done by cen
-        
-        navigationController?.navigationBar.barTintColor = UIColor(red: 255, green: 135, blue: 103, alpha: 1)
-        
         //Initialization
+        Methods.checkDateTracker()
         self.labelBudget.text = Methods.appendCurrency(string: "0")
         self.labelExpenses.text! = "0"
         self.labelGoalAmount.text = Methods.appendCurrency(string: "0")
@@ -38,8 +35,11 @@ class HomepageVC: UIViewController
         Globals.labGoalDayLeft = self.labelGoalDayLeft
         Globals.labExpensesToday = self.labelExpenses
         Globals.histories = []
-        Globals.fullListOfCalendarDays = Methods.generateYearlyCalendarArray(year: Methods.getYearComponent(date: Date()))
+        Globals.fullListOfCalendarDays = Methods.generateYearlyCalendarArray(year: Methods.getYearComponent(date: Globals.dateTracker!))
+        Globals.currentYearlyCalendarYearDisplayed = Methods.getYearComponent(date: Globals.dateTracker!)
         Methods.loadFunds()
+        Methods.checkSurplus()
+        Methods.checkRecommendedSpending()
         Methods.updateHomepageFundsLabel(funds: Globals.funds)
         Methods.updateHomepageFundsSpentLabel(fundsSpent: Globals.fundsSpent)
         Methods.loadGoals()
@@ -47,9 +47,12 @@ class HomepageVC: UIViewController
         Methods.updateHomepageGoalsDayLeftLabel()
   //      Methods.addDayLabelsToCalendarArray()
         self.labelDate.text = Globals.dateFormatFull.string(from: Date())
+        Methods.loadWishlists()
+        Globals.wishlistDictionary = Methods.getWishlistDictionary()
         if (!Methods.isSameDate(date1: Globals.dateTracker!, date2: Date()))
         {
             Methods.updateDateTracker()
+            Methods.saveSurplus(surplus: Methods.calculateSurplus(recommendedSpending: Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_REC_SPENDING) as! Double, moneySpent: Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_EXPENSE) as! Double))
             Methods.saveMoneySpent(value: 0)        //Resets daily money spent
         }
         
@@ -62,6 +65,11 @@ class HomepageVC: UIViewController
         
         //Calculate recommended Spending
         Methods.saveRecommendedSpending(recommendedSpending: Double(Methods.getRecommendedSpendingNoDecimal()))
+        
+        
+        //This is done by cen
+        
+         navigationController?.navigationBar.barTintColor = UIColor(red: 255, green: 135, blue: 103, alpha: 1)
     }
     override func viewWillAppear(_ animated: Bool)
     {
