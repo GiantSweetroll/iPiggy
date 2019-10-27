@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
+import Charts
 
 struct Globals
 {
@@ -21,7 +22,11 @@ struct Globals
     public static var labRecSpending:UILabel?
     public static var labGoals:UILabel?
     public static var labGoalDayLeft:UILabel?
-    public static var labFundsSpent:UILabel?
+    public static var labExpensesToday:UILabel?
+    public static var pieChart:PieChartView?
+    public static var goalsComplete:PieChartDataEntry = PieChartDataEntry(value: 0)
+    public static var goalsIncomplete:PieChartDataEntry = PieChartDataEntry(value: 100)
+    public static var goalsProgress = [PieChartDataEntry]()
     public static var fundsDataObject:NSManagedObject?
     public static var goalsDataObject:NSManagedObject?
     public static var goals:Goal?

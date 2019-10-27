@@ -48,8 +48,8 @@ class EditGoalsVC:UIViewController
     //MARK: - Actions
     @IBAction func saveButtonPressed(_ sender: Any)
     {
-        let dateFrom:Date = self.dateFromPicker.date
-        let dateTo:Date = self.dateToPicker.date
+        let dateFrom:Date = Methods.setDateTimeToOrigin(date: self.dateFromPicker.date)
+        let dateTo:Date = Methods.setDateTimeToOrigin(date: self.dateToPicker.date)
         if (dateFrom <= dateTo)
         {
             let amount = Double(self.amount.text ?? "0")!
@@ -69,8 +69,8 @@ class EditGoalsVC:UIViewController
         super.viewWillAppear(animated)
         
         self.amount?.text = String(format: "%0.0f", (Globals.goals?.amount)!)
-        self.dateFrom?.text = Globals.dateFormatFull.string(from: Globals.goals?.dateFrom ?? Date())
-        self.dateTo?.text = Globals.dateFormatFull.string(from: Globals.goals?.dateTo ?? Date())
+        self.dateFrom?.text = Globals.dateFormatFull.string(from: Globals.goals!.dateFrom ?? Date())
+        self.dateTo?.text = Globals.dateFormatFull.string(from: Globals.goals!.dateTo!)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {

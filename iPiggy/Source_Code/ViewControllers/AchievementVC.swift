@@ -30,6 +30,8 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
         self.achievementTableView.dataSource = self
         self.achievementTableView.delegate = self
         self.achievements = []
+        
+        self.achievementTableView.backgroundColor = UIColor.gray
     }
     override func viewWillAppear(_ animated: Bool)
     {

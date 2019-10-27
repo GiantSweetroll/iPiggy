@@ -22,7 +22,7 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.monthIndex = 9
+        self.monthIndex = Methods.getMonthComponent(date: Globals.dateTracker!) - 1 //Month starts at 1
         self.monthNavBar.title = Constants.MONTHS[self.monthIndex]
         self.daysLabelCollectionView.delegate = self
         self.daysLabelCollectionView.dataSource = self
@@ -30,6 +30,21 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
         self.collectionView.dataSource = self
         
         self.daysLabelCollectionView.backgroundColor = UIColor.gray
+        
+        //Configure collection view
+        let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width/7, height: UIScreen.main.bounds.width/2)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        self.collectionView.collectionViewLayout = layout
+        
+        let layout2:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+ //       layout2.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+        layout2.itemSize = CGSize(width: UIScreen.main.bounds.width/7, height: UIScreen.main.bounds.width/7)
+        layout2.minimumInteritemSpacing = 0
+        layout2.minimumLineSpacing = 0
+        self.daysLabelCollectionView.collectionViewLayout = layout2
     }
     
     //MARK: - Protocols
@@ -58,7 +73,7 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
             cell.label.text = Globals.fullListOfCalendarDays[self.monthIndex][indexPath.row]
             
             //Customize cell
-   //         cell.backgroundColor = UIColor.cyan
+            cell.layer.borderWidth = 1
             
             return cell
         }
@@ -71,6 +86,8 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
             cell.label.textAlignment = NSTextAlignment.center
        //     cell.label.backgroundColor = UIColor.gray
             
+ //           cell.layer.borderWidth = 1
+            
             return cell
         }
     }
@@ -80,15 +97,5 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
     {
         //handle tap events
         print("You selected cell #\(indexPath.item)!")
-    }
-    
-    //MARK: - Trial Methods
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat        //Spacing between rows
-    {
-        return 10
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat   //Spacing between columns
-    {
-        return 0
     }
 }

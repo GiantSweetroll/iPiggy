@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 class HomepageVC: UIViewController
 {
@@ -17,10 +18,15 @@ class HomepageVC: UIViewController
     @IBOutlet weak var labelGoalAmount: UILabel!
     @IBOutlet weak var labelRecSpending: UILabel!
     @IBOutlet weak var labelGoalDayLeft: UILabel!
+    @IBOutlet weak var pieChart: PieChartView!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        //This is done by cen
+        
+        navigationController?.navigationBar.barTintColor = UIColor(red: 255, green: 135, blue: 103, alpha: 1)
         
         //Initialization
         self.labelBudget.text = Methods.appendCurrency(string: "0")
@@ -30,7 +36,7 @@ class HomepageVC: UIViewController
         Globals.labRecSpending = self.labelRecSpending
         Globals.labGoals = self.labelGoalAmount
         Globals.labGoalDayLeft = self.labelGoalDayLeft
-        Globals.labFundsSpent = self.labelExpenses
+        Globals.labExpensesToday = self.labelExpenses
         Globals.histories = []
         Globals.fullListOfCalendarDays = Methods.generateYearlyCalendarArray(year: Methods.getYearComponent(date: Date()))
         Methods.loadFunds()
@@ -41,11 +47,26 @@ class HomepageVC: UIViewController
         Methods.updateHomepageGoalsDayLeftLabel()
   //      Methods.addDayLabelsToCalendarArray()
         self.labelDate.text = Globals.dateFormatFull.string(from: Date())
-        
-        if (Globals.dateTracker != Date())
+        if (!Methods.isSameDate(date1: Globals.dateTracker!, date2: Date()))
         {
             Methods.updateDateTracker()
             Methods.saveMoneySpent(value: 0)        //Resets daily money spent
         }
+        
+        //Configure pie chart
+        Globals.pieChart = self.pieChart
+        Globals.goalsComplete.value = 0
+        Globals.goalsIncomplete.value = Globals.goals?.amount ?? 0
+        Globals.goalsProgress = [Globals.goalsComplete, Globals.goalsIncomplete]
+        Globals.pieChart!.drawEntryLabelsEnabled = false
+        
+        //Calculate recommended Spending
+        Methods.saveRecommendedSpending(recommendedSpending: Double(Methods.getRecommendedSpendingNoDecimal()))
+    }
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        Methods.updateChartData()
+   //     print("Hello worldd")
     }
 }

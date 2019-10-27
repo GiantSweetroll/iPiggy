@@ -200,6 +200,9 @@
                                 <rect key="frame" x="334" y="582" width="25" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="trash" catalog="system"/>
+                                <connections>
+                                    <action selector="deleteButtonPressed:" destination="Ihd-mI-Xfg" eventType="touchUpInside" id="fMl-yZ-DdA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

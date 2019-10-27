@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import UIKit
+import Charts
 
 struct Methods
 {
@@ -127,37 +128,37 @@ struct Methods
     public static func loadGoals()
     {
 //1
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
+        {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.CD_ENTITIY_GOALS)
+        
+        //3
+        do
+        {
+            let array = try managedContext.fetch(fetchRequest)
+            if (array.count > 0)
             {
-                return
+                Globals.goalsDataObject = array.last
             }
-            
-            let managedContext = appDelegate.persistentContainer.viewContext
-            
-            //2
-            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.CD_ENTITIY_GOALS)
-            
-            //3
-            do
+            else
             {
-                let array = try managedContext.fetch(fetchRequest)
-                if (array.count > 0)
-                {
-                    Globals.goalsDataObject = array.last
-                }
-                else
-                {
-                    let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITIY_GOALS, in: managedContext)
-                            
-                    Globals.goalsDataObject = NSManagedObject(entity: entity!, insertInto: managedContext)
-                    Methods.saveGoals(dateFrom: Date(), dateTo: Date(), amount: 0)
-                }
-                Globals.goals = Globals.goalsDataObject as? Goal
+                let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITIY_GOALS, in: managedContext)
+                        
+                Globals.goalsDataObject = NSManagedObject(entity: entity!, insertInto: managedContext)
+                Methods.saveGoals(dateFrom: Date(), dateTo: Date(), amount: 0)
             }
-            catch let error as NSError
-            {
-                print("Could not fetch. \(error), \(error.userInfo)")
-            }
+            Globals.goals = Globals.goalsDataObject as? Goal
+        }
+        catch let error as NSError
+        {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
     public static func updateHomepageGoalsLabel(goals:Double)
     {
@@ -199,7 +200,11 @@ struct Methods
             try managedContext.save()
 //           expenses.append(person)
             Globals.histories.append(expenses as! Expenses)     //Add to array for table view data source
-            if (date == Date())
+  //          print("dateTracker: \(Globals.dateFormatFull.string(from: Globals.dateTracker!))")
+  //          print("Date: \(Globals.dateFormatFull.string(from: date))")
+  //          print("Are they same? \(date == Globals.dateTracker)")
+  //          if (date == Globals.dateTracker)
+            if (Methods.isSameDate(date1: date, date2: Globals.dateTracker ?? Date()))
             {
                 Methods.saveMoneySpent(value: Globals.fundsSpent + amount)
             }
@@ -278,7 +283,7 @@ struct Methods
     }
     public static func updateHomepageFundsSpentLabel(fundsSpent:Double)
     {
-        Globals.labFundsSpent?.text =  String(format: "%0.0f", fundsSpent)
+        Globals.labExpensesToday?.text =  String(format: "%0.0f", fundsSpent)
     }
     public static func updateDateTracker()     //Save money spent to database
     {
@@ -428,6 +433,27 @@ struct Methods
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
+    public static func deleteWishlist(wishlist: WishlistItem)     //Delete wishlist
+    {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //Save to database
+        do
+        {
+            try managedContext.delete(wishlist)
+            try managedContext.save()
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
     
     //MARK: Calendar Operations
     public static func isLeapYear(year:Int) -> Bool
@@ -438,9 +464,29 @@ struct Methods
     {
         return Calendar.current.component(.year, from: date)
     }
+    public static func getMonthComponent(date: Date) -> Int
+    {
+        return Calendar.current.component(.month, from: date)
+    }
+    public static func getDayComponent(date:Date) -> Int
+    {
+        return Calendar.current.component(.day, from: date)
+    }
     public static func getWeekdayUnit(date: Date) -> Int
     {
         return Calendar.current.component(.weekday, from: date)
+    }
+    public static func isSameDate(date1: Date, date2: Date) -> Bool
+    {
+        let date1Day:Int = Methods.getDayComponent(date: date1)
+        let date1Month:Int = Methods.getMonthComponent(date: date1)
+        let date1Year:Int = Methods.getYearComponent(date: date1)
+        
+        let date2Day:Int = Methods.getDayComponent(date: date2)
+        let date2Month:Int = Methods.getMonthComponent(date: date2)
+        let date2Year:Int = Methods.getYearComponent(date: date2)
+        
+        return date1Day == date2Day && date1Month == date2Month && date1Year == date2Year
     }
     public static func getAmountOfDaysArray(isLeapYear: Bool) -> [Int]
     {
@@ -540,6 +586,8 @@ struct Methods
             gapEarlyOfMonth = remainder
         }
         
+        array.remove(at: 0) //Remove first empty array
+        
         return array
     }
     public static func getWeekdayStartOfYear(year: Int) -> Int
@@ -555,5 +603,80 @@ struct Methods
         {
             Globals.fullListOfCalendarDays[i].insert(contentsOf: Constants.DAYS, at: 0)
         }
+    }
+    public static func setDateTimeToOrigin(date: Date) -> Date
+    {
+        return Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: date)!
+    }
+    
+    //MARK: - Manage Recommended Spending
+    public static func getRecommendedSpending(allocatedFunds funds: Double, goal:Double, timeDurationInDays duration:Int) -> Double
+    {
+        if (duration <= 0)
+        {
+            return 0
+        }
+        else
+        {
+            let maxAllocatedFunds:Double = funds/Double(duration)
+            let eachDaySave:Double = goal/Double(duration)
+            
+            return maxAllocatedFunds - eachDaySave
+        }
+    }
+    public static func getRecommendedSpending() -> Double
+    {
+        return Methods.getRecommendedSpending(allocatedFunds: Globals.funds, goal: Globals.goals?.amount ?? 0, timeDurationInDays: Methods.getDayDifference(from: Globals.goals?.dateFrom ?? Date(), to: Globals.goals?.dateTo ?? Date()).day ?? 0)
+    }
+    public static func getRecommendedSpendingNoDecimal() -> Int
+    {
+        return Int(Methods.getRecommendedSpending())
+    }
+    public static func saveRecommendedSpending(recommendedSpending amount:Double)     //Save recommended spending to database
+    {
+        //MARK: - Saving to Core Data
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        //1
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+//       let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITY_FUNDS, in: managedContext)
+        
+//       let funds = NSManagedObject(entity: entity!, insertInto: managedContext)
+        
+        //3
+        Globals.fundsDataObject?.setValue(amount, forKey: Constants.CD_FUNDS_REC_SPENDING)
+        
+        //4
+        do
+        {
+            try managedContext.save()
+            Methods.updateHomepageRecommendedSpendingLabel(amount: amount)
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    public static func updateHomepageRecommendedSpendingLabel(amount: Double)
+    {
+        Globals.labRecSpending?.text = String(format: "%0.0f", amount)
+    }
+    
+    //MARK: - Manage Charts
+    public static func updateChartData()
+    {
+        let chartDataSet = PieChartDataSet(entries: Globals.goalsProgress, label: nil)
+        let chartData = PieChartData(dataSet: chartDataSet)
+        
+        let colors = [UIColor.red, UIColor.gray]
+        chartDataSet.colors = colors as! [NSUIColor]
+        
+        Globals.pieChart!.data = chartData
     }
 }
