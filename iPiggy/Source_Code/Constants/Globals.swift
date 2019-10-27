@@ -31,6 +31,7 @@ struct Globals
     public static var fundsDataObject:NSManagedObject?
     public static var goalsDataObject:NSManagedObject?
     public static var goals:Goal?
+    public static var achievements:[Achievement] = [Achievement]()
     public static var funds:Double = 0
     public static var fundsSpent:Double = 0
     public static var recSpending:Double = 0

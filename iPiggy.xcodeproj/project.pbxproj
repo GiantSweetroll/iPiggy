@@ -28,8 +28,6 @@
 		A34C3D49235EA34A001FD378 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D48235EA34A001FD378 /* History.swift */; };
 		A34C3D4B235EAC48001FD378 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D4A235EAC48001FD378 /* Globals.swift */; };
 		A34C3D4D235EB4A3001FD378 /* EditGoalsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D4C235EB4A3001FD378 /* EditGoalsVC.swift */; };
-		A34C3D4F235EB97F001FD378 /* Wishlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D4E235EB97F001FD378 /* Wishlist.swift */; };
-		A34C3D51235EE025001FD378 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D50235EE025001FD378 /* Achievement.swift */; };
 		A34C3D53235EE075001FD378 /* AchievementTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D52235EE075001FD378 /* AchievementTableCell.swift */; };
 		A34C3D55235EE650001FD378 /* AchievementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34C3D54235EE650001FD378 /* AchievementVC.swift */; };
 		A35AEDDD236261290065963C /* YearlyAchievementTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35AEDDC236261290065963C /* YearlyAchievementTableCell.swift */; };
@@ -70,8 +68,6 @@
 		A34C3D48235EA34A001FD378 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		A34C3D4A235EAC48001FD378 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		A34C3D4C235EB4A3001FD378 /* EditGoalsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalsVC.swift; sourceTree = "<group>"; };
-		A34C3D4E235EB97F001FD378 /* Wishlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wishlist.swift; sourceTree = "<group>"; };
-		A34C3D50235EE025001FD378 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
 		A34C3D52235EE075001FD378 /* AchievementTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementTableCell.swift; sourceTree = "<group>"; };
 		A34C3D54235EE650001FD378 /* AchievementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementVC.swift; sourceTree = "<group>"; };
 		A35AEDDC236261290065963C /* YearlyAchievementTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyAchievementTableCell.swift; sourceTree = "<group>"; };
@@ -222,8 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				A34C3D48235EA34A001FD378 /* History.swift */,
-				A34C3D4E235EB97F001FD378 /* Wishlist.swift */,
-				A34C3D50235EE025001FD378 /* Achievement.swift */,
 			);
 			path = DataDrivers;
 			sourceTree = "<group>";
@@ -360,7 +354,6 @@
 				A37E29072361D06C0048E9F8 /* MonthlyCalendarCVC.swift in Sources */,
 				A37E29052361D0110048E9F8 /* MonthlyCalendarVC.swift in Sources */,
 				A37E28F8236134D90048E9F8 /* WishlistDetailsVC.swift in Sources */,
-				A34C3D4F235EB97F001FD378 /* Wishlist.swift in Sources */,
 				A35AEDE523647B9F0065963C /* MonthAchievementTableViewCell.swift in Sources */,
 				A34C3D0C235DD774001FD378 /* Constants.swift in Sources */,
 				A34C3D46235EA291001FD378 /* HistoryVC.swift in Sources */,
@@ -369,7 +362,6 @@
 				A34C3D53235EE075001FD378 /* AchievementTableCell.swift in Sources */,
 				A34C3C5023570D25001FD378 /* AppDelegate.swift in Sources */,
 				A34C3D55235EE650001FD378 /* AchievementVC.swift in Sources */,
-				A34C3D51235EE025001FD378 /* Achievement.swift in Sources */,
 				A34C3D1F235E8119001FD378 /* AddExpensesVC.swift in Sources */,
 				A34C3D06235D9261001FD378 /* HomepageVC.swift in Sources */,
 				A35AEDDD236261290065963C /* YearlyAchievementTableCell.swift in Sources */,
