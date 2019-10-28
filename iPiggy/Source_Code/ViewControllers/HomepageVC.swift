@@ -24,6 +24,10 @@ class HomepageVC: UIViewController
     {
         super.viewDidLoad()
         
+        //This is done by cen
+        
+         navigationController?.navigationBar.barTintColor = UIColor(red: 255, green: 135, blue: 103, alpha: 1)
+        
         //Initialization
         self.labelBudget.text = Methods.appendCurrency(string: "0")
         self.labelExpenses.text! = "0"
@@ -43,6 +47,7 @@ class HomepageVC: UIViewController
         Methods.updateHomepageGoalsDayLeftLabel()
   //      Methods.addDayLabelsToCalendarArray()
         self.labelDate.text = Globals.dateFormatFull.string(from: Date())
+        
         if (!Methods.isSameDate(date1: Globals.dateTracker!, date2: Date()))
         {
             Methods.updateDateTracker()
@@ -58,10 +63,6 @@ class HomepageVC: UIViewController
         
         //Calculate recommended Spending
         Methods.saveRecommendedSpending(recommendedSpending: Double(Methods.getRecommendedSpendingNoDecimal()))
-        
-        //This is done by cen
-        
-         navigationController?.navigationBar.barTintColor = UIColor(red: 255, green: 135, blue: 103, alpha: 1)
        
         
     }
