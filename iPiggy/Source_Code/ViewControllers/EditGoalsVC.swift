@@ -55,8 +55,18 @@ class EditGoalsVC:UIViewController
         let fundsAlloc = Double(self.fundsAlloc.text ?? "0")!
         if (dateFrom <= dateTo && fundsAlloc <= Globals.funds && amount <= fundsAlloc)
         {
-            Methods.saveGoals(dateFrom: dateFrom, dateTo: dateTo, moneyToSave: amount, moneyAllocated: fundsAlloc)
+            if dateFrom != Globals.goals?.dateFrom
+            {
+                //If start date is changed, the surplus and the goal progress is reset (is this a good idea....)
+                Methods.saveSurplus(surplus: 0)
+                Methods.saveGoals(dateFrom: dateFrom, dateTo: dateTo, moneyToSave: amount, moneyAllocated: fundsAlloc, progress: 0)
+            }
+            else
+            {
+                Methods.saveGoals(dateFrom: dateFrom, dateTo: dateTo, moneyToSave: amount, moneyAllocated: fundsAlloc, progress: Globals.goals!.progress)
+            }
             Methods.saveRecommendedSpending(recommendedSpending: Double(Methods.getRecommendedSpendingNoDecimal()))
+            Methods.updateChartData()
             dismiss(animated: true, completion: nil)
         }
     }

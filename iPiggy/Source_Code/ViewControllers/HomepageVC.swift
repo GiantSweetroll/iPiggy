@@ -20,6 +20,9 @@ class HomepageVC: UIViewController
     @IBOutlet weak var labelGoalDayLeft: UILabel!
     @IBOutlet weak var pieChart: PieChartView!
     
+    //Variables
+    var notifications:Notifications = Notifications()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -38,13 +41,17 @@ class HomepageVC: UIViewController
         Globals.fullListOfCalendarDays = Methods.generateYearlyCalendarArray(year: Methods.getYearComponent(date: Globals.dateTracker!))
         Globals.currentYearlyCalendarYearDisplayed = Methods.getYearComponent(date: Globals.dateTracker!)
         Methods.loadFunds()
+        Methods.loadAchievements()
         Methods.checkSurplus()
         Methods.checkRecommendedSpending()
         Methods.updateHomepageFundsLabel(funds: Globals.funds)
         Methods.updateHomepageFundsSpentLabel(fundsSpent: Globals.fundsSpent)
         Methods.loadGoals()
+   //     print("Helllo niga")
         Methods.updateHomepageGoalsLabel(goals: Globals.goals?.amount ?? 0)
+        print(Globals.dateTracker)
         Methods.updateHomepageGoalsDayLeftLabel()
+  //      print("My NIGGA")
   //      Methods.addDayLabelsToCalendarArray()
         self.labelDate.text = Globals.dateFormatFull.string(from: Date())
         Methods.loadWishlists()
@@ -52,7 +59,9 @@ class HomepageVC: UIViewController
         if (!Methods.isSameDate(date1: Globals.dateTracker!, date2: Date()))
         {
             Methods.updateDateTracker()
-            Methods.saveSurplus(surplus: Methods.calculateSurplus(recommendedSpending: Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_REC_SPENDING) as! Double, moneySpent: Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_EXPENSE) as! Double))
+            Methods.addAchievementsProgress(amount: Methods.getMoneySavedYesterday())
+            Methods.updateGoalProgress()
+            Methods.saveSurplus(surplus: Methods.getSurplus() + Methods.calculateSurplus(recommendedSpending: Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_REC_SPENDING) as! Double, moneySpent: Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_EXPENSE) as! Double))
             Methods.saveMoneySpent(value: 0)        //Resets daily money spent
         }
         
@@ -66,15 +75,30 @@ class HomepageVC: UIViewController
         //Calculate recommended Spending
         Methods.saveRecommendedSpending(recommendedSpending: Double(Methods.getRecommendedSpendingNoDecimal()))
         
+  //      notifications.scheduleNotification(notificationType: "iPiggy messages")
         
         //This is done by cen
         
-         navigationController?.navigationBar.barTintColor = UIColor(red: 255, green: 135, blue: 103, alpha: 1)
+//         navigationController?.navigationBar.barTintColor = UIColor(red: 255, green: 135, blue: 103, alpha: 1)
     }
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
+        Methods.checkDateTracker()
         Methods.updateChartData()
    //     print("Hello worldd")
+    }
+    
+    private func addAchievements()      //Already run
+    {
+        Methods.saveAchievement(details: "You saved Rp 10.000 in a day!", amount: 10000, dateFrom: Methods.setDateTimeToOrigin(date: Date()), dateTo: Calendar.current.date(byAdding: .day, value: 1, to: Methods.setDateTimeToOrigin(date: Date()))!, achieved: false)
+        Methods.saveAchievement(details: "You saved Rp 25.000 in a day!", amount: 25000, dateFrom: Methods.setDateTimeToOrigin(date: Date()), dateTo: Calendar.current.date(byAdding: .day, value: 1, to: Methods.setDateTimeToOrigin(date: Date()))!, achieved: false)
+        Methods.saveAchievement(details: "You saved Rp 50.000 in a day!", amount: 50000, dateFrom: Methods.setDateTimeToOrigin(date: Date()), dateTo: Calendar.current.date(byAdding: .day, value: 1, to: Methods.setDateTimeToOrigin(date: Date()))!, achieved: false)
+        Methods.saveAchievement(details: "You saved Rp 50.000 in a week!", amount: 50000, dateFrom: Methods.setDateTimeToOrigin(date: Date()), dateTo: Calendar.current.date(byAdding: .day, value: 7, to: Methods.setDateTimeToOrigin(date: Date()))!, achieved: false)
+        Methods.saveAchievement(details: "You saved Rp 100.000 in a week!", amount: 100000, dateFrom: Methods.setDateTimeToOrigin(date: Date()), dateTo: Calendar.current.date(byAdding: .day, value: 7, to: Methods.setDateTimeToOrigin(date: Date()))!, achieved: false)
+        Methods.saveAchievement(details: "You saved Rp 100.000 in a month!", amount: 100000, dateFrom: Methods.setDateTimeToOrigin(date: Date()), dateTo: Calendar.current.date(byAdding: .month, value: 1, to: Methods.setDateTimeToOrigin(date: Date()))!, achieved: false)
+        Methods.saveAchievement(details: "You saved Rp 250.000 in a month!", amount: 250000, dateFrom: Methods.setDateTimeToOrigin(date: Date()), dateTo: Calendar.current.date(byAdding: .month, value: 1, to: Methods.setDateTimeToOrigin(date: Date()))!, achieved: false)
+        Methods.saveAchievement(details: "You saved Rp 1.000.000 in a month!", amount: 1000000, dateFrom: Methods.setDateTimeToOrigin(date: Date()), dateTo: Calendar.current.date(byAdding: .month, value: 1, to: Methods.setDateTimeToOrigin(date: Date()))!, achieved: false)
+        Methods.saveAchievement(details: "You saved Rp 2.500.000 in a month!", amount: 2500000, dateFrom: Methods.setDateTimeToOrigin(date: Date()), dateTo: Calendar.current.date(byAdding: .month, value: 1, to: Methods.setDateTimeToOrigin(date: Date()))!, achieved: false)
     }
 }

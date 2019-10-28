@@ -5,7 +5,8 @@
         <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="dateFrom" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateTo" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="details" optional="YES" attributeType="String"/>
+        <attribute name="progress" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Expenses" representedClassName=".Expenses" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String"/>
@@ -38,6 +39,6 @@
         <element name="Funds" positionX="-18" positionY="63" width="128" height="118"/>
         <element name="Goal" positionX="0" positionY="108" width="128" height="118"/>
         <element name="WishlistItem" positionX="-36" positionY="36" width="128" height="103"/>
-        <element name="Achievement" positionX="-27" positionY="90" width="128" height="118"/>
+        <element name="Achievement" positionX="-27" positionY="90" width="128" height="133"/>
     </elements>
 </model>

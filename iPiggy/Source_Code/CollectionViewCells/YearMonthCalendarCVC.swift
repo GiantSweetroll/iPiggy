@@ -12,10 +12,18 @@ class YearMonthCalendarCVC:UICollectionViewCell, UICollectionViewDataSource, UIC
 {
     //MARK: - IBOutlets
     @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet var collectionView: UICollectionView! {
+        didSet {
+            setupCollectionView()
+        }
+    }
     
     //MARK: - Variables
-    var monthIndex:Int!
+    var monthIndex:Int! {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     var year:Int!
     var month:Int!
     
@@ -29,6 +37,7 @@ class YearMonthCalendarCVC:UICollectionViewCell, UICollectionViewDataSource, UIC
     //Make a cell for each cell index path
     func collectionView(_ collectionView:UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
+    //    print(#function)
         //get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CVC_CALENDAR_YEARLY_DAILY_CELL, for: indexPath as IndexPath) as! YearDayCalendarCVC
         
@@ -36,8 +45,7 @@ class YearMonthCalendarCVC:UICollectionViewCell, UICollectionViewDataSource, UIC
         cell.dayLabel.text = Globals.fullListOfCalendarDays[self.monthIndex][indexPath.item]
         if (cell.dayLabel.text != "")
         {
-            let wishlist:WishlistItem? = Globals.wishlistDictionary[year]?[month]?[Int(cell.dayLabel.text!
-                )!]?[0]
+            let wishlist:WishlistItem? = Globals.wishlistDictionary[year]?[month]?[Int(cell.dayLabel.text!)!]?[0]
             if (wishlist != nil)
             {
                 cell.dayLabel.textColor = UIColor.blue
@@ -45,17 +53,6 @@ class YearMonthCalendarCVC:UICollectionViewCell, UICollectionViewDataSource, UIC
         }
         
  //       cell.layer.borderWidth = 1
-        
-        if (indexPath.item == 0)
-        {
-            let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//            layout.itemSize = CGSize(width: UIScreen.main.bounds.width/14, height: UIScreen.main.bounds.width/14)
-            layout.itemSize = CGSize(width: 22, height: 22)         //Trial and Error
-            layout.minimumInteritemSpacing = 0
-            layout.minimumLineSpacing = 0
-            collectionView.collectionViewLayout = layout
-        }
         
         return cell
     }
@@ -66,5 +63,17 @@ class YearMonthCalendarCVC:UICollectionViewCell, UICollectionViewDataSource, UIC
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat   //Spacing between columns
     {
         return 0
+    }
+    
+    //MARK: - Other Methods
+    fileprivate func setupCollectionView()
+    {
+        let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        //            layout.itemSize = CGSize(width: UIScreen.main.bounds.width/14, height: UIScreen.main.bounds.width/14)
+        layout.itemSize = CGSize(width: 22, height: 22)         //Trial and Error
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        collectionView.collectionViewLayout = layout
     }
 }

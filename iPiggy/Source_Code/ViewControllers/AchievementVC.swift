@@ -18,6 +18,7 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
     //MARK: - Variables
 //    var achievements:[Achievement]!
     var selectedRow:Int!
+    var achievements:[Achievement] = [Achievement]()
     
     //MARK: - Main Methods
     override func viewDidLoad()
@@ -38,10 +39,12 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
  //       print(#function)
         super.viewWillAppear(animated)
         
+        self.achievements = Methods.getAchievedAchievements()
         Methods.loadWishlists()
  //       print("count is \(Globals.wishlists.count)")
  //       print("Size of wishlist: \(Globals.wishlists.count)")
         self.wishlistTabelView.reloadData()
+        self.achievementTableView.reloadData()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) //This function is called when we want to navigate to a new screen using segue
     {
@@ -63,8 +66,8 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
         }
         else
         {
-   //         return self.achievements.count
-            return Globals.achievements.count
+            return self.achievements.count
+   //         return Globals.achievements.count
         }
     }
     
@@ -87,9 +90,10 @@ class AchievementVC:UIViewController, UITableViewDataSource, UITableViewDelegate
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TVC_ACHIEVEMENT, for: indexPath) as! AchievementTableCell
             
      //       let achievement = self.achievements[indexPath.row]
-            let achievement = Globals.achievements[indexPath.row]
+            let achievement = self.achievements[indexPath.row]
             
-            cell.label.text = achievement.text
+            cell.label.text = achievement.details
+            cell.backgroundColor = UIColor.gray
             
             return cell
         }

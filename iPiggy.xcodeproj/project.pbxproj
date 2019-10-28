@@ -33,6 +33,12 @@
 		A35AEDDD236261290065963C /* YearlyAchievementTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35AEDDC236261290065963C /* YearlyAchievementTableCell.swift */; };
 		A35AEDE323629D6A0065963C /* MonthlyCalendarDaysCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35AEDE223629D6A0065963C /* MonthlyCalendarDaysCVC.swift */; };
 		A35AEDE523647B9F0065963C /* MonthAchievementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35AEDE423647B9F0065963C /* MonthAchievementTableViewCell.swift */; };
+		A35AEE0723656C180065963C /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35AEE0623656C180065963C /* Notifications.swift */; };
+		A35AEE09236587320065963C /* MonthlyCalendarWishlistDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35AEE08236587320065963C /* MonthlyCalendarWishlistDetailTVC.swift */; };
+		A35AEE0B236588340065963C /* MonthyCalendarWishlistDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35AEE0A236588340065963C /* MonthyCalendarWishlistDetailVC.swift */; };
+		A35AEE0F236696B10065963C /* ipiggy.png in Resources */ = {isa = PBXBuildFile; fileRef = A35AEE0E236696B10065963C /* ipiggy.png */; };
+		A35AEE122366970D0065963C /* ipiggy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A35AEE102366970C0065963C /* ipiggy@3x.png */; };
+		A35AEE132366970D0065963C /* ipiggy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A35AEE112366970C0065963C /* ipiggy@2x.png */; };
 		A37E28F8236134D90048E9F8 /* WishlistDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E28F7236134D90048E9F8 /* WishlistDetailsVC.swift */; };
 		A37E28FB23619B660048E9F8 /* YearMonthCalendarCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E28FA23619B660048E9F8 /* YearMonthCalendarCVC.swift */; };
 		A37E28FF2361AD700048E9F8 /* YearDayCalendarCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E28FE2361AD700048E9F8 /* YearDayCalendarCVC.swift */; };
@@ -73,6 +79,12 @@
 		A35AEDDC236261290065963C /* YearlyAchievementTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyAchievementTableCell.swift; sourceTree = "<group>"; };
 		A35AEDE223629D6A0065963C /* MonthlyCalendarDaysCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarDaysCVC.swift; sourceTree = "<group>"; };
 		A35AEDE423647B9F0065963C /* MonthAchievementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthAchievementTableViewCell.swift; sourceTree = "<group>"; };
+		A35AEE0623656C180065963C /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		A35AEE08236587320065963C /* MonthlyCalendarWishlistDetailTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarWishlistDetailTVC.swift; sourceTree = "<group>"; };
+		A35AEE0A236588340065963C /* MonthyCalendarWishlistDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthyCalendarWishlistDetailVC.swift; sourceTree = "<group>"; };
+		A35AEE0E236696B10065963C /* ipiggy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipiggy.png; sourceTree = "<group>"; };
+		A35AEE102366970C0065963C /* ipiggy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipiggy@3x.png"; sourceTree = "<group>"; };
+		A35AEE112366970C0065963C /* ipiggy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipiggy@2x.png"; sourceTree = "<group>"; };
 		A37E28F7236134D90048E9F8 /* WishlistDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistDetailsVC.swift; sourceTree = "<group>"; };
 		A37E28FA23619B660048E9F8 /* YearMonthCalendarCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearMonthCalendarCVC.swift; sourceTree = "<group>"; };
 		A37E28FE2361AD700048E9F8 /* YearDayCalendarCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearDayCalendarCVC.swift; sourceTree = "<group>"; };
@@ -136,6 +148,9 @@
 				A34C3C682357657A001FD378 /* Storyboards */,
 				A34C3C5B23570D26001FD378 /* Assets.xcassets */,
 				A34C3C6023570D26001FD378 /* Info.plist */,
+				A35AEE112366970C0065963C /* ipiggy@2x.png */,
+				A35AEE102366970C0065963C /* ipiggy@3x.png */,
+				A35AEE0E236696B10065963C /* ipiggy.png */,
 				A34C3C5D23570D26001FD378 /* LaunchScreen.storyboard */,
 				A34C3C5823570D25001FD378 /* iPiggy.xcdatamodeld */,
 			);
@@ -157,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				A34C3C4F23570D25001FD378 /* AppDelegate.swift */,
+				A35AEE0623656C180065963C /* Notifications.swift */,
 				A34C3C5123570D25001FD378 /* SceneDelegate.swift */,
 				A37E28F923619B340048E9F8 /* CollectionViewCells */,
 				A34C3D0A235DD728001FD378 /* Constants */,
@@ -181,6 +197,7 @@
 				A37E28F7236134D90048E9F8 /* WishlistDetailsVC.swift */,
 				A37E29002361AE190048E9F8 /* YearlyCalendarVC.swift */,
 				A37E29042361D0110048E9F8 /* MonthlyCalendarVC.swift */,
+				A35AEE0A236588340065963C /* MonthyCalendarWishlistDetailVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -210,6 +227,7 @@
 				A34C3D52235EE075001FD378 /* AchievementTableCell.swift */,
 				A35AEDDC236261290065963C /* YearlyAchievementTableCell.swift */,
 				A35AEDE423647B9F0065963C /* MonthAchievementTableViewCell.swift */,
+				A35AEE08236587320065963C /* MonthlyCalendarWishlistDetailTVC.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -293,9 +311,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A35AEE0F236696B10065963C /* ipiggy.png in Resources */,
 				A34C3C6B235768B0001FD378 /* Achievement.storyboard in Resources */,
+				A35AEE132366970D0065963C /* ipiggy@2x.png in Resources */,
 				A34C3C5F23570D26001FD378 /* LaunchScreen.storyboard in Resources */,
 				A34C3C5C23570D26001FD378 /* Assets.xcassets in Resources */,
+				A35AEE122366970D0065963C /* ipiggy@3x.png in Resources */,
 				A34C3C5723570D25001FD378 /* CalendarMonthly.storyboard in Resources */,
 				A34C3C6D235768CD001FD378 /* Main.storyboard in Resources */,
 				A34C3C672357647F001FD378 /* CalendarYearly.storyboard in Resources */,
@@ -352,12 +373,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A37E29072361D06C0048E9F8 /* MonthlyCalendarCVC.swift in Sources */,
+				A35AEE09236587320065963C /* MonthlyCalendarWishlistDetailTVC.swift in Sources */,
 				A37E29052361D0110048E9F8 /* MonthlyCalendarVC.swift in Sources */,
 				A37E28F8236134D90048E9F8 /* WishlistDetailsVC.swift in Sources */,
 				A35AEDE523647B9F0065963C /* MonthAchievementTableViewCell.swift in Sources */,
 				A34C3D0C235DD774001FD378 /* Constants.swift in Sources */,
 				A34C3D46235EA291001FD378 /* HistoryVC.swift in Sources */,
 				A37E28FF2361AD700048E9F8 /* YearDayCalendarCVC.swift in Sources */,
+				A35AEE0B236588340065963C /* MonthyCalendarWishlistDetailVC.swift in Sources */,
 				A34C3C5A23570D25001FD378 /* iPiggy.xcdatamodeld in Sources */,
 				A34C3D53235EE075001FD378 /* AchievementTableCell.swift in Sources */,
 				A34C3C5023570D25001FD378 /* AppDelegate.swift in Sources */,
@@ -371,6 +394,7 @@
 				A34C3D4D235EB4A3001FD378 /* EditGoalsVC.swift in Sources */,
 				A34C3C5223570D25001FD378 /* SceneDelegate.swift in Sources */,
 				A34C3D44235EA184001FD378 /* HistoryTableViewCell.swift in Sources */,
+				A35AEE0723656C180065963C /* Notifications.swift in Sources */,
 				A37E28FB23619B660048E9F8 /* YearMonthCalendarCVC.swift in Sources */,
 				A34C3D49235EA34A001FD378 /* History.swift in Sources */,
 				A34C3D1D235DE7AB001FD378 /* AchievementFormVC.swift in Sources */,
