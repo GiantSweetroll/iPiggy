@@ -47,8 +47,11 @@ class HomepageVC: UIViewController
         Methods.updateHomepageFundsLabel(funds: Globals.funds)
         Methods.updateHomepageFundsSpentLabel(fundsSpent: Globals.fundsSpent)
         Methods.loadGoals()
+   //     print("Helllo niga")
         Methods.updateHomepageGoalsLabel(goals: Globals.goals?.amount ?? 0)
+        print(Globals.dateTracker)
         Methods.updateHomepageGoalsDayLeftLabel()
+  //      print("My NIGGA")
   //      Methods.addDayLabelsToCalendarArray()
         self.labelDate.text = Globals.dateFormatFull.string(from: Date())
         Methods.loadWishlists()
@@ -81,6 +84,7 @@ class HomepageVC: UIViewController
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
+        Methods.checkDateTracker()
         Methods.updateChartData()
    //     print("Hello worldd")
     }

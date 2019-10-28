@@ -50,7 +50,13 @@ struct Methods
             }
             Globals.funds = Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_TOTAL) as! Double
             Globals.fundsSpent = Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_EXPENSE) as! Double
-            Globals.dateTracker = Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_DATE_TRACKER) as? Date
+            let date:Date? = (Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_DATE_TRACKER) as? Date)
+            if (date == nil)
+            {
+                Methods.saveFunds(dateTracker: Methods.setDateTimeToOrigin(date: Date()))
+                Methods.loadFunds()
+            }
+            Globals.dateTracker = date
         }
         catch let error as NSError
         {
@@ -83,6 +89,36 @@ struct Methods
             try managedContext.save()
             Globals.funds = funds
             Methods.updateHomepageFundsLabel(funds: funds)
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    public static func saveFunds(dateTracker: Date)     //Save funds to database
+    {
+        //MARK: - Saving to Core Data
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        //1
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+//       let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITY_FUNDS, in: managedContext)
+        
+//       let funds = NSManagedObject(entity: entity!, insertInto: managedContext)
+        
+        //3
+        Globals.fundsDataObject?.setValue(dateTracker, forKey: Constants.CD_FUNDS_DATE_TRACKER)
+        
+        //4
+        do
+        {
+            try managedContext.save()
         }
         catch let error as NSError
         {
@@ -230,8 +266,7 @@ struct Methods
         Globals.labGoals?.text = Methods.appendCurrency(string: String(format: "%0.0f", goals))
     }
     public static func updateHomepageGoalsDayLeftLabel()
-    {
-        let dateComponent:DateComponents = Methods.getDayDifference(from: Globals.dateTracker!, to: Globals.goals!.dateTo!)
+    {        let dateComponent:DateComponents = Methods.getDayDifference(from: Globals.dateTracker!, to: Globals.goals!.dateTo!)
         Globals.labGoalDayLeft?.text = String(dateComponent.day!)
     }
     public static func saveGoalProgress(amount: Double)
