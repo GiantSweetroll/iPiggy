@@ -138,6 +138,21 @@ struct Methods
     {
         return recSpend - moneySpent
     }
+    public static func getMoneySavedYesterday() -> Double
+    {
+        let yesterdaySurplus:Double = Methods.calculateSurplus(recommendedSpending: Globals.fundsDataObject?.value(forKey: Constants.CD_FUNDS_REC_SPENDING) as! Double, moneySpent: Globals.fundsSpent)
+        let dailyGoalSavings:Double = (Globals.goals?.amount)!/Double(Methods.getDayDifference(from: Globals.goals?.dateFrom ?? Date(), to: Globals.goals?.dateTo ?? Date()).day ?? 0)
+        
+        let amount:Double = dailyGoalSavings + yesterdaySurplus
+        if (amount<0)
+        {
+            return 0
+        }
+        else
+        {
+            return amount
+        }
+    }
     
     //MARK: - Goals Handling
     public static func saveGoals(dateFrom: Date, dateTo:Date, moneyToSave amount:Double, moneyAllocated fundsAlloc: Double)       //Save to database
@@ -827,6 +842,12 @@ struct Methods
     //MARK: - Manage Charts
     public static func updateChartData()
     {
+        Globals.goalsComplete.value = Globals.goals!.progress
+        Globals.goalsIncomplete.value = Globals.goalsIncomplete.value-Globals.goals!.progress
+        if (Globals.goalsIncomplete.value < 0)
+        {
+            Globals.goalsIncomplete.value = 0
+        }
         let chartDataSet = PieChartDataSet(entries: Globals.goalsProgress, label: nil)
         let chartData = PieChartData(dataSet: chartDataSet)
         
@@ -834,5 +855,236 @@ struct Methods
         chartDataSet.colors = colors as! [NSUIColor]
         
         Globals.pieChart!.data = chartData
+    }
+    
+    //MARK: - Manage Achievements
+    public static func saveAchievement(details:String, amount:Double, dateFrom:Date, dateTo:Date, achieved:Bool)     //New Entry
+    {
+        //MARK: - Saving to Core Data
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        //1
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+        let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITY_ACHIEVEMENT, in: managedContext)
+        
+        let achievement = NSManagedObject(entity: entity!, insertInto: managedContext)
+        
+        //3
+        achievement.setValue(details, forKey: Constants.CD_ACHIEVEMENT_DETAILS)
+        achievement.setValue(amount, forKey: Constants.CD_ACHIEVEMENT_AMOUNT)
+        achievement.setValue(dateFrom, forKey: Constants.CD_ACHIEVEMENT_DATE_FROM)
+        achievement.setValue(dateTo, forKey: Constants.CD_GOALS_DATE_TO)
+        achievement.setValue(achieved, forKey: Constants.CD_ACHIEVEMENT_ACHIEVED)
+        achievement.setValue(0, forKey: Constants.CD_ACHIEVEMENT_PROGRESS)
+        
+        //4
+        do
+        {
+            try managedContext.save()
+            Globals.achievements.append(achievement as! Achievement)
+            
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    public static func loadAchievements()
+    {
+        var achievements: [Achievement] = []
+
+        //1
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
+        {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.CD_ENTITY_ACHIEVEMENT)
+        
+        //3
+        do
+        {
+            achievements = try managedContext.fetch(fetchRequest) as! [Achievement]
+//         print("Array expeneses data size: \(expensesData.count)")
+            if (achievements.count > 0)
+            {
+                Globals.achievements = achievements
+            }
+        }
+        catch let error as NSError
+        {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    public static func updateAchievement(achievement:Achievement, achieved:Bool)
+    {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+
+        
+        achievement.setValue(achieved, forKey: Constants.CD_ACHIEVEMENT_ACHIEVED)
+        
+        //Save to database
+        do
+        {
+            try managedContext.save()
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    public static func resetAchievementDuration(achievement:Achievement, startDate:Date)
+    {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+
+        let range:DateComponents = Methods.getDayDifference(from: achievement.dateFrom!, to: achievement.dateTo!)
+        achievement.setValue(startDate, forKey: Constants.CD_ACHIEVEMENT_DATE_FROM)
+        let dateTo = Calendar.current.date(byAdding: .day, value: range.day!, to: achievement.dateTo!)
+        achievement.setValue(dateTo, forKey: Constants.CD_ACHIEVEMENT_DATE_TO)
+        
+        //Save to database
+        do
+        {
+            try managedContext.save()
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    public static func setAchievementProgress(achievement:Achievement, progress:Double)
+    {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+
+        
+        achievement.setValue(progress, forKey: Constants.CD_ACHIEVEMENT_PROGRESS)
+        
+        //Save to database
+        do
+        {
+            try managedContext.save()
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    public static func addAchievementsProgress(amount: Double)
+    {
+        for achievement in Globals.achievements
+        {
+            Methods.setAchievementProgress(achievement: achievement, progress: achievement.progress + amount)
+            if achievement.progress >= achievement.amount
+            {
+                Methods.updateAchievement(achievement: achievement, achieved: true)
+            }
+        }
+    }
+    public static func getAchievedAchievements() -> [Achievement]
+    {
+        var achievements:[Achievement] = [Achievement]()
+        
+        for achievement in Globals.achievements
+        {
+            if achievement.achieved
+            {
+                achievements.append(achievement)
+            }
+        }
+        
+        return achievements
+    }
+    public static func getPendingAchievements() -> [Achievement]
+    {
+        var achievements:[Achievement] = [Achievement]()
+        
+        for achievement in Globals.achievements
+        {
+            if !achievement.achieved
+            {
+                achievements.append(achievement)
+            }
+        }
+        
+        return achievements
+    }
+    public static func getAchievedAchievement(dateFrom: Date, dateTo:Date) -> [Achievement]
+    {
+        var achievements:[Achievement] = [Achievement]()
+        
+        for achievement in Methods.getAchievedAchievements()
+        {
+            if (dateFrom <= achievement.dateFrom! && achievement.dateFrom! <= dateTo)
+            {
+                achievements.append(achievement)
+            }
+        }
+        
+        return achievements
+    }
+    public static func puriftyAchievements(dateLimit: Date)        //Resets achievements not achieved beyond the deadline
+    {
+        for achievement in Methods.getPendingAchievements()
+        {
+            if achievement.dateTo! > dateLimit
+            {
+                if !achievement.achieved
+                {
+                    Methods.setAchievementProgress(achievement: achievement, progress: 0)
+                    Methods.resetAchievementDuration(achievement: achievement, startDate: dateLimit)
+                }
+            }
+        }
+    }
+    public static func deleteAllAchievements()     //Delete All achievements
+    {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else
+        {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //Save to database
+        do
+        {
+            for achievement in Globals.achievements
+            {
+                try managedContext.delete(achievement)
+            }
+            try managedContext.save()
+        }
+        catch let error as NSError
+        {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
     }
 }
