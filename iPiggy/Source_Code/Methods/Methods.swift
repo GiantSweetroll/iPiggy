@@ -1118,7 +1118,7 @@ struct Methods
     public static func updateChartData()
     {
         Globals.goalsComplete.value = Globals.goals!.progress
-        Globals.goalsIncomplete.value = Globals.goalsIncomplete.value-Globals.goals!.progress
+        Globals.goalsIncomplete.value = Globals.goals!.amount-Globals.goals!.progress
         if (Globals.goalsIncomplete.value < 0)
         {
             Globals.goalsIncomplete.value = 0

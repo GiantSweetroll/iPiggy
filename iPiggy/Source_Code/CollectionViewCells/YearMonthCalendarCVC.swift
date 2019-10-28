@@ -45,8 +45,7 @@ class YearMonthCalendarCVC:UICollectionViewCell, UICollectionViewDataSource, UIC
         cell.dayLabel.text = Globals.fullListOfCalendarDays[self.monthIndex][indexPath.item]
         if (cell.dayLabel.text != "")
         {
-            let wishlist:WishlistItem? = Globals.wishlistDictionary[year]?[month]?[Int(cell.dayLabel.text!
-                )!]?[0]
+            let wishlist:WishlistItem? = Globals.wishlistDictionary[year]?[month]?[Int(cell.dayLabel.text!)!]?[0]
             if (wishlist != nil)
             {
                 cell.dayLabel.textColor = UIColor.blue
