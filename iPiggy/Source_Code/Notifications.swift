@@ -35,17 +35,41 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate
         completionHandler([.alert, .sound])
     }
     
-    func scheduleNotification(notificationType: String)
+    func scheduleNotification(notificationType type: String, title: String, body:String)
     {
         let content = UNMutableNotificationContent()
         let categoryIdentifire = "Delete Notification Type"
         
-        content.title = notificationType
-        content.body = "This is an example to create \(notificationType)"
+        content.title = title
+        content.body = body
         content.sound = UNNotificationSound.default
         content.badge = 1
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        var trigger:UNNotificationTrigger!
+        if (type == Constants.NOTIFICATION_EXPENSES_WARNING)
+        {
+            trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3600, repeats: false)
+        }
+        else if (type == Constants.NOTIFICATION_MONEY_SAVED)
+        {
+            let date = Calendar.current.date(byAdding: .day, value: 1, to:Methods.setDateTimeToOrigin(date: Date()))
+            let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date!)
+            trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: true)
+        }
+        else if (type == Constants.NOTIFICATION_GOAL_PROGRESS)
+        {
+            trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60*60*3600, repeats: false)
+        }
+        else if (type == Constants.NOTIFICATION_DAILY_SPENDING)
+        {
+            let date = Calendar.current.date(byAdding: .day, value: 1, to:Methods.setDateTimeToOrigin(date: Date()))
+            let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date!)
+            trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: true)
+        }
+        else
+        {
+            trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        }
         
         let identifier = "Local Notification"
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)

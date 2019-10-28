@@ -108,11 +108,41 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
             return cell
         }
     }
-    
-    //MARK: - UICollectionViewDelegate protocol
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         //handle tap events
-        print("You selected cell #\(indexPath.item)!")
+//        print("You selected cell #\(indexPath.item)!")
+        print("I should go here first")
+        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .bottom)
+        guard let _ = Globals.wishlistDictionary[self.year]?[self.month]?[Int(Globals.fullListOfCalendarDays[self.monthIndex][collectionView.indexPathsForSelectedItems?.first?.item ?? 0])!] else
+        {
+            return
+        }
+        self.performSegue(withIdentifier: Constants.SEGUE_CALEDAR_MONTH_TO_WISHLIST_DETAIL, sender: collectionView.cellForItem(at: indexPath))
+    }
+    
+    //MARK: - Overriden Methods
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) //This function is called when we want to navigate to a new screen using segue
+    {
+        if let cell = sender as? UICollectionViewCell
+        {
+            if (segue.identifier == Constants.SEGUE_CALEDAR_MONTH_TO_WISHLIST_DETAIL)
+            {
+                let detailViewController = segue.destination as! MonthlyCalendarWishlistDetailVC
+                let indexPath = self.collectionView.indexPath(for: cell)
+                let day:String = Globals.fullListOfCalendarDays[self.monthIndex][indexPath!.item]
+                //          print("day: \(day)")
+                //          print("selectedIndex: \(self.selectedIndex)")
+                if (day != "")
+                {
+                    detailViewController.wishlists = Globals.wishlistDictionary[self.year]?[self.month]?[Int(day)!] ?? []
+                }
+                else
+                {
+                    detailViewController.wishlists = []
+                }
+            }
+        }
+        
     }
 }

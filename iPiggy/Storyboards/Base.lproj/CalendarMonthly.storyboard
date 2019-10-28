@@ -133,6 +133,7 @@
                         <outlet property="collectionView" destination="Ncl-IZ-UNc" id="2kC-Y7-fAh"/>
                         <outlet property="daysLabelCollectionView" destination="xBM-Do-E6E" id="8Jl-0C-2HD"/>
                         <outlet property="monthNavBar" destination="c2m-os-tW2" id="oFd-Ya-08H"/>
+                        <segue destination="l2P-2V-9ZD" kind="show" identifier="monthToWishlistDetails" id="or6-DQ-kVP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -168,10 +169,10 @@
             </objects>
             <point key="canvasLocation" x="869.60000000000002" y="68.815592203898049"/>
         </scene>
-        <!--View Controller-->
+        <!--Monthly Calendar Wishlist DetailVC-->
         <scene sceneID="ZIV-dz-x2Z">
             <objects>
-                <viewController id="l2P-2V-9ZD" sceneMemberID="viewController">
+                <viewController id="l2P-2V-9ZD" customClass="MonthlyCalendarWishlistDetailVC" customModule="iPiggy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OjF-0L-3pM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -185,37 +186,12 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="18 July 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBe-bz-g4J">
-                                <rect key="frame" x="22" y="75" width="0.0" height="0.0"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rp. 1.750.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oi-Tf-uJV">
-                                <rect key="frame" x="22" y="75" width="0.0" height="0.0"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checkmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RqH-NO-zqD">
-                                <rect key="frame" x="22" y="75" width="0.0" height="0.0"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9w-TY-icB">
-                                <rect key="frame" x="22" y="75" width="0.0" height="0.0"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wvv-3p-XZW">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="501" id="keL-rg-DwU">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellDetails" rowHeight="501" id="keL-rg-DwU" customClass="MonthlyCalendarWishlistDetailTVC" customModule="iPiggy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="501"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="keL-rg-DwU" id="tpo-nU-5oX">
@@ -256,13 +232,25 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="achieved" destination="Sd6-0g-Yvi" id="qf8-VU-BTI"/>
+                                            <outlet property="achievedImageView" destination="Geu-EJ-9ss" id="lD9-h6-Z6o"/>
+                                            <outlet property="cost" destination="QPq-1t-TV7" id="CRL-a0-FuM"/>
+                                            <outlet property="date" destination="f3G-kG-PDm" id="djU-yb-E0r"/>
+                                            <outlet property="wishlistName" destination="0lj-tH-0QU" id="qeT-Bt-UuG"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="l2P-2V-9ZD" id="6yf-Fz-SzI"/>
+                                    <outlet property="delegate" destination="l2P-2V-9ZD" id="wDp-2V-oy8"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="inB-0Z-1Ij"/>
                     </view>
+                    <navigationItem key="navigationItem" id="PBX-zT-UCa"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x12-FO-Yye" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

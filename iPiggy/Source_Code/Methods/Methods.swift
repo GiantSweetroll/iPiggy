@@ -155,7 +155,7 @@ struct Methods
     }
     
     //MARK: - Goals Handling
-    public static func saveGoals(dateFrom: Date, dateTo:Date, moneyToSave amount:Double, moneyAllocated fundsAlloc: Double)       //Save to database
+    public static func saveGoals(dateFrom: Date, dateTo:Date, moneyToSave amount:Double, moneyAllocated fundsAlloc: Double, progress: Double)       //Save to database
     {
         //MARK: - Saving to Core Data
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -171,6 +171,7 @@ struct Methods
         Globals.goalsDataObject?.setValue(dateTo, forKey: Constants.CD_GOALS_DATE_TO)
         Globals.goalsDataObject?.setValue(amount, forKey: Constants.CD_GOALS_AMOUNT)
         Globals.goalsDataObject?.setValue(fundsAlloc, forKey: Constants.CD_GOALS_ALLOCATED_FUNDS)
+        Globals.goalsDataObject?.setValue(progress, forKey: Constants.CD_GOALS_PROGRESS)
         
         //4
         do
@@ -215,7 +216,7 @@ struct Methods
                 let entity = NSEntityDescription.entity(forEntityName: Constants.CD_ENTITIY_GOALS, in: managedContext)
                         
                 Globals.goalsDataObject = NSManagedObject(entity: entity!, insertInto: managedContext)
-                Methods.saveGoals(dateFrom: Methods.setDateTimeToOrigin(date: Date()), dateTo: Methods.setDateTimeToOrigin(date: Date()), moneyToSave: 0, moneyAllocated: 0)
+                Methods.saveGoals(dateFrom: Methods.setDateTimeToOrigin(date: Date()), dateTo: Methods.setDateTimeToOrigin(date: Date()), moneyToSave: 0, moneyAllocated: 0, progress: 0)
             }
             Globals.goals = Globals.goalsDataObject as? Goal
         }
@@ -277,6 +278,10 @@ struct Methods
             Methods.saveGoalProgress(amount: goalProgressTotal)
             Methods.saveSurplus(surplus: 0)
         }
+    }
+    public static func goalIsAchieved() -> Bool
+    {
+        return Globals.goals!.progress >= Globals.goals!.amount
     }
     
     //MARK: - Manage Expenses and Histories
@@ -839,24 +844,6 @@ struct Methods
         }
     }
     
-    //MARK: - Manage Charts
-    public static func updateChartData()
-    {
-        Globals.goalsComplete.value = Globals.goals!.progress
-        Globals.goalsIncomplete.value = Globals.goalsIncomplete.value-Globals.goals!.progress
-        if (Globals.goalsIncomplete.value < 0)
-        {
-            Globals.goalsIncomplete.value = 0
-        }
-        let chartDataSet = PieChartDataSet(entries: Globals.goalsProgress, label: nil)
-        let chartData = PieChartData(dataSet: chartDataSet)
-        
-        let colors = [UIColor.red, UIColor.gray]
-        chartDataSet.colors = colors as! [NSUIColor]
-        
-        Globals.pieChart!.data = chartData
-    }
-    
     //MARK: - Manage Achievements
     public static func saveAchievement(details:String, amount:Double, dateFrom:Date, dateTo:Date, achieved:Bool)     //New Entry
     {
@@ -1086,5 +1073,70 @@ struct Methods
         {
             print("Could not save. \(error), \(error.userInfo)")
         }
+    }
+    
+    //MARK: - Notifications
+    public static func displayDailyMoneySavedNotification(notifications: Notifications, amount:Double)
+    {
+        let title:String = "Yesterday you saved..."
+        if (amount == 0)
+        {
+            notifications.scheduleNotification(notificationType: Constants.NOTIFICATION_MONEY_SAVED, title: title, body:"Sadly, you did not save any money yesterday")
+        }
+        else if (amount < 0)
+        {
+            notifications.scheduleNotification(notificationType: Constants.NOTIFICATION_MONEY_SAVED, title: title, body:"Sadly, you did not save any money yesterday. In fact, you are now in debt :(")
+        }
+        else
+        {
+            notifications.scheduleNotification(notificationType: Constants.NOTIFICATION_MONEY_SAVED, title: title, body:"Congratulations, you saved Rp \(amount) yesterday!")
+        }
+    }
+    public static func displayGoalProgressNotification(notifications: Notifications, progress:Double, goalTotal:Double)
+    {
+        let percentage:Double = progress/goalTotal
+        let title:String = "Your goal progress"
+        if percentage <= 25
+        {
+            notifications.scheduleNotification(notificationType: Constants.NOTIFICATION_GOAL_PROGRESS, title: title, body: "Your goal is \(percentage)% complete. Let's increase that number!")
+        }
+        else if percentage >= 50 && percentage <= 55
+        {
+            notifications.scheduleNotification(notificationType: Constants.NOTIFICATION_GOAL_PROGRESS, title: title, body: "You're halfway there! Keep it up~")
+        }
+        else if percentage >= 85 && percentage <= 95
+        {
+            notifications.scheduleNotification(notificationType: Constants.NOTIFICATION_GOAL_PROGRESS, title: title, body: "You're almost there! Finish this!!!")
+        }
+        else
+        {
+            notifications.scheduleNotification(notificationType: Constants.NOTIFICATION_GOAL_PROGRESS, title: title, body: "You made it! You saved Rp \(goalTotal), congratulations!")
+        }
+    }
+    
+    //MARK: - Manage Charts
+    public static func updateChartData()
+    {
+        Globals.goalsComplete.value = Globals.goals!.progress
+        Globals.goalsIncomplete.value = Globals.goalsIncomplete.value-Globals.goals!.progress
+        if (Globals.goalsIncomplete.value < 0)
+        {
+            Globals.goalsIncomplete.value = 0
+        }
+        let chartDataSet = PieChartDataSet(entries: Globals.goalsProgress, label: nil)
+        let chartData = PieChartData(dataSet: chartDataSet)
+        
+        var colors = [UIColor]()
+        if Methods.goalIsAchieved()
+        {
+            colors = [Constants.COLOR_CHART_GOAL_REACHED, Constants.COLOR_CHART_GOAL_LEFT]
+        }
+        else
+        {
+            colors = [Constants.COLOR_CHART_GOAL_PROGRESS, Constants.COLOR_CHART_GOAL_LEFT]
+        }
+        chartDataSet.colors = colors as! [NSUIColor]
+        
+        Globals.pieChart!.data = chartData
     }
 }

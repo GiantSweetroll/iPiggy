@@ -6,7 +6,7 @@
 //  Copyright © 2019 Gardyan Akbar. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Constants
 {
@@ -60,4 +60,12 @@ struct Constants
     public static let MONTHS: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     public static let MONTHS_SHORT:[String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     public static let DAYS: [String] = ["S", "M", "T", "W", "T", "F", "S"]
+    public static let NOTIFICATION_DAILY_SPENDING = "dailySpending"
+    public static let NOTIFICATION_GOAL_PROGRESS = "goalProgress"
+    public static let NOTIFICATION_EXPENSES_WARNING = "expensesWarning"
+    public static let NOTIFICATION_MONEY_SAVED = "moneySaved"
+    public static let COLOR_CHART_GOAL_PROGRESS:UIColor = UIColor(red: 0.42, green: 0.46, blue: 1.00, alpha: 1)
+//    public static let COLOR_CHART_GOAL_PROGRESS:UIColor = UIColor.purple
+    public static let COLOR_CHART_GOAL_LEFT:UIColor = UIColor.gray
+    public static let COLOR_CHART_GOAL_REACHED:UIColor = UIColor.green
 }
