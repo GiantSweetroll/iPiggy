@@ -15,6 +15,7 @@ class EditGoalsVC:UIViewController
     @IBOutlet weak var dateFrom: UITextField!
     @IBOutlet weak var dateTo: UITextField!
     @IBOutlet weak var amount: UITextField!
+    @IBOutlet weak var fundsAlloc: UITextField!
     
     //Variables
     lazy var dateFromPicker:UIDatePicker =
@@ -50,11 +51,17 @@ class EditGoalsVC:UIViewController
     {
         let dateFrom:Date = Methods.setDateTimeToOrigin(date: self.dateFromPicker.date)
         let dateTo:Date = Methods.setDateTimeToOrigin(date: self.dateToPicker.date)
-        if (dateFrom <= dateTo)
+        let amount = Double(self.amount.text ?? "0")!
+        let fundsAlloc = Double(self.fundsAlloc.text ?? "0")!
+        if (dateFrom <= dateTo && fundsAlloc <= Globals.funds && amount <= fundsAlloc)
         {
-            let amount = Double(self.amount.text ?? "0")!
-            
-            Methods.saveGoals(dateFrom: dateFrom, dateTo: dateTo, amount: amount)
+            if dateFrom != Globals.goals?.dateFrom
+            {
+                //If start date is changed, the surplus is reset (is this a good idea....)
+                Methods.saveSurplus(surplus: 0)
+            }
+            Methods.saveGoals(dateFrom: dateFrom, dateTo: dateTo, moneyToSave: amount, moneyAllocated: fundsAlloc)
+            Methods.saveRecommendedSpending(recommendedSpending: Double(Methods.getRecommendedSpendingNoDecimal()))
             dismiss(animated: true, completion: nil)
         }
     }
@@ -69,6 +76,9 @@ class EditGoalsVC:UIViewController
         super.viewWillAppear(animated)
         
         self.amount?.text = String(format: "%0.0f", (Globals.goals?.amount)!)
+        self.dateFromPicker.date = Globals.goals?.dateFrom ?? Date()
+        self.dateToPicker.date = Globals.goals?.dateTo ?? Date()
+        self.fundsAlloc.text = String(format: "%0.0f", Globals.goals?.allocatedFunds ?? 0)
         self.dateFrom?.text = Globals.dateFormatFull.string(from: Globals.goals!.dateFrom ?? Date())
         self.dateTo?.text = Globals.dateFormatFull.string(from: Globals.goals!.dateTo!)
     }

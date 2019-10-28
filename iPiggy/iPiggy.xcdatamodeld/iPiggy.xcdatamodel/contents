@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15400" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Achievement" representedClassName="Achievement" syncable="YES" codeGenerationType="class">
+        <attribute name="achieved" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="dateFrom" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateTo" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="details" optional="YES" attributeType="String"/>
+        <attribute name="progress" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="Expenses" representedClassName=".Expenses" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="cost" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -14,6 +22,7 @@
         <attribute name="surplus" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Goal" representedClassName="Goal" syncable="YES" codeGenerationType="class">
+        <attribute name="allocatedFunds" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="dateFrom" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateTo" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -28,7 +37,8 @@
     <elements>
         <element name="Expenses" positionX="-54" positionY="-9" width="128" height="103"/>
         <element name="Funds" positionX="-18" positionY="63" width="128" height="118"/>
-        <element name="Goal" positionX="0" positionY="108" width="128" height="103"/>
+        <element name="Goal" positionX="0" positionY="108" width="128" height="118"/>
         <element name="WishlistItem" positionX="-36" positionY="36" width="128" height="103"/>
+        <element name="Achievement" positionX="-27" positionY="90" width="128" height="133"/>
     </elements>
 </model>

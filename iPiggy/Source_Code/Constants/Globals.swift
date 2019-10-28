@@ -16,6 +16,7 @@ struct Globals
     
     public static var histories:[Expenses]=[]
     public static var wishlists:[WishlistItem]=[]
+    public static var wishlistDictionary:Dictionary<Int, Dictionary<Int, Dictionary<Int, [WishlistItem]>>> = Dictionary<Int, Dictionary<Int, Dictionary<Int, [WishlistItem]>>>()
     public static var monthCollectionViews:[UICollectionView] = []
     public static var fullListOfCalendarDays:[[String]] = [[]]
     public static var labFunds:UILabel?
@@ -30,9 +31,11 @@ struct Globals
     public static var fundsDataObject:NSManagedObject?
     public static var goalsDataObject:NSManagedObject?
     public static var goals:Goal?
+    public static var achievements:[Achievement] = [Achievement]()
     public static var funds:Double = 0
     public static var fundsSpent:Double = 0
     public static var recSpending:Double = 0
+    public static var currentYearlyCalendarYearDisplayed:Int?
     public static var dateTracker:Date?
     public static var isNewAchievement:Bool = false
     public static var dateFormatFull: DateFormatter = {
