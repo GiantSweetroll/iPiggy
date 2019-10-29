@@ -266,8 +266,14 @@ struct Methods
         Globals.labGoals?.text = Methods.appendCurrency(string: String(format: "%0.0f", goals))
     }
     public static func updateHomepageGoalsDayLeftLabel()
-    {        let dateComponent:DateComponents = Methods.getDayDifference(from: Globals.dateTracker!, to: Globals.goals!.dateTo!)
-        Globals.labGoalDayLeft?.text = String(dateComponent.day!)
+    {
+        let dateComponent:DateComponents = Methods.getDayDifference(from: Globals.dateTracker!, to: Globals.goals!.dateTo!)
+        var diff = dateComponent.day!
+        if (diff < 0)
+        {
+            diff = 0
+        }
+        Globals.labGoalDayLeft?.text = String(diff)
     }
     public static func saveGoalProgress(amount: Double)
     {
@@ -504,7 +510,7 @@ struct Methods
 //           expenses.append(person)
             //MARK: - Add to history here
             Globals.wishlists.append(wishlist as! WishlistItem)
-            
+            Globals.wishlistDictionary = Methods.getWishlistDictionary()
         }
         catch let error as NSError
         {
@@ -533,7 +539,7 @@ struct Methods
 //         print("Array expeneses data size: \(expensesData.count)")
             if (wishlistData.count > 0)
             {
-            Globals.wishlists = wishlistData
+                Globals.wishlists = wishlistData
             }
         }
         catch let error as NSError
@@ -584,6 +590,7 @@ struct Methods
         do
         {
             try managedContext.save()
+            Globals.wishlistDictionary = Methods.getWishlistDictionary()
         }
         catch let error as NSError
         {
@@ -1152,8 +1159,10 @@ struct Methods
     //MARK: - Manage Charts
     public static func updateChartData()
     {
-        Globals.goalsComplete.value = Globals.goals!.progress
-        Globals.goalsIncomplete.value = Globals.goals!.amount-Globals.goals!.progress
+ //       Globals.goalsComplete.value = Globals.goals!.progress
+        Globals.goalsComplete.value = 65000
+  //      Globals.goalsIncomplete.value = Globals.goals!.amount-Globals.goals!.progress
+        Globals.goalsIncomplete.value = Globals.goals!.amount-65000
         if (Globals.goalsIncomplete.value < 0)
         {
             Globals.goalsIncomplete.value = 0

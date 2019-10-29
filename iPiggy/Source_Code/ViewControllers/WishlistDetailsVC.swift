@@ -19,6 +19,7 @@ class WishlistDetailsVC: UIViewController
     
     //MARK: - Variables
     var wishlistItem:WishlistItem!
+    var wishlistItemIndex:Int!
     
     //MARK: - Main Method
     override func viewDidLoad()
@@ -60,6 +61,8 @@ class WishlistDetailsVC: UIViewController
     @IBAction func deleteButtonPressed(_ sender: Any)
     {
         Methods.deleteWishlist(wishlist: self.wishlistItem)
+        Globals.wishlists.remove(at: self.wishlistItemIndex)
+        Globals.wishlistDictionary = Methods.getWishlistDictionary()
         navigationController?.popViewController(animated: true)
     }
 }

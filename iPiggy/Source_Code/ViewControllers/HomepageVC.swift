@@ -49,7 +49,7 @@ class HomepageVC: UIViewController
         Methods.loadGoals()
    //     print("Helllo niga")
         Methods.updateHomepageGoalsLabel(goals: Globals.goals?.amount ?? 0)
-        print(Globals.dateTracker)
+   //     print(Globals.dateTracker)
         Methods.updateHomepageGoalsDayLeftLabel()
   //      print("My NIGGA")
   //      Methods.addDayLabelsToCalendarArray()
@@ -76,6 +76,7 @@ class HomepageVC: UIViewController
         Methods.saveRecommendedSpending(recommendedSpending: Double(Methods.getRecommendedSpendingNoDecimal()))
         
   //      notifications.scheduleNotification(notificationType: "iPiggy messages")
+  //      notifications.scheduleNotification(notificationType: "dskdskhj", title: "Overspending!", body: "Your expenses exceeds your recommended spendings!")
         
         //This is done by cen
         

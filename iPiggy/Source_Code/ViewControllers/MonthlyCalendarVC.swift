@@ -19,6 +19,10 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
     var monthIndex:Int!
     var year:Int!
     var month:Int!
+    var fromSegue:Bool = false
+    var segueMonthIndex:Int!
+    var segueYear:Int!
+    var segueMonth:Int!
     
     //MARK: - Main Method
     override func viewDidLoad()
@@ -49,6 +53,19 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
         layout2.minimumInteritemSpacing = 0
         layout2.minimumLineSpacing = 0
         self.daysLabelCollectionView.collectionViewLayout = layout2
+    }
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        if (self.fromSegue)
+        {
+            self.monthIndex = self.segueMonthIndex
+            self.monthNavBar.title = Constants.MONTHS[self.monthIndex]
+            year = self.segueYear
+            month = self.segueMonth
+        }
+   //     print("monthly calendar view will appear")
+        self.collectionView.reloadData()
     }
     
     //MARK: - Protocols
@@ -88,6 +105,7 @@ class MonthlyCalendarVC:UIViewController, UICollectionViewDataSource, UICollecti
             }
             cell.tableView.delegate = cell.self
             cell.tableView.dataSource = cell.self
+            cell.tableView.reloadData()
             
             //Customize cell
             cell.layer.borderWidth = 1

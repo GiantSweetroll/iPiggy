@@ -19,7 +19,6 @@ class MonthlyCalendarWishlistDetailVC: UIViewController, UITableViewDataSource, 
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.wishlists = []
     }
     
     //MARK: - Protocols
@@ -35,7 +34,7 @@ class MonthlyCalendarWishlistDetailVC: UIViewController, UITableViewDataSource, 
         let wishlist:WishlistItem = self.wishlists[indexPath.row]
         
         cell.wishlistName.text = wishlist.name!
-        cell.cost.text = String(wishlist.cost)
+        cell.cost.text = Methods.appendCurrency(string: String(format: "%0.0f", wishlist.cost))
         cell.date.text = Globals.dateFormatFull.string(from: wishlist.date!)
         let achieved:Bool = wishlist.achieved
         if (achieved)
@@ -50,5 +49,9 @@ class MonthlyCalendarWishlistDetailVC: UIViewController, UITableViewDataSource, 
         }
         
         return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 150
     }
 }

@@ -55,6 +55,23 @@ class AddExpensesVC: UIViewController
     //MARK: - Actions
     @IBAction func saveButtonPressed(_ sender: Any)
     {
+        if let text = self.tfAmount.text, let amount = Double(text)
+        {
+            let category:String = self.category.titleForSegment(at: self.category.selectedSegmentIndex)!
+                   let info:String = self.tfDescription.text!
+//                   let amount:Double = Double(self.tfAmount.text!)!
+                   let date:Date = self.datePicker.date
+                       
+                   Methods.saveExpenses(category: category, description: info, amount: amount, date: date)
+                   Methods.updateHomepageFundsSpentLabel(fundsSpent: Globals.fundsSpent)
+                   Methods.updateChartData()
+                   
+            //       print("Date tracker: \(Globals.dateFormatFull.string(from: Globals.dateTracker!))")
+             //      print("Date of expense: \(Globals.dateFormatFull.string(from: date))")
+                   
+                   self.dismiss(animated: true, completion: nil)
+        }
+        /*
         if (self.tfDate.text != nil && self.tfAmount.text != nil)
         {
             let category:String = self.category.titleForSegment(at: self.category.selectedSegmentIndex)!
@@ -71,6 +88,7 @@ class AddExpensesVC: UIViewController
             
             self.dismiss(animated: true, completion: nil)
         }
+ */
     }
 
     @IBAction func backButtonPressed(_ sender: Any)

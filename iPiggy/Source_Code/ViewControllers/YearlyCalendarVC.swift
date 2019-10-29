@@ -34,6 +34,11 @@ class YearlyCalendarVC: UIViewController, UICollectionViewDataSource, UICollecti
         layout.minimumLineSpacing = 0
         self.monthCollectionView.collectionViewLayout = layout
     }
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        self.monthCollectionView.reloadData()
+    }
     
     //MARK: - Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -41,7 +46,10 @@ class YearlyCalendarVC: UIViewController, UICollectionViewDataSource, UICollecti
         if (segue.identifier == Constants.SEGUE_CALENDAR_YEAR_TO_MONTH)
         {
             let monthCalendarVC = segue.destination as! MonthlyCalendarVC
-            monthCalendarVC.monthIndex = self.selectedIndex ?? 1
+            monthCalendarVC.fromSegue = true
+            monthCalendarVC.segueMonthIndex = self.selectedIndex ?? 1
+            monthCalendarVC.segueYear = Globals.currentYearlyCalendarYearDisplayed
+            monthCalendarVC.segueMonth = monthCalendarVC.segueMonthIndex+1
         }
     }
     
@@ -74,8 +82,8 @@ class YearlyCalendarVC: UIViewController, UICollectionViewDataSource, UICollecti
     {
         //Handles cell tap events
         self.selectedIndex = indexPath.item
-        print(self.selectedIndex!)
- //       performSegue(withIdentifier: Constants.SEGUE_CALENDAR_YEAR_TO_MONTH, sender: nil)
+  //      print(self.selectedIndex!)
+        performSegue(withIdentifier: Constants.SEGUE_CALENDAR_YEAR_TO_MONTH, sender: nil)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat        //Spacing between rows
     {
