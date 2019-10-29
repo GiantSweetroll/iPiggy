@@ -53,7 +53,7 @@ class HistoryVC:UIViewController, UITableViewDataSource, UITableViewDelegate
         let expenses = Globals.histories[indexPath.row]
         
         cell.category.text = expenses.category
-        cell.amount.text = String(expenses.cost)
+        cell.amount.text = Methods.appendCurrency(string: String(format: "%0.0f", expenses.cost))
         cell.date.text = Globals.dateFormatMedium.string(from: expenses.date ?? Date())
         cell.info.text = expenses.info
         
