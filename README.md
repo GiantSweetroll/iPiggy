@@ -10,3 +10,22 @@ An iPhone app used to manage your personal finances, with the goal of saving up 
 - A calendar system that shows your wishlists.
 - Achievements
 - Uses SQLlite to store data
+
+<details>
+    <summary>Screenshots</summary>
+    <img src="./screenshots/main menu.png" width="180">
+    &nbsp
+    <img src="./screenshots/transaction.png" width="180">
+    &nbsp
+    <img src="./screenshots/history.png" width="180">
+    &nbsp
+    <img src="./screenshots/notification.png" width="180">
+    &nbsp
+    <img src="./screenshots/wishlist.png" width="180">
+    &nbsp
+    <img src="./screenshots/wishlist add.png" width="180">
+    &nbsp
+    <img src="./screenshots/calendar month.png" width="180">
+    &nbsp
+    <img src="./screenshots/calendar year.png" width="180">
+</details>
